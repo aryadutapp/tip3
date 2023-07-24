@@ -10,7 +10,7 @@ class Database {
     private $connection;
 
     public function __construct() {
-        require_once __DIR__ . '/../config/info_db.php';
+        require_once __DIR__ . './config/info_db.php';
         $this->host = $dbhost;
         $this->dbname = $dbname;
         $this->user = $dbuser;
