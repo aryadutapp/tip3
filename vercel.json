@@ -3,28 +3,7 @@
     "views/daftar.php": {
       "runtime": "vercel-php@0.5.2"
     },
-    "views/masuk.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "models/UserModel.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "controllers/AuthController.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "config/Database.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "config/info_db.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "index.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "form.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
-    "process_form.php": {
+    "views/masuk.php.php": {
       "runtime": "vercel-php@0.5.2"
     }
   }
