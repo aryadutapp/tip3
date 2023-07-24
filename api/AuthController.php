@@ -2,7 +2,7 @@
 // controllers/process_form.php
 
 // Include the database connection information (config/info_db.php)
-require_once './info_db.php';
+require_once 'info_db.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $form_action = $_POST["form_action"];
