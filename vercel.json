@@ -1,9 +1,9 @@
 {
   "functions": {
-    "views/daftar.php": {
+    "api/daftar.php": {
       "runtime": "vercel-php@0.5.2"
     },
-    "views/masuk.php.php": {
+    "api/masuk.php.php": {
       "runtime": "vercel-php@0.5.2"
     }
   }
