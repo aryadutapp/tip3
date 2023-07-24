@@ -1,6 +1,6 @@
 {
   "functions": {
-    "views/sdaftar.php": {
+    "views/daftar.php": {
       "runtime": "vercel-php@0.5.2"
     },
     "views/masuk.php": {
