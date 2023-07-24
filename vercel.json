@@ -6,7 +6,7 @@
     "api/masuk.php": {
       "runtime": "vercel-php@0.5.2"
     },
-      "api/AuthController.php": {
+    "api/AuthController.php": {
       "runtime": "vercel-php@0.5.2"
     },
     "api/UserModel.php": {
@@ -15,11 +15,8 @@
     "api/dashboard2.php": {
       "runtime": "vercel-php@0.5.2"
     },
-      "api/info_db.php": {
+    "api/info_db.php": {
       "runtime": "vercel-php@0.5.2"
-    },
-    "api/masuk.php": {
-      "runtime": "vercel-php@0.5.2"
-    },
+    }
   }
 }
