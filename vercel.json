@@ -1,0 +1,37 @@
+{
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/tes.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/daftar.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/masuk.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/UserModel.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/AuthController.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/Database.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/info_db.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/index.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/form.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/process_form.php": {
+      "runtime": "vercel-php@0.5.2"
+    }
+  }
+}
