@@ -3,8 +3,23 @@
     "api/daftar.php": {
       "runtime": "vercel-php@0.5.2"
     },
-    "api/masuk.php.php": {
+    "api/masuk.php": {
       "runtime": "vercel-php@0.5.2"
-    }
+    },
+      "api/AuthController.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/UserModel.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/dashboard2.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+      "api/info_db.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/masuk.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
   }
 }
