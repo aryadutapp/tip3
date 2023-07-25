@@ -18,7 +18,7 @@
     "api/info_db.php": {
       "runtime": "vercel-php@0.6.0"
     },
-    "pages/api/info_db.php": {
+    "pages/api/process_form.php": {
       "runtime": "vercel-php@0.6.0"
     }
   }
