@@ -1,23 +1,5 @@
 {
   "functions": {
-    "api/daftar.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/masuk.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/AuthController.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/UserModel.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/dashboard2.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
-    "api/info_db.php": {
-      "runtime": "vercel-php@0.6.0"
-    },
     "functions/process_form.php": {
       "runtime": "vercel-php@0.6.0"
     }
