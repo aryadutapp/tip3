@@ -1,5 +1,10 @@
 <?php
-// app/config/Database.php
+// Replace these with your actual database credentials
+$dbhost = "ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com";
+$dbname = "verceldb";
+$dbuser = "default";
+$dbpassword = "xXk9cTjer8uA";
+$dbopt = "endpoint=ep-odd-paper-540852";
 
 class Database {
     private $host;
@@ -10,7 +15,7 @@ class Database {
     private $connection;
 
     public function __construct() {
-        require_once __DIR__ . './config/info_db.php';
+        global $dbhost, $dbname, $dbuser, $dbpassword, $dbopt;
         $this->host = $dbhost;
         $this->dbname = $dbname;
         $this->user = $dbuser;
@@ -33,4 +38,3 @@ class Database {
         return $this->connection;
     }
 }
-?>
