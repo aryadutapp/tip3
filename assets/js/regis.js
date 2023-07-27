@@ -1,4 +1,6 @@
 function validateForm() {
+    console.log('validateForm() function called'); // Add this line
+
     var password1 = document.getElementById('password').value;
     var password2 = document.getElementById('password2').value;
     var warningElement = document.getElementById('password-warning');
