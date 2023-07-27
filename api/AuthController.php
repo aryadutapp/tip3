@@ -14,12 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($user && $password === $user->password) {
             // Password matches, login successful
-            $message = "Login successful!";
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
         } else {
-            // Password doesn't match or user not found, login failed
-            $message = "Login failed. Please check your credentials.";
+            // Password doesn't match or user not found, redirect to "masuk.php" with error message
+            $errorMessage = "Login failed. Please check your credentials.";
+            $encodedErrorMessage = urlencode($errorMessage);
+            header("Location: masuk.php?error=$encodedErrorMessage");
+            exit();
         }
     } elseif ($form_action === "register") {
         // Assuming your form has input fields with names "email", "password", and "status"
