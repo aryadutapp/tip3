@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun titip.in</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="../assets/css/daftar.css">
 </head>
 <body>
