@@ -24,7 +24,7 @@
             <div class="max-w-md w-full px-6 py-8 bg-white rounded-lg lg:shadow-md">
                 <h2 class="text-2xl font-semibold text-center text-gray-800 mb-5">Daftar</h2>
 
-                <form class="w-full max-w-sm mx-auto mt-10" onsubmit="return validateForm()" action="./AuthController.php?action=register" method="post">
+                <form class="w-full max-w-sm mx-auto mt-10" action="./AuthController.php?action=register" method="post">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
                         <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="john.doe@example.com" required>
