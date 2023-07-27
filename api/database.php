@@ -9,7 +9,7 @@ class Database {
 
     public static function getConnection() {
         if (self::$connection === null) {
-            $connectionString = "host=" . self::$dbhost . " dbname=" . self::$dbname . " user=" . self::$user . " password=" . self::$password . " options=" . self::$dbopt;
+            $connectionString = "host=" . self::$dbhost . " dbname=" . self::$dbname . " user=" . self::$dbuser . " password=" . self::$dbpassword . " options=" . self::$dbopt;
             self::$connection = pg_connect($connectionString);
 
             if (!self::$connection) {
