@@ -14,15 +14,20 @@ class User {
     }
 
     // Create a new user in the database
-    public function createUser() {
-        $db = Database::getConnection(); // Get the database connection
-        $hashedPassword = $this->password; // Replace this with the actual hashing logic
+public function createUser() {
+    $db = Database::getConnection(); // Get the database connection
+    $hashedPassword = $this->password; // Replace this with the actual hashing logic
 
-        $query = "INSERT INTO data_user (email, password, status) VALUES (?, ?, ?)";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$this->email, $hashedPassword, $this->status]);
-        return true; // Return true to indicate successful creation
+    $query = "INSERT INTO data_user (email, password, status) VALUES ($1, $2, $3)";
+    $result = pg_query_params($db, $query, [$this->email, $hashedPassword, $this->status]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
     }
+
+    return true; // Return true to indicate successful creation
+}
 
     // Read user data from the database by email
     public static function getUserByEmail($email) {
