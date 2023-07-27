@@ -14,45 +14,60 @@ class User {
     }
 
     // Create a new user in the database
-public function createUser() {
-    $db = Database::getConnection(); // Get the database connection
-    $hashedPassword = $this->password; // Replace this with the actual hashing logic
+    public function createUser() {
+        $db = Database::getConnection(); // Get the database connection
+        $hashedPassword = $this->password; // Replace this with the actual hashing logic
 
-    $query = "INSERT INTO data_user (email, password, status) VALUES ($1, $2, $3)";
-    $result = pg_query_params($db, $query, [$this->email, $hashedPassword, $this->status]);
+        $query = "INSERT INTO data_user (email, password, status) VALUES ($1, $2, $3)";
+        $result = pg_query_params($db, $query, [$this->email, $hashedPassword, $this->status]);
 
-    if (!$result) {
-        // Handle the error (e.g., log or show an error message)
-        die("Error executing query: " . pg_last_error($db));
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
+        return true; // Return true to indicate successful creation
     }
-
-    return true; // Return true to indicate successful creation
-}
 
     // Read user data from the database by email
     public static function getUserByEmail($email) {
         $db = Database::getConnection(); // Get the database connection
-        $query = "SELECT * FROM data_user WHERE email = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$email]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        $query = "SELECT * FROM data_user WHERE email = $1";
+        $result = pg_query_params($db, $query, [$email]);
+
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
+        return pg_fetch_object($result);
     }
 
     // Update user data in the database
     public function updateUser() {
         $db = Database::getConnection(); // Get the database connection
-        $query = "UPDATE data_user SET email = ?, password = ?, status = ? WHERE id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$this->email, $this->password, $this->status, $this->id]);
+        $query = "UPDATE data_user SET email = $1, password = $2, status = $3 WHERE id = $4";
+        $result = pg_query_params($db, $query, [$this->email, $this->password, $this->status, $this->id]);
+
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
         return true; // Return true to indicate successful update
     }
 
     // Delete user from the database by ID
     public static function deleteUserById($id) {
         $db = Database::getConnection(); // Get the database connection
-        $query = "DELETE FROM data_user WHERE id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$id]);
+        $query = "DELETE FROM data_user WHERE id = $1";
+        $result = pg_query_params($db, $query, [$id]);
+
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
         return true; // Return true to indicate successful deletion
     }
 }
