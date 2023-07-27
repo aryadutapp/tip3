@@ -105,7 +105,6 @@
         </div>
     </footer>
 
-    <script src="../assets/js/regis.js"></script>
 
 </body>
 </html>
