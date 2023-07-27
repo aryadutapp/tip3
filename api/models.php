@@ -15,7 +15,7 @@ class User {
 
     // Create a new user in the database
     public function createUser() {
-        global $db;
+        $db = Database::getConnection(); // Get the database connection
         $hashedPassword = $this->password; // Replace this with the actual hashing logic
 
         $query = "INSERT INTO data_user (email, password, status) VALUES (?, ?, ?)";
@@ -26,7 +26,7 @@ class User {
 
     // Read user data from the database by email
     public static function getUserByEmail($email) {
-        global $db;
+        $db = Database::getConnection(); // Get the database connection
         $query = "SELECT * FROM data_user WHERE email = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$email]);
@@ -35,7 +35,7 @@ class User {
 
     // Update user data in the database
     public function updateUser() {
-        global $db;
+        $db = Database::getConnection(); // Get the database connection
         $query = "UPDATE data_user SET email = ?, password = ?, status = ? WHERE id = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$this->email, $this->password, $this->status, $this->id]);
@@ -44,7 +44,7 @@ class User {
 
     // Delete user from the database by ID
     public static function deleteUserById($id) {
-        global $db;
+        $db = Database::getConnection(); // Get the database connection
         $query = "DELETE FROM data_user WHERE id = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$id]);
