@@ -54,7 +54,7 @@
                 <?php
     if (isset($_GET["error"])) {
         $errorMessage = urldecode($_GET["error"]);
-        echo "<p class='text-md text-yellow-500 mx-6 text-center'>$errorMessage</p>";
+        echo "<p class='text-md text-red-500 my-6 text-center'>$errorMessage</p>";
     }
     ?>
 
