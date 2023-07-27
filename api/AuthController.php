@@ -38,8 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     } else {
         // If form_action is not "login" or "register", you can handle the specific case here
-        $message = "Invalid form_action: $form_action";
+        $message = "Method Post But Invalid form_action: $form_action";
     }
+}
+
+else {
+    // If form_action is not "login" or "register", you can handle the specific case here
+    $message = "Invalid form_action: $form_action";
 }
 
 // Output the message after all the logic is executed
