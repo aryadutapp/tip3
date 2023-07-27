@@ -61,6 +61,9 @@
                                 <option value="mitra">Mitra</option>
                                 <option value="konsumen">Konsumen</option>
                             </select>
+
+                            <input type="hidden" name="form_action" value="register">
+
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
                                     <path d="M10 12l-5-5 1.41-1.41L10 9.17l3.59-3.58L15 7z"></path>
@@ -69,7 +72,6 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="form_action" value="register">
 
                     <div class="warning" id="password-warning"></div>
 
