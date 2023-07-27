@@ -14,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($user && $password === $user->password) {
             // Password matches, login successful
-            echo "Login successful!";
+            $message = "Login successful!";
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
         } else {
             // Password doesn't match or user not found, prompt to register
-            echo "Login failed. Please check your credentials.";
+            $message = "Login failed. Please check your credentials.";
         }
     }
 
@@ -32,12 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $newUser = new User($reg_email, $reg_password, $reg_status);
 
         if ($newUser->createUser()) {
-            echo "Registration successful!";
+            $message = "Registration successful!";
         } else {
-            echo "Failed to register user.";
+            $message = "Failed to register user.";
         }
     } else {
         // If form_action is not "login" or "register", you can handle the specific case here
-        echo "Invalid form_action: $form_action";
+        $message = "Invalid form_action: $form_action";
     }
 }
+
+// Output the message after all the logic is executed
+echo $message;
