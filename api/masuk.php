@@ -19,12 +19,6 @@
         
       </header>
 
-      <?php
-    if (isset($_GET["error"])) {
-        $errorMessage = urldecode($_GET["error"]);
-        echo "<p style='color: red;'>$errorMessage</p>";
-    }
-    ?>
 
 <main>
   <section class="pages-signup pb-10">
@@ -56,6 +50,13 @@
           </div>
 
           <input type="hidden" name="form_action" value="login">
+
+                <?php
+    if (isset($_GET["error"])) {
+        $errorMessage = urldecode($_GET["error"]);
+        echo "<p class='text-md text-yellow-500 mx-6 text-center'>$errorMessage</p>";
+    }
+    ?>
 
           <div class="flex items-center justify-center">
             <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Masuk</button>
