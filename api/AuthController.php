@@ -18,12 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
         } else {
-            // Password doesn't match or user not found, prompt to register
+            // Password doesn't match or user not found, login failed
             $message = "Login failed. Please check your credentials.";
         }
-    }
-
-    if ($form_action === "register") {
+    } elseif ($form_action === "register") {
         // Assuming your form has input fields with names "email", "password", and "status"
         $reg_email = $_POST["email"];
         $reg_password = $_POST["password"];
