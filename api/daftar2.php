@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun titip.in</title>
-    <link rel="stylesheet" href="../assets/css/daftar.css">
+    <title>Daftar Akun - Your Website Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -27,13 +27,13 @@
                 <form class="w-full max-w-sm mx-auto mt-10" onsubmit="return validateForm()" action="./AuthController.php?action=register" method="post">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-                        <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="john.doe@example.com" required>
+                        <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="john.doe@example.com" required>
                     </div>
 
                     <div class="mb-4 relative">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
                         <div class="relative">
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="********" required="">
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="********" required="">
                             <button class="absolute right-3 top-2 h-6 w-6 text-gray-500 hover:text-gray-800" onclick="togglePasswordVisibility()" type="button">
                                 <img class="h-6 w-6" src="../assets/images/eye-svg.svg" alt="See Password">
                             </button>
@@ -44,7 +44,7 @@
                     <div class="mb-4 relative">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password2">Konfirmasi Password</label>
                         <div class="relative">
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password2" type="password" placeholder="********" required="">
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password2" name="password2" type="password" placeholder="********" required="">
                             <button class="absolute right-3 top-2 h-6 w-6 text-gray-500 hover:text-gray-800" onclick="togglePasswordVisibility2()" type="button">
                                 <img class="h-6 w-6" src="../assets/images/eye-svg.svg" alt="See Password">
                             </button>
@@ -54,7 +54,7 @@
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="status">Status Pendaftar</label>
                         <div class="relative">
-                            <select class="appearance-none border rounded w-full py-2 px-3 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-auto sm:pr-12" id="status" required>
+                            <select class="appearance-none border rounded w-full py-2 px-3 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-auto sm:pr-12" id="status" name="status" required>
                                 <option value="" disabled selected>Pilih</option>
                                 <option value="mitra">Mitra</option>
                                 <option value="konsumen">Konsumen</option>
@@ -105,6 +105,7 @@
         </div>
     </footer>
 
+    <!-- Add your JavaScript validation functions and other scripts here -->
 
 </body>
 </html>
