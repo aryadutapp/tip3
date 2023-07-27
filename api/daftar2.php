@@ -68,6 +68,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <input type="hidden" name="form_action" value="register">
+
                     <div class="warning" id="password-warning"></div>
 
                     <?php
