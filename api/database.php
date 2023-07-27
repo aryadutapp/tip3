@@ -1,22 +1,23 @@
 
 <?php
 class Database {
-    private static $host = "ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com";
-    private static $dbname = 'verceldb';
-    private static $user = 'default';
-    private static $password = 'xXk9cTjer8uA';
-    private static $options = "endpoint=ep-odd-paper-540852";
-    private static $connection = null;
+$dbhost = "ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com";
+$dbname = "verceldb";
+$dbuser = "default";
+$dbpassword = "xXk9cTjer8uA";
+$dbopt = "endpoint=ep-odd-paper-540852";
 
     public static function getConnection() {
         if (self::$connection === null) {
-            try {
-                $dsn = "pgsql:host=" . self::$host . ";dbname=" . self::$dbname . ";" . self::$options;
-                self::$connection = new PDO($dsn, self::$user, self::$password);
-                self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                // Handle connection error if needed
-                die("Connection to the database failed: " . $e->getMessage());
+$connectionString = "host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt";
+            self::$connection = pg_connect($connectionString);
+
+       
+
+
+            if (!self::$connection) {
+                // Failed to connect to the database
+                die("Connection failed: " . pg_last_error());
             }
         }
 
