@@ -54,14 +54,21 @@
                         </div>
                     </div>
 
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="status">Status Pendaftar</label>
-            <select class="appearance-none border rounded w-full py-2 px-3 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-auto sm:pr-12" id="status" name="status" required="">
-              <option value="" disabled="" selected="">Pilih</option>
-              <option value="mitra">Mitra</option>
-              <option value="konsumen">Konsumen</option>
-            </select>
-          </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="status">Status Pendaftar</label>
+                        <div class="relative">
+                            <select class="appearance-none border rounded w-full py-2 px-3 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-auto sm:pr-12" id="status" name="status" required>
+                                <option value="" disabled selected>Pilih</option>
+                                <option value="mitra">Mitra</option>
+                                <option value="konsumen">Konsumen</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+                                    <path d="M10 12l-5-5 1.41-1.41L10 9.17l3.59-3.58L15 7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
 
           <input type="hidden" name="form_action" value="register">
 
