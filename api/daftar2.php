@@ -106,6 +106,8 @@
     </footer>
 
     <!-- Add your JavaScript validation functions and other scripts here -->
+    <script src="../assets/js/regis.js"></script>
+
 
 </body>
 </html>
