@@ -33,10 +33,26 @@
             <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="john.doe@example.com" required="">
           </div>
 
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="********" required="">
-          </div>
+          <div class="mb-4 relative">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                        <div class="relative">
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="********" required="">
+                            <button class="absolute right-3 top-2 h-6 w-6 text-gray-500 hover:text-gray-800" onclick="togglePasswordVisibility()" type="button">
+                                <img class="h-6 w-6" src="../assets/images/eye-svg.svg" alt="See Password">
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-4 relative">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="password2">Konfirmasi Password</label>
+                        <div class="relative">
+                            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password2" name="password2" type="password" placeholder="********" required="">
+                            <button class="absolute right-3 top-2 h-6 w-6 text-gray-500 hover:text-gray-800" onclick="togglePasswordVisibility2()" type="button">
+                                <img class="h-6 w-6" src="../assets/images/eye-svg.svg" alt="See Password">
+                            </button>
+                        </div>
+                    </div>
 
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="status">Status Pendaftar</label>
