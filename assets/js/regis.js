@@ -5,42 +5,18 @@ function validateForm() {
     var password2 = document.getElementById('password2').value;
     var warningElement = document.getElementById('password-warning');
 
-    if (password1 !== password2) {
+    if (password !== password2) {
         warningElement.textContent = 'Password tidak sama';
         warningElement.classList.add('text-red-600'); // Add the 'text-red' class
         return false; // Prevent form submission
-    } 
-    else if (password1.length < 8) {
-        warningElement.textContent = 'Passwords minimal 8 karakter';
+    } else if (password.length < 8) {
+        warningElement.textContent = 'Password minimal 8 karakter';
         warningElement.classList.add('text-red-600'); // Add the 'text-red' class
         return false; // Prevent form submission
-    }
-
-    else {
+    } else {
         warningElement.textContent = ''; // Clear the warning if passwords match
         warningElement.classList.remove('text-red-600'); // Remove the 'text-red' class
-
     }
 
     return true; // Allow form submission
-}
-
-function togglePasswordVisibility() {
-    var passwordInput = document.getElementById('password');
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-    } else {
-        passwordInput.type = 'password';
-    }
-
-}
-
-function togglePasswordVisibility2() {
-    var passwordInput = document.getElementById('password2');
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-    } else {
-        passwordInput.type = 'password';
-    }
-
 }
