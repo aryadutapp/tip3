@@ -83,7 +83,6 @@
       </div>
     </div>
   </section>
-  <script src="../assets/js/regis.js"></script>
 
 </main>
 
@@ -116,6 +115,7 @@
   </div>
 </footer>
 
+<script src="../assets/js/regis.js"></script>
 
 </body>
 </html>
