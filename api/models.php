@@ -29,19 +29,27 @@ class User {
         return true; // Return true to indicate successful creation
     }
 
-    // Read user data from the database by email
-    public static function getUserByEmail($email) {
-        $db = Database::getConnection(); // Get the database connection
-        $query = "SELECT * FROM data_user WHERE email = $1";
-        $result = pg_query_params($db, $query, [$email]);
+// Read user data from the database by email
+public static function getUserByEmail($email) {
+    $db = Database::getConnection(); // Get the database connection
+    $query = "SELECT * FROM data_user WHERE email = $1";
+    $result = pg_query_params($db, $query, [$email]);
 
-        if (!$result) {
-            // Handle the error (e.g., log or show an error message)
-            die("Error executing query: " . pg_last_error($db));
-        }
-
-        return pg_fetch_object($result);
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
     }
+
+    // Check if any rows are returned
+    $rowCount = pg_num_rows($result);
+    if ($rowCount === 0) {
+        // Email doesn't exist, return an error code or a specific value to indicate this
+        return -1; // You can use any value that makes sense for your application
+    }
+
+    return pg_fetch_object($result);
+}
+
 
     // Update user data in the database
     public function updateUser() {
