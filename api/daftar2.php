@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daftar - Your Website Title</title> <!-- Change "Your Website Title" to your actual website title -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+          function togglePasswordVisibility(inputId) {
+            var passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+              passwordInput.type = 'text';
+            } else {
+              passwordInput.type = 'password';
+            }
+          }
+
+    function validateForm(event) {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('password2').value;
+
+      if (password !== confirmPassword) {
+        event.preventDefault(); // Prevent form submission
+        const warningMessage = document.getElementById('password-warning');
+        warningMessage.innerText = 'Password and Konfirmasi Password must match.';
+        warningMessage.style.display = 'block';
+      } else if (password.length < 8) {
+        event.preventDefault(); // Prevent form submission
+        const warningMessage = document.getElementById('password-warning');
+        warningMessage.innerText = 'Password must be at least 8 characters long.';
+        warningMessage.style.display = 'block';
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -26,7 +53,7 @@
       <div class="max-w-md w-full px-6 py-8 bg-white rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold text-center text-gray-800 mb-5">Daftar</h2>
 
-        <form action="./AuthController.php?action=register" method="post" onsubmit="return validateForm()">
+<form action="./AuthController.php?action=register" method="post" onsubmit="validateForm(event)">
 
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
@@ -70,6 +97,8 @@
           </div>
 
           <input type="hidden" name="form_action" value="register">
+    <p id="password-warning" class="text-sm text-red-600 mt-2 text-center hidden"></p>
+
 
           <div class="flex items-center justify-center">
             <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Daftar</button>
@@ -79,40 +108,6 @@
 
         <p class="text-md text-gray-700 mt-6 text-center">Belum mempunyai akun? <a class="text-yellow-500 hover:text-yellow-800 font-semibold" href="./masuk.php">Daftar</a></p>
 
-        <!-- Inline script for form validation -->
-        <script>
-          function validateForm() {
-            console.log('validateForm() function called'); // Add this line
-
-            var password = document.getElementById('password').value;
-            var password2 = document.getElementById('password2').value;
-            var warningElement = document.getElementById('password-warning');
-
-            if (password !== password2) {
-              warningElement.textContent = 'Password tidak sama';
-              warningElement.classList.add('text-red-600'); // Add the 'text-red-600' class to show the warning
-              return false; // Prevent form submission
-            } else if (password.length < 8) {
-              warningElement.textContent = 'Passwords minimal 8 karakter';
-              warningElement.classList.add('text-red-600'); // Add the 'text-red-600' class to show the warning
-              return false; // Prevent form submission
-            } else {
-              warningElement.textContent = ''; // Clear the warning if passwords match
-              warningElement.classList.remove('text-red-600'); // Remove the 'text-red-600' class to hide the warning
-            }
-
-            return true; // Allow form submission if everything is okay
-          }
-
-          function togglePasswordVisibility(inputId) {
-            var passwordInput = document.getElementById(inputId);
-            if (passwordInput.type === 'password') {
-              passwordInput.type = 'text';
-            } else {
-              passwordInput.type = 'password';
-            }
-          }
-        </script>
         <!-- End of inline script for form validation -->
 
       </div>
