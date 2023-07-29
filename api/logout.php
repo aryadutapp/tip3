@@ -18,7 +18,7 @@ User::deleteSessionByEmail($userEmail);
 setcookie("titip_user", "", time() - 3600, '/');
 
 // Redirect to index.html after logout
-header("Location: index.html");
+header("Location: ../");
 exit();
 
 ?>
