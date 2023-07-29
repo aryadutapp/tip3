@@ -1,22 +1,25 @@
-function validateForm() {
-    console.log('validateForm() function called'); // Add this line
+ function togglePasswordVisibility(inputId) {
+            var passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+              passwordInput.type = 'text';
+            } else {
+              passwordInput.type = 'password';
+            }
+          }
 
-    var password = document.getElementById('password').value;
-    var password2 = document.getElementById('password2').value;
-    var warningElement = document.getElementById('password-warning');
+    function validateForm(event) {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('password2').value;
 
-    if (password !== password2) {
-        warningElement.textContent = 'Password tidak sama';
-        warningElement.classList.add('text-red-600'); // Add the 'text-red' class
-        return false; // Prevent form submission
-    } else if (password.length < 8) {
-        warningElement.textContent = 'Password minimal 8 karakter';
-        warningElement.classList.add('text-red-600'); // Add the 'text-red' class
-        return false; // Prevent form submission
-    } else {
-        warningElement.textContent = ''; // Clear the warning if passwords match
-        warningElement.classList.remove('text-red-600'); // Remove the 'text-red' class
+      if (password !== confirmPassword) {
+        event.preventDefault(); // Prevent form submission
+        const warningMessage = document.getElementById('password-warning');
+        warningMessage.innerText = 'Password and Konfirmasi Password must match.';
+        warningMessage.style.display = 'block';
+      } else if (password.length < 8) {
+        event.preventDefault(); // Prevent form submission
+        const warningMessage = document.getElementById('password-warning');
+        warningMessage.innerText = 'Password must be at least 8 characters long.';
+        warningMessage.style.display = 'block';
+      }
     }
-
-    return true; // Allow form submission
-}
