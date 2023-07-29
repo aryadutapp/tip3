@@ -79,43 +79,61 @@ public static function getUserByEmail($email) {
         return true; // Return true to indicate successful deletion
     }
 
-        // Function to get user's email based on their session from the "sessions" table
-    public static function getUserEmailBySession($cookieValue) {
-        $db = Database::getConnection(); // Get the database connection
+// Function to get user's email based on their session from the "sessions" table
+public static function getUserEmailBySession($cookieValue) {
+    $db = Database::getConnection(); // Get the database connection
 
-        $query = "SELECT email FROM sessions WHERE cookie = $1";
-        $result = pg_query_params($db, $query, [$cookieValue]);
+    // Delete any expired sessions first before retrieving the email
+    $queryDeleteExpired = "DELETE FROM sessions WHERE expired_time <= NOW()";
+    $resultDeleteExpired = pg_query($db, $queryDeleteExpired);
 
-        if (!$result) {
-            // Handle the error (e.g., log or show an error message)
-            die("Error executing query: " . pg_last_error($db));
-        }
-
-        // Check if any rows are returned
-        $rowCount = pg_num_rows($result);
-        if ($rowCount === 0) {
-            // No session found for the given cookie value
-            return null;
-        }
-
-        $row = pg_fetch_assoc($result);
-        return $row['email'];
+    if (!$resultDeleteExpired) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
     }
+
+    $query = "SELECT email FROM sessions WHERE cookie_value = $1";
+    $result = pg_query_params($db, $query, [$cookieValue]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    // Check if any rows are returned
+    $rowCount = pg_num_rows($result);
+    if ($rowCount === 0) {
+        // No session found for the given cookie value or it has expired
+        // Redirect to "masuk.php" with an error message indicating the session has expired
+        $errorMessage = "Sesi telah berakhir. Silakan masuk kembali.";
+        $encodedErrorMessage = urlencode($errorMessage);
+        header("Location: masuk.php?error=$encodedErrorMessage");
+        exit();
+    }
+
+    $row = pg_fetch_assoc($result);
+    return $row['email'];
+}
+
 
     // Function to insert user session information into the "sessions" table
-    public function insertSession($cookieValue) {
-        $db = Database::getConnection(); // Get the database connection
+public function insertSession($cookieValue) {
+    $db = Database::getConnection(); // Get the database connection
 
-        $query = "INSERT INTO sessions (email, cookie) VALUES ($1, $2)";
-        $result = pg_query_params($db, $query, [$this->email, $cookieValue]);
+    // Calculate the expiration time, 4 days from now
+    $expirationTime = time() + (4 * 24 * 60 * 60); // 4 days * 24 hours * 60 minutes * 60 seconds
 
-        if (!$result) {
-            // Handle the error (e.g., log or show an error message)
-            die("Error executing query: " . pg_last_error($db));
-        }
+    $query = "INSERT INTO sessions (email, cookie_value, expired_time) VALUES ($1, $2, to_timestamp($3))";
+    $result = pg_query_params($db, $query, [$this->email, $cookieValue, $expirationTime]);
 
-        return true; // Return true to indicate successful insertion
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
     }
+
+    return true; // Return true to indicate successful insertion
+}
+
 
     // Function to delete user session information from the "sessions" table by email
     public static function deleteSessionByEmail($email) {
