@@ -1,3 +1,26 @@
+<?php
+require_once 'models.php';
+
+// Assuming you have the user's cookie value from the current session
+// Replace this with the actual method to get the user's cookie value
+$cookieValue = $_COOKIE['titip_user'];
+
+// Get the user's email based on their session
+$userEmail = User::getUserEmailBySession($cookieValue);
+
+// If the cookie doesn't exist or the session is invalid, getUserEmailBySession will handle the redirecting
+// and display the appropriate error message.
+
+// Get the user information based on their email
+$user = User::getUserByEmail($userEmail);
+
+// If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
+if (!$user || $user->status !== "mitra") {
+    header("Location: dashboard-konsumen.php");
+    exit();
+}
+?>
+
 <!doctype html>
 <html>
 
