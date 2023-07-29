@@ -78,4 +78,59 @@ public static function getUserByEmail($email) {
 
         return true; // Return true to indicate successful deletion
     }
+
+        // Function to get user's email based on their session from the "sessions" table
+    public static function getUserEmailBySession($cookieValue) {
+        $db = Database::getConnection(); // Get the database connection
+
+        $query = "SELECT email FROM sessions WHERE cookie = $1";
+        $result = pg_query_params($db, $query, [$cookieValue]);
+
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
+        // Check if any rows are returned
+        $rowCount = pg_num_rows($result);
+        if ($rowCount === 0) {
+            // No session found for the given cookie value
+            return null;
+        }
+
+        $row = pg_fetch_assoc($result);
+        return $row['email'];
+    }
+
+    // Function to insert user session information into the "sessions" table
+    public function insertSession($cookieValue) {
+        $db = Database::getConnection(); // Get the database connection
+
+        $query = "INSERT INTO sessions (email, cookie) VALUES ($1, $2)";
+        $result = pg_query_params($db, $query, [$this->email, $cookieValue]);
+
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
+        return true; // Return true to indicate successful insertion
+    }
+
+    // Function to delete user session information from the "sessions" table by email
+    public static function deleteSessionByEmail($email) {
+        $db = Database::getConnection(); // Get the database connection
+
+        $query = "DELETE FROM sessions WHERE email = $1";
+        $result = pg_query_params($db, $query, [$email]);
+
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+
+        return true; // Return true to indicate successful deletion
+    }
+
+    
 }
