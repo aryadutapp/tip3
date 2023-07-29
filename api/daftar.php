@@ -89,7 +89,7 @@
 
         </form>
 
-        <p class="text-md text-gray-700 mt-6 text-center">Belum mempunyai akun? <a class="text-yellow-500 hover:text-yellow-800 font-semibold" href="./masuk.php">Daftar</a></p>
+        <p class="text-md text-gray-700 mt-6 text-center">Sudah mempunyai akun? <a class="text-yellow-500 hover:text-yellow-800 font-semibold" href="./masuk.php">Masuk</a></p>
 
         <!-- End of inline script for form validation -->
 
