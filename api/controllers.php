@@ -2,6 +2,20 @@
 require_once 'database.php';
 require_once 'models.php';
 
+// Function to generate a random and secure cookie value
+function generateCookieValue() {
+    $length = 64; // Set the desired length for the cookie value
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|:;"<>,.?/~'; // Define the characters to choose from
+    $randomString = '';
+    $max = strlen($characters) - 1;
+
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $max)];
+    }
+
+    return $randomString;
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $form_action = $_POST["form_action"];
 
@@ -14,6 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($user && $password === $user->password) {
             // Password matches, login successful
+
+            // Generate a random and secure cookie value
+            $cookieValue = generateCookieValue();
+
+            // Set the cookie with a 3-day duration (259200 seconds = 3 days)
+            $cookieExpiration = time() + 259200; // 3 days
+            setcookie("titip_user", $cookieValue, $cookieExpiration, '/');
+
+            // Insert the session information into the "sessions" table
+            $user->insertSession($cookieValue);
+
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
         } elseif ($user === -1) {
@@ -52,7 +77,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $message = "Failed to register user.";
             }
         }
-    } else {
+    }  
+    elseif ($form_action === "register") {
+        // Replace this with the actual method to get the user's cookie value
+$cookieValue = $_COOKIE['titip_user'];
+
+// Get the user's email based on their session
+$userEmail = User::getUserEmailBySession($cookieValue);
+
+        // Perform the logout actions
+User::deleteSessionByEmail($userEmail);
+
+// Clear the cookie by setting it to an empty value and expiring it (time in the past)
+setcookie("titip_user", "", time() - 3600, '/');
+
+// Redirect to index.html after logout
+header("Location: ../");
+exit();
+
+        
+    }
+
+    
+    
+    else {
         // If form_action is not "login" or "register", handle the specific case here
         $method = $_SERVER["REQUEST_METHOD"];
         $message = "Invalid form_action: $form_action (Method: $method)";
