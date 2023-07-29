@@ -46,7 +46,7 @@ if ($form_action === "login") {
             // Insert the session information into the "sessions" table
             $loggedInUser->insertSession($cookieValue);
 
-            header("Location: https://aryadutapp.github.io/titipin/dashboard");
+            header("Location: dashboard-konsumen.php");
             exit();
         } else {
             // Password doesn't match, redirect to "masuk.php" with an error message
