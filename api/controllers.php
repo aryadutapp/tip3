@@ -16,9 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Password matches, login successful
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
-        } else {
-            // Password doesn't match or user not found, redirect to "masuk.php" with error message
-            $errorMessage = "Login failed. Please check your credentials.";
+        } 
+          if ($user === -1) {
+        // Email isnt registered, display an error message
+            $errorMessage = "Email belum terdaftar";
+            $encodedErrorMessage = urlencode($errorMessage);
+            header("Location: masuk.php?error=$encodedErrorMessage");
+            exit();
+    }
+              
+        else {
+            // Password doesn't match redirect to "masuk.php" with error message
+            $errorMessage = "Kata sandi salah";
             $encodedErrorMessage = urlencode($errorMessage);
             header("Location: masuk.php?error=$encodedErrorMessage");
             exit();
@@ -34,8 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $existingUser = User::getUserByEmail($reg_email);
     if ($existingUser !== -1) {
         // Email is already registered, display an error message
-        $message = "Email is already registered.";
-                    $errorMessage = "Email sudah terdaftar";
+            $errorMessage = "Email sudah terdaftar";
             $encodedErrorMessage = urlencode($errorMessage);
             header("Location: daftar.php?error=$encodedErrorMessage");
             exit();
