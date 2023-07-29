@@ -64,7 +64,7 @@
 
         </form>
 
-        <p class="text-md text-gray-700 mt-6 text-center">Belum mempunyai akun <a class="text-yellow-500 hover:text-yellow-800 font-semibold" href="https://aryadutapp.github.io/titipin/daftar.html">Daftar</a></p>
+        <p class="text-md text-gray-700 mt-6 text-center">Belum mempunyai akun <a class="text-yellow-500 hover:text-yellow-800 font-semibold" href="./daftar.php">Daftar</a></p>
 
       </div>
     </div>
