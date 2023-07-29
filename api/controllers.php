@@ -36,12 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $cookieExpiration = time() + 259200; // 3 days
             setcookie("titip_user", $cookieValue, $cookieExpiration, '/');
 
+            // Create a new instance of the User class
+            $loggedInUser = new User($user->email, $user->password, $user->status);
+
             // Insert the session information into the "sessions" table
-            $user->insertSession($cookieValue);
+            $loggedInUser->insertSession($cookieValue);
 
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
-        } elseif ($user === -1) {
+        } 
+        elseif ($user === -1) {
             // Email isn't registered, display an error message
             $errorMessage = "Email belum terdaftar";
             $encodedErrorMessage = urlencode($errorMessage);
