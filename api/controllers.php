@@ -18,14 +18,14 @@ function generateCookieValue() {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $form_action = $_POST["form_action"];
-    if ($form_action === "login") {
+if ($form_action === "login") {
     // Assuming your form has input fields with names "email" and "password"
     $email = $_POST["email"];
-    $password = $_POST["password"];
     $user = User::getUserByEmail($email);
 
-    if ($user) {
-        // Verify the password using bcrypt
+    if ($user !== -1) {
+        // Email is registered, verify the password using bcrypt
+        $password = $_POST["password"];
         $hashedPasswordFromDB = $user->password;
         $user_salt = $user->user_salt;
         $isPasswordCorrect = password_verify($password . $user_salt, $hashedPasswordFromDB);
@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 }
+
  elseif ($form_action === "register") {
         // Assuming your form has input fields with names "email", "password", and "status"
         $reg_email = $_POST["email"];
