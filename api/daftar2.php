@@ -5,33 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daftar - Your Website Title</title> <!-- Change "Your Website Title" to your actual website title -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
-  <script>
-          function togglePasswordVisibility(inputId) {
-            var passwordInput = document.getElementById(inputId);
-            if (passwordInput.type === 'password') {
-              passwordInput.type = 'text';
-            } else {
-              passwordInput.type = 'password';
-            }
-          }
+  <script src="../assets/js/regis.js"></script>
 
-    function validateForm(event) {
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('password2').value;
-
-      if (password !== confirmPassword) {
-        event.preventDefault(); // Prevent form submission
-        const warningMessage = document.getElementById('password-warning');
-        warningMessage.innerText = 'Password and Konfirmasi Password must match.';
-        warningMessage.style.display = 'block';
-      } else if (password.length < 8) {
-        event.preventDefault(); // Prevent form submission
-        const warningMessage = document.getElementById('password-warning');
-        warningMessage.innerText = 'Password must be at least 8 characters long.';
-        warningMessage.style.display = 'block';
-      }
-    }
-  </script>
 </head>
 <body>
 
