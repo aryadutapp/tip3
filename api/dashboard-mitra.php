@@ -35,7 +35,7 @@ if (!$user || $user->status !== "mitra") {
     <body>
         <header class="fixed top-0 left-0 w-full bg-white z-50 shadow-lg">
             <nav>            
-                <div  class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8">
+                <div  class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-2">
                    
                     <div id="logo-usaha" class="relative z-10 flex items-center gap-16">
                         <a href="#" aria-label="Home">
