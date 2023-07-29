@@ -18,22 +18,26 @@ function generateCookieValue() {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $form_action = $_POST["form_action"];
-
     if ($form_action === "login") {
-        // Assuming your form has input fields with names "email" and "password"
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+    // Assuming your form has input fields with names "email" and "password"
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $user = User::getUserByEmail($email);
 
-        $user = User::getUserByEmail($email);
+    if ($user) {
+        // Verify the password using bcrypt
+        $hashedPasswordFromDB = $user->password;
+        $user_salt = $user->user_salt;
+        $isPasswordCorrect = password_verify($password . $user_salt, $hashedPasswordFromDB);
 
-        if ($user && $password === $user->password) {
+        if ($isPasswordCorrect) {
             // Password matches, login successful
 
             // Generate a random and secure cookie value
             $cookieValue = generateCookieValue();
 
-            // Set the cookie with a 3-day duration (259200 seconds = 3 days)
-            $cookieExpiration = time() + 259200; // 3 days
+            // Set the cookie with a 4-day duration (4 * 24 * 60 * 60 seconds = 4 days)
+            $cookieExpiration = time() + (4 * 24 * 60 * 60); // 4 days
             setcookie("titip_user", $cookieValue, $cookieExpiration, '/');
 
             // Create a new instance of the User class
@@ -44,13 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             header("Location: https://aryadutapp.github.io/titipin/dashboard");
             exit();
-        } 
-        elseif ($user === -1) {
-            // Email isn't registered, display an error message
-            $errorMessage = "Email belum terdaftar";
-            $encodedErrorMessage = urlencode($errorMessage);
-            header("Location: masuk.php?error=$encodedErrorMessage");
-            exit();
         } else {
             // Password doesn't match, redirect to "masuk.php" with an error message
             $errorMessage = "Kata sandi salah";
@@ -58,7 +55,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: masuk.php?error=$encodedErrorMessage");
             exit();
         }
-    } elseif ($form_action === "register") {
+    } else {
+        // Email isn't registered, display an error message
+        $errorMessage = "Email belum terdaftar";
+        $encodedErrorMessage = urlencode($errorMessage);
+        header("Location: masuk.php?error=$encodedErrorMessage");
+        exit();
+    }
+}
+ elseif ($form_action === "register") {
         // Assuming your form has input fields with names "email", "password", and "status"
         $reg_email = $_POST["email"];
         $reg_password = $_POST["password"];
