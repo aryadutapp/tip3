@@ -7,17 +7,18 @@
 </head>
 <body>
     
-    <header>
-        
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-center py-8">
-            <div class="relative z-10 flex items-center gap-16"><a aria-label="Home"><img class="h-14 w-auto" aria-hidden="true" viewbox="0 0 160 24" fill="none" src="../assets/images/logo-text-right.png">                
-                </a>
-              
-            </div>
-            
-          </div>
-        
-      </header>
+<header>
+  <nav>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-center py-8">
+      <div class="relative z-10 flex items-center gap-16">
+        <a href="../" aria-label="Home">
+          <img class="h-14 w-auto" aria-hidden="true" viewbox="0 0 160 24" fill="none" src="../assets/images/logo-text-right.png">
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
 
 
 <main>
