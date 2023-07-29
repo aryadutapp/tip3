@@ -28,7 +28,7 @@
       <div class="max-w-md w-full px-6 py-8 bg-white rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold text-center text-gray-800 mb-5">Daftar</h2>
 
-<form action="./AuthController.php?action=register" method="post" onsubmit="validateForm(event)">
+<form action="./controllers.php?action=register" method="post" onsubmit="validateForm(event)">
 
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
