@@ -87,7 +87,13 @@ $emailFromHeader = isset($_GET["email"]) ? urldecode($_GET["email"]) : '';
         $errorMessage = urldecode($_GET["error"]);
         echo "<p class='text-md text-red-500 my-6 text-center'>$errorMessage</p>";
     }
+    if (isset($_GET["success"])) {
+        $successMessage = urldecode($_GET["error"]);
+        echo "<p class='text-md text-green-500 my-6 text-center'>$successMessage</p>";
+    }
     ?>
+    
+        
 
           <div class="flex items-center justify-center">
             <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Masuk</button>
