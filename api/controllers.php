@@ -51,13 +51,8 @@ if ($form_action === "login") {
         } else {
     // Password doesn't match, return the error message as a JSON response
     $errorMessage = "Kata sandi salah";
-    $response = array("error" => $errorMessage);
-
-    // Set the Content-Type header to JSON
-    header("Content-Type: application/json");
-
-    // Encode the response array as JSON and echo it back
-    echo json_encode($response);
+    $encodedErrorMessage = urlencode($errorMessage);
+    header("Location: masuk.php?error=$encodedErrorMessage");
     exit();
 }
 
