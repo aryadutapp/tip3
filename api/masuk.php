@@ -16,6 +16,10 @@ if ($cookieValue) {
         header("Location: dashboard-mitra.php");
         exit();
     }
+    elseif ($user && $user->status === "konsumen") {
+        header("Location: dashboard-konsumen.php");
+        exit();
+    }
 }
 
 ?>
