@@ -113,7 +113,7 @@ public static function getUserEmailBySession($cookieValue) {
         // Redirect to "masuk.php" with an error message indicating the session has expired
         $errorMessage = "Sesi telah berakhir. Silakan masuk kembali.";
         $encodedErrorMessage = urlencode($errorMessage);
-        header(“Location: masuk.php?error=$encodedErrorMessage”, true, 301);
+        header("Location: masuk.php?error=$encodedErrorMessage", true, 301);
         exit();
     }
 
