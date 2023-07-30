@@ -22,6 +22,9 @@ if ($cookieValue) {
     }
 }
 
+// Retrieve email value from the header if it exists
+$emailFromHeader = isset($_GET["email"]) ? urldecode($_GET["email"]) : '';
+
 ?>
 
 
@@ -58,7 +61,7 @@ if ($cookieValue) {
 
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="john.doe@example.com" required="">
+<input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="john.doe@example.com" value="<?php echo htmlspecialchars($emailFromHeader); ?>" required="">
           </div>
 
           <div class="mb-4">
