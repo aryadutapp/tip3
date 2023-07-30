@@ -88,7 +88,7 @@ $emailFromHeader = isset($_GET["email"]) ? urldecode($_GET["email"]) : '';
         echo "<p class='text-md text-red-500 my-6 text-center'>$errorMessage</p>";
     }
     if (isset($_GET["success"])) {
-        $successMessage = urldecode($_GET["error"]);
+        $successMessage = urldecode($_GET["success"]);
         echo "<p class='text-md text-green-500 my-6 text-center'>$successMessage</p>";
     }
     ?>
