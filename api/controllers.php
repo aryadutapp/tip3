@@ -80,14 +80,23 @@ if ($form_action === "login") {
             header("Location: daftar.php?error=$encodedErrorMessage");
             exit();
         } else {
-            // Email is not registered, proceed with user registration
-            $newUser = new User($reg_email, $reg_password, $reg_status);
-            if ($newUser->createUser()) {
-                $message = "Registration successful!";
-            } else {
-                $message = "Failed to register user.";
-            }
-        }
+    // Email is not registered, proceed with user registration
+    $newUser = new User($reg_email, $reg_password, $reg_status);
+    if ($newUser->createUser()) {
+        // Registration successful, redirect to masuk.php with success message
+        $message = "Registrasi berhasil. Silahkan masuk";
+        $encodedMessage = urlencode($message);
+        header("Location: masuk.php?success=$encodedMessage");
+        exit();
+    } else {
+        // Failed to register user, redirect to daftar.php with error message
+        $message = "Registrasi gagal. Silahkan coba lagi";
+        $encodedMessage = urlencode($message);
+        header("Location: daftar.php?error=$encodedMessage");
+        exit();
+    }
+}
+
     }  
 
 
