@@ -49,10 +49,10 @@ if ($form_action === "login") {
             header("Location: dashboard-konsumen.php");
             exit();
         } else {
-    // Password doesn't match, return the error message as a JSON response
+    // Password doesn't match, display an error message
     $errorMessage = "Kata sandi salah";
     $encodedErrorMessage = urlencode($errorMessage);
-    header("Location: masuk.php?error=$encodedErrorMessage");
+    header("Location: masuk.php?error=$encodedErrorMessage&email=" . urlencode($email));
     exit();
 }
 
