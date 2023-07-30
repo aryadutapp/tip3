@@ -49,12 +49,18 @@ if ($form_action === "login") {
             header("Location: dashboard-konsumen.php");
             exit();
         } else {
-            // Password doesn't match, redirect to "masuk.php" with an error message
-            $errorMessage = "Kata sandi salah";
-            $encodedErrorMessage = urlencode($errorMessage);
-            header("Location: masuk.php?error=$encodedErrorMessage");
-            exit();
-        }
+    // Password doesn't match, return the error message as a JSON response
+    $errorMessage = "Kata sandi salah";
+    $response = array("error" => $errorMessage);
+
+    // Set the Content-Type header to JSON
+    header("Content-Type: application/json");
+
+    // Encode the response array as JSON and echo it back
+    echo json_encode($response);
+    exit();
+}
+
     } else {
         // Email isn't registered, display an error message
         $errorMessage = "Email belum terdaftar";
