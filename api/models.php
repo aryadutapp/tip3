@@ -1,4 +1,9 @@
+
+
 <?php
+
+define('MODELS_INCLUDED', true);
+
 require_once 'database.php';
 
 class User {
