@@ -158,23 +158,25 @@ public function insertSession($cookieValue) {
         return true; // Return true to indicate successful deletion
     }
 
+        // Function to insert user session information into the "sessions" table
+        public function insertBarang($full_name, $size, $store_id) {
+            $db = Database::getConnection(); // Get the database connection
+    
+            $nowTime = time();
+    
+            $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, to_timestamp($3), to_timestamp($4), to_timestamp($5), $6, $7)";
+            $result = pg_query_params($db, $query, [$this->email, $full_name, $store_id, $nowTime, $nowTime, "PESANAN MASUK", $size]);
+    
+        
+            if (!$result) {
+                // Handle the error (e.g., log or show an error message)
+                die("Error executing query: " . pg_last_error($db));
+            }
+        
+            return true; // Return true to indicate successful insertion
+        }
+    
+
     
 }
 
-    // Function to insert user session information into the "sessions" table
-    public function insertBarang($full_name, $size, $store_id) {
-        $db = Database::getConnection(); // Get the database connection
-
-        $nowTime = time();
-
-        $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, to_timestamp($3), to_timestamp($4), to_timestamp($5), $6, $7)";
-        $result = pg_query_params($db, $query, [$this->email, $full_name, $store_id, $nowTime, $nowTime, "PESANAN MASUK", $size]);
-
-    
-        if (!$result) {
-            // Handle the error (e.g., log or show an error message)
-            die("Error executing query: " . pg_last_error($db));
-        }
-    
-        return true; // Return true to indicate successful insertion
-    }
