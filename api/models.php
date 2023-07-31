@@ -175,5 +175,6 @@ public function insertBarang($full_name, $size, $store_id) {
 
     return true; // Return true to indicate successful insertion
 }
+}
 
 
