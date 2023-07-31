@@ -2,8 +2,11 @@
 
 <?php
 
-define('MODELS_INCLUDED', true);
-
+if (basename(__FILE__) !== basename($_SERVER['SCRIPT_FILENAME'])) {
+    http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+    echo "Direct access not allowed.";
+    exit;
+}
 require_once 'database.php';
 
 class User {
