@@ -124,11 +124,11 @@ if ($form_action === "login") {
         
                 if ($newPackage) {
                     // Package insertion was successful
-                    echo "pesanan berhasil masuk";
+                header("Location: dashboard-konsumen.php");
 
                 } else {
                     // Package insertion failed
-                    echo "Please try again.";
+                header("Location: daftar.php");
                 }
             } elseif ($user && $user->status === "konsumen") {
                 header("Location: dashboard-konsumen.php");
