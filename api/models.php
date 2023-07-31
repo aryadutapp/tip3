@@ -3,7 +3,7 @@
 require_once 'database.php';
 
 class User {
-    public $id;
+    public $user_id;
     public $email;
     public $password;
     public $status;
@@ -12,6 +12,7 @@ class User {
         $this->email = $email;
         $this->password = $password;
         $this->status = $status;
+        $this->user_id = $user_id;
     }
 
 // Create a new user in the database
@@ -159,3 +160,21 @@ public function insertSession($cookieValue) {
 
     
 }
+
+    // Function to insert user session information into the "sessions" table
+    public function insertBarang($full_name, $size, $store_id) {
+        $db = Database::getConnection(); // Get the database connection
+
+        $nowTime = time();
+
+        $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, to_timestamp($3), to_timestamp($4), to_timestamp($5), $6, $7)";
+        $result = pg_query_params($db, $query, [$this->email, $full_name, $store_id, $nowTime, $nowTime, "PESANAN MASUK", $size]);
+
+    
+        if (!$result) {
+            // Handle the error (e.g., log or show an error message)
+            die("Error executing query: " . pg_last_error($db));
+        }
+    
+        return true; // Return true to indicate successful insertion
+    }
