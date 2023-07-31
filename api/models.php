@@ -3,7 +3,6 @@
 require_once 'database.php';
 
 class User {
-    public $user_id;
     public $email;
     public $password;
     public $status;
@@ -12,7 +11,6 @@ class User {
         $this->email = $email;
         $this->password = $password;
         $this->status = $status;
-        $this->user_id = $user_id;
     }
 
 // Create a new user in the database
