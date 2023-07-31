@@ -102,45 +102,44 @@ if ($form_action === "login") {
 
 
 
-    elseif ($form_action === "pesanan-masuk") {
-        // Check if the user's cookie exists
-        $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
+elseif ($form_action === "pesanan-masuk") {
+    // Check if the user's cookie exists
+    $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
 
-        // If the user's cookie exists, check the user's status based on the session
-        if ($cookieValue) {
-            // Get the user's email based on their session
-            $userEmail = User::getUserEmailBySession($cookieValue);
-        
-            // Get the user information based on their email
-            $user = User::getUserByEmail($userEmail);
-        
-            // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
-            if ($user && $user->status === "mitra") {
-                $nama_cust = $_POST["full-name"];
-                $size_paket = $_POST["size"];
-                $id_toko = $user->user_id;
-        
-                $newPackage = User::insertBarang($nama_cust, $size_paket, $id_toko);
-        
-                if ($newPackage) {
-                    // Package insertion was successful
-                header("Location: dashboard-konsumen.php");
-
-                } else {
-                    // Package insertion failed
-                header("Location: daftar.php");
-                }
-            } elseif ($user && $user->status === "konsumen") {
-                header("Location: dashboard-konsumen.php");
+    // If the user's cookie exists, check the user's status based on the session
+    if ($cookieValue) {
+        // Get the user's email based on their session
+        $userEmail = User::getUserEmailBySession($cookieValue);
+    
+        // Get the user information based on their email
+        $user = User::getUserByEmail($userEmail);
+    
+        // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
+        if ($user && $user->status === "mitra") {
+            $nama_cust = $_POST["full-name"];
+            $size_paket = $_POST["size"];
+            $id_toko = $user->user_id;
+    
+            $newPackage = User::insertBarang($nama_cust, $size_paket, $id_toko);
+    
+            if ($newPackage) {
+                // Package insertion was successful
+                header("Location: dashboard-konsumen.php?success=true&order_id=" . urlencode($newPackage));
+                exit();
+            } else {
+                // Package insertion failed
+                header("Location: dashboard-konsumen.php?success=false");
                 exit();
             }
+        } elseif ($user && $user->status === "konsumen") {
+            header("Location: dashboard-konsumen.php");
+            exit();
         }
-        
+    }
+}
 
 
-
-
-    }  }
+}
 
 
 
