@@ -115,26 +115,32 @@ elseif ($form_action === "pesanan-masuk") {
         $user = User::getUserByEmail($userEmail);
     
         // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
-        if ($user && $user->status === "mitra") {
-            $nama_cust = $_POST["full-name"];
-            $size_paket = $_POST["size"];
-            $id_toko = $user->user_id;
-    
-            $newPackage = User::insertBarang($nama_cust, $size_paket, $id_toko);
-    
-            if ($newPackage) {
-                // Package insertion was successful
-                header("Location: dashboard-konsumen.php?success=true&order_id=" . urlencode($newPackage));
-                exit();
-            } else {
-                // Package insertion failed
-                header("Location: dashboard-konsumen.php?success=false");
-                exit();
-            }
-        } elseif ($user && $user->status === "konsumen") {
-            header("Location: dashboard-konsumen.php");
-            exit();
-        }
+// Assuming you have a User object already created, let's call it $user.
+// Replace $user with the actual User object you have.
+
+                if ($user && $user->status === "mitra") {
+                    $nama_cust = $_POST["full-name"];
+                    $size_paket = $_POST["size"];
+                    $id_toko = $user->user_id;
+
+                    // Create a new instance of User
+                    $newUser = new User($user->email, $user->password, $user->status);
+
+                    // Call the non-static method insertBarang() on the User instance
+                    $newPackage = $newUser->insertBarang($nama_cust, $size_paket, $id_toko);
+
+                    if ($newPackage) {
+                        // Package insertion was successful
+                        header("Location: dashboard-konsumen.php");
+                    } else {
+                        // Package insertion failed
+                        echo "Please try again.";
+                    }
+                } elseif ($user && $user->status === "konsumen") {
+                    header("Location: dashboard-konsumen.php");
+                    exit();
+                }
+
     }
 }
 
