@@ -103,57 +103,30 @@ if ($form_action === "login") {
 
 
     elseif ($form_action === "pesanan-masuk") {
+        // Check if the user's cookie exists
+        $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
 
+        // If the user's cookie exists, check the user's status based on the session
+        if ($cookieValue) {
+            // Get the user's email based on their session
+            $userEmail = User::getUserEmailBySession($cookieValue);
 
-        // Assuming you have the user's cookie value from the current session
-        // Replace this with the actual method to get the user's cookie value
-        $cookieValue = $_COOKIE['titip_user'];
+            // Get the user information based on their email
+            $user = User::getUserByEmail($userEmail);
 
-        // Get the user's email based on their session
-        $userEmail = User::getUserEmailBySession($cookieValue);
-
-        // If the cookie doesn't exist or the session is invalid, getUserEmailBySession will handle the redirecting
-        // and display the appropriate error message.
-
-        // Get the user information based on their email
-        $user = User::getUserByEmail($userEmail);
-
-        // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
-        if (!$user || $user->status !== "mitra") {
-            header("Location: dashboard-konsumen.php");
-            exit();
+            // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
+            if ($user && $user->status === "mitra") {
+                header("Location: dashboard-mitra.php");
+                exit();
+            }
+            elseif ($user && $user->status === "konsumen") {
+                header("Location: dashboard-konsumen.php");
+                exit();
+            }
         }
 
-        // Assuming your form has input fields with names "email", "password", and "status"
-        $reg_email = $_POST["email"];
-        $reg_password = $_POST["password"];
-        $reg_status = $_POST["status"];
 
-        // Check if the email is already registered
-        $existingUser = User::getUserByEmail($reg_email);
-        if ($existingUser !== -1) {
-            // Email is already registered, display an error message
-            $errorMessage = "Email sudah terdaftar";
-            $encodedErrorMessage = urlencode($errorMessage);
-            header("Location: daftar.php?error=$encodedErrorMessage");
-            exit();
-        } else {
-    // Email is not registered, proceed with user registration
-    $newUser = new User($reg_email, $reg_password, $reg_status);
-    if ($newUser->createUser()) {
-        // Registration successful, redirect to masuk.php with success message
-        $message = "Registrasi berhasil. Silahkan masuk";
-        $encodedMessage = urlencode($message);
-        header("Location: masuk.php?success=$encodedMessage");
-        exit();
-    } else {
-        // Failed to register user, redirect to daftar.php with error message
-        $message = "Registrasi gagal. Silahkan coba lagi";
-        $encodedMessage = urlencode($message);
-        header("Location: daftar.php?error=$encodedMessage");
-        exit();
-    }
-}
+
 
     }  
 
