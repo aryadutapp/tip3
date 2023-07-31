@@ -16,9 +16,6 @@ function generateCookieValue() {
     return $randomString;
 }
 
-if (!defined('MODELS_INCLUDED')) {
-    die("Direct access not allowed.");
-}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $form_action = $_POST["form_action"];
