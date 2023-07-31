@@ -118,7 +118,7 @@ if (!$user || $user->status !== "konsumen") {
                             <h2 class="text-2xl font-bold mb-4 text-black">Menu Cepat</h2>
                             <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                                 <!-- Modal toggle -->
-                                <button data-modal-target="peasanan_masuk-modal" data-modal-toggle="peasanan_masuk-modal" class="flex-1 flex items-start p-4 rounded-xl shadow-lg bg-white" type="button">
+                                <button data-modal-target="pesanan_masuk-modal" data-modal-toggle="pesanan_masuk-modal" class="flex-1 flex items-start p-4 rounded-xl shadow-lg bg-white" type="button">
                                     <div class="flex items-center justify-center bg-blue-50 h-12 w-12 rounded-full border border-blue-100">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
@@ -130,12 +130,12 @@ if (!$user || $user->status !== "konsumen") {
                                     </div>
                                 </button>
                                 <!-- Main modal -->
-                                <div id="peasanan_masuk-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center">
+                                <div id="pesanan_masuk-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center">
                                     <div class="relative w-full max-w-md max-h-full">
                                         <!-- Modal content -->
                                         <div class="relative bg-white rounded-lg shadow">
                                             <!-- Close button -->
-                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="peasanan_masuk-modal">
+                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk-modal">
                                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
                                                 </svg>
