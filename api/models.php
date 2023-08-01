@@ -168,8 +168,8 @@ public function insertBarang($full_name, $size, $store_id) {
     $nowTime = time();
 
     // Prepare and execute the query to insert the data into the data_reservasi table
-    $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, $6, $7)";
-    $result = pg_query_params($db, $query, ["unregistered", $full_name, $store_id, $nowTime, $nowTime, "PESANAN MASUK", $size]);
+    $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, $3, $4, $5, $6, $7)";
+    $result = pg_query_params($db, $query, ["unregistered", $full_name, $store_id, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, "PESANAN MASUK", $size]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
