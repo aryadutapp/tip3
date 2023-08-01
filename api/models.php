@@ -165,11 +165,12 @@ public function insertBarang($full_name, $size, $store_id) {
 
     // Get the current timestamp for book_time, start_time, and end_time
     date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
-    $nowTime = time();
+    $nowTime = time() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
+
 
     // Prepare and execute the query to insert the data into the data_reservasi table
     $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, $3, $4, $5, $6, $7)";
-    $result = pg_query_params($db, $query, ["unregistered", $full_name, $store_id, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, "PESANAN MASUK", $size]);
+    $result = pg_query_params($db, $query, ["unregistered", $full_name, $store_id, $nowTime, $nowTime, "PESANAN MASUK", $size]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
