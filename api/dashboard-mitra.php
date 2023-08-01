@@ -479,7 +479,7 @@ if (!$user || $user->status !== "mitra") {
 
         // Function to fetch data from the server and populate the table
         function fetchReservationData() {
-            fetch("fetch.php")
+            fetch("fetch_store.php")
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById("reservation-table-body");
