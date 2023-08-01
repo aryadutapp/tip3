@@ -6,8 +6,8 @@
   },
   "rewrites": [
     {
-      "source": "/api.html",
-      "destination": "/api.html"
+      "source": "/anti.html",
+      "destination": "/anti.html"
     },
     {
       "source": "/(.*)",
