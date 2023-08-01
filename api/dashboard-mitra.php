@@ -425,7 +425,6 @@ if (!$user || $user->status !== "mitra") {
                     <th scope="col" class="px-4 py-3">BOOK_TIME</th>
                     <th scope="col" class="px-4 py-3">START_TIME</th>
                     <th scope="col" class="px-4 py-3">END_TIME</th>
-                    <th scope="col" class="px-4 py-3">PICKUP_NUMBER</th>
                     <th scope="col" class="px-4 py-3">RESERVATION_STATUS</th>
                     <th scope="col" class="px-4 py-3">SIZE</th>
                     <th scope="col" class="px-4 py-3">
@@ -452,7 +451,6 @@ if (!$user || $user->status !== "mitra") {
                 <td class="px-4 py-3">${data.book_time}</td>
                 <td class="px-4 py-3">${data.start_time}</td>
                 <td class="px-4 py-3">${data.end_time || 'N/A'}</td>
-                <td class="px-4 py-3">${data.pickup_number}</td>
                 <td class="px-4 py-3">${data.reservation_status}</td>
                 <td class="px-4 py-3">${data.size}</td>
                 <td class="px-4 py-3 flex items-center justify-end">
