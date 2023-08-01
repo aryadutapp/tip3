@@ -27,7 +27,8 @@ function fetchReservations() {
     $db = Database::getConnection();
     $query = "SELECT *
               FROM data_reservasi
-              WHERE store_id = $1";
+              WHERE store_id = $1
+              LIMIT 10 OFFSET 10";
     $result = pg_query_params($db, $query, [$user->user_id]);
 
     if (!$result) {
