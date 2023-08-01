@@ -3,7 +3,8 @@ require_once 'models.php';
 
 // Assuming you have the user's cookie value from the current session
 // Replace this with the actual method to get the user's cookie value
-$cookieValue = $_COOKIE['titip_user'];
+$cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
+
 
 // Get the user's email based on their session
 $userEmail = User::getUserEmailBySession($cookieValue);
