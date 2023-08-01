@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation Data</title>
+</head>
+<body>
+    <h1>Reservation Data</h1>
+    <table border="1" id="reservation-table">
+        <tr>
+            <th>INDEX</th>
+            <th>RESERVATION_ID</th>
+            <th>CUST_EMAIL</th>
+            <th>CUST_NAME</th>
+            <th>STORE_ID</th>
+            <th>BOOK_TIME</th>
+            <th>START_TIME</th>
+            <th>END_TIME</th>
+            <th>PICKUP_NUMBER</th>
+            <th>RESERVATION_STATUS</th>
+            <th>SIZE</th>
+        </tr>
+    </table>
+
+    <script>
+        // Function to create table rows with data
+        function createTableRow(data) {
+            var row = "<tr>";
+            row += "<td>" + data.INDEX + "</td>";
+            row += "<td>" + data.RESERVATION_ID + "</td>";
+            row += "<td>" + data.CUST_EMAIL + "</td>";
+            row += "<td>" + data.CUST_NAME + "</td>";
+            row += "<td>" + data.STORE_ID + "</td>";
+            row += "<td>" + data.BOOK_TIME + "</td>";
+            row += "<td>" + data.START_TIME + "</td>";
+            row += "<td>" + data.END_TIME + "</td>";
+            row += "<td>" + data.PICKUP_NUMBER + "</td>";
+            row += "<td>" + data.RESERVATION_STATUS + "</td>";
+            row += "<td>" + data.SIZE + "</td>";
+            row += "</tr>";
+            return row;
+        }
+
+        // Function to fetch data from the server and populate the table
+        function fetchReservationData() {
+            fetch("./api/fetch.php")
+            .then(response => response.json())
+            .then(data => {
+                var table = document.getElementById("reservation-table");
+                data.forEach(rowData => {
+                    var newRow = createTableRow(rowData);
+                    table.innerHTML += newRow;
+                });
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        // Call the function to populate the table on page load
+        fetchReservationData();
+    </script>
+</body>
+</html>
