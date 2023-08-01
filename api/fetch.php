@@ -1,32 +1,46 @@
 <?php
-// info_db.php
-$dbhost = "ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com";
-$dbname = "verceldb";
-$dbuser = "default";
-$dbpassword = "xXk9cTjer8uA";
-$dbopt = "endpoint=ep-odd-paper-540852";
+require_once 'models.php';
 
-// Establish a database connection
-$conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt");
-if (!$conn) {
-    die("Database connection failed");
+// Function to fetch reservations based on the user's email
+function fetchReservations() {
+    $userEmail = User::getUserEmailBySession($_COOKIE['session_cookie']);
+
+    if (!$userEmail) {
+        // Redirect to "masuk.php" with an error message if session not found
+        $errorMessage = "Sesi telah berakhir. Silakan masuk kembali.";
+        $encodedErrorMessage = urlencode($errorMessage);
+        header("Location: masuk.php?error=$encodedErrorMessage");
+        exit();
+    }
+
+    // Fetch reservations for the user based on their email
+    $user = User::getUserByEmail($userEmail);
+
+    if (!$user) {
+        // Handle the case when user not found (e.g., return an error code or show a message)
+        die("User not found.");
+    }
+
+    $db = Database::getConnection();
+    $query = "SELECT * FROM data_reservasi WHERE store_id = $1";
+    $result = pg_query_params($db, $query, [$user->id]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    // Fetch all rows from the result set and store them in an array
+    $rows = array();
+    while ($row = pg_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    // Return the data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($rows);
 }
 
-// Query to fetch data from the 'data_resevasi' table (replace with your table name)
-$sql = "SELECT * FROM data_reservasi";
-
-// Execute the query
-$result = pg_query($conn, $sql);
-if (!$result) {
-    die("Query failed");
-}
-
-// Fetch all rows as an associative array
-$results = pg_fetch_all($result);
-
-// Close the database connection
-pg_close($conn);
-
-// Return the results as JSON data
-echo json_encode($results);
+// Call the function to fetch reservations
+fetchReservations();
 ?>
