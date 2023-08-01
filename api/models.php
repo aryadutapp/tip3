@@ -90,6 +90,7 @@ public static function getUserEmailBySession($cookieValue) {
     $db = Database::getConnection(); // Get the database connection
 
     // Delete any expired sessions first before retrieving the email
+    date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
     $queryDeleteExpired = "DELETE FROM sessions WHERE expired_time <= NOW()";
     $resultDeleteExpired = pg_query($db, $queryDeleteExpired);
 
@@ -127,6 +128,7 @@ public function insertSession($cookieValue) {
     $db = Database::getConnection(); // Get the database connection
 
     // Calculate the expiration time, 4 days from now
+    date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
     $expirationTime = time() + (4 * 24 * 60 * 60); // 4 days * 24 hours * 60 minutes * 60 seconds
 
     $query = "INSERT INTO sessions (email, cookie_value, expired_time) VALUES ($1, $2, to_timestamp($3))";
@@ -162,6 +164,7 @@ public function insertBarang($full_name, $size, $store_id) {
     $db = Database::getConnection(); // Get the database connection
 
     // Get the current timestamp for book_time, start_time, and end_time
+    date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
     $nowTime = time();
 
     // Prepare and execute the query to insert the data into the data_reservasi table
