@@ -25,7 +25,9 @@ function fetchReservations() {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT * FROM data_reservasi WHERE store_id = $1";
+    $query = "SELECT *
+              FROM data_reservasi
+              WHERE store_id = $1";
     $result = pg_query_params($db, $query, [$user->user_id]);
 
     if (!$result) {
@@ -33,10 +35,12 @@ function fetchReservations() {
         die("Error executing query: " . pg_last_error($db));
     }
 
-    // Fetch all rows from the result set and store them in an array
-    $rows = array();
-    while ($row = pg_fetch_assoc($result)) {
-        $rows[] = $row;
+    // Fetch all rows from the result set as an array of associative arrays
+    $rows = pg_fetch_all($result);
+
+    // Remove the 'pickup_number' key from each row
+    foreach ($rows as &$row) {
+        unset($row['pickup_number']);
     }
 
     // Return the data as JSON
