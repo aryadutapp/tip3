@@ -409,78 +409,97 @@ if (!$user || $user->status !== "mitra") {
                                             </div>
                                         </div>
                                     </div>
+
+
+
+                                    
                                     <div class="overflow-x-auto">
-                                        <table class="w-full text-sm text-left text-gray-500">
-                                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                                                <tr>
-                                                    <th scope="col" class="px-4 py-3">ID Barang</th>
-                                                    <th scope="col" class="px-4 py-3">Ukuran</th>
-                                                    <th scope="col" class="px-4 py-3">Status</th>
-                                                    <th scope="col" class="px-4 py-3">Nama Konsumen</th>
-                                                    <th scope="col" class="px-4 py-3">Waktu</th>
-                                                    <th scope="col" class="px-4 py-3">
-                                                        <span class="sr-only">Actions</span>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="border-b">
-                                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">2276 8821 9831 7281</th>
-                                                    <td class="px-4 py-3">S</td>
-                                                    <td class="px-4 py-3">Pesanan Masuk</td>
-                                                    <td class="px-4 py-3">Darel Santoso</td>
-                                                    <td class="px-4 py-3">12:00:00 WIB</td>
-                                                    <td class="px-4 py-3 flex items-center justify-end">
-                                                        <button id="apple-imac-27-dropdown-button" data-dropdown-toggle="apple-imac-27-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
-                                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                                            </svg>
-                                                        </button>
-                                                        <div id="apple-imac-27-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(879px, 596.5px, 0px);" data-popper-escaped="">
-                                                            <ul class="py-1 text-sm text-gray-700" aria-labelledby="apple-imac-27-dropdown-button">
-                                                                <li>
-                                                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100">Show</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100">Edit</a>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="py-1">
-                                                                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="border-b">
-                                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">8260 0821 8452 26178</th>
-                                                    <td class="px-4 py-3">L</td>
-                                                    <td class="px-4 py-3">Paket Masuk</td>
-                                                    <td class="px-4 py-3">Rudi Waluyo</td>
-                                                    <td class="px-4 py-3">11:52:00 WIB</td>
-                                                    <td class="px-4 py-3 flex items-center justify-end">
-                                                        <button id="nikon-d850-dropdown-button" data-dropdown-toggle="nikon-d850-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
-                                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                                            </svg>
-                                                        </button>
-                                                        <div id="nikon-d850-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(879px, -9px, 0px);" data-popper-reference-hidden="" data-popper-escaped="">
-                                                            <ul class="py-1 text-sm text-gray-700" aria-labelledby="nikon-d850-dropdown-button">
-                                                                <li>
-                                                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100">Show</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100">Edit</a>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="py-1">
-                                                                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-4 py-3">INDEX</th>
+                    <th scope="col" class="px-4 py-3">RESERVATION_ID</th>
+                    <th scope="col" class="px-4 py-3">CUST_EMAIL</th>
+                    <th scope="col" class="px-4 py-3">CUST_NAME</th>
+                    <th scope="col" class="px-4 py-3">STORE_ID</th>
+                    <th scope="col" class="px-4 py-3">BOOK_TIME</th>
+                    <th scope="col" class="px-4 py-3">START_TIME</th>
+                    <th scope="col" class="px-4 py-3">END_TIME</th>
+                    <th scope="col" class="px-4 py-3">PICKUP_NUMBER</th>
+                    <th scope="col" class="px-4 py-3">RESERVATION_STATUS</th>
+                    <th scope="col" class="px-4 py-3">SIZE</th>
+                    <th scope="col" class="px-4 py-3">
+                        <span class="sr-only">Actions</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="reservation-table-body">
+                <!-- Table rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to create table rows with data
+        function createTableRow(data) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${data.index}</td>
+                <td class="px-4 py-3">${data.reservation_id}</td>
+                <td class="px-4 py-3">${data.cust_email}</td>
+                <td class="px-4 py-3">${data.cust_name}</td>
+                <td class="px-4 py-3">${data.store_id}</td>
+                <td class="px-4 py-3">${data.book_time}</td>
+                <td class="px-4 py-3">${data.start_time}</td>
+                <td class="px-4 py-3">${data.end_time || 'N/A'}</td>
+                <td class="px-4 py-3">${data.pickup_number}</td>
+                <td class="px-4 py-3">${data.reservation_status}</td>
+                <td class="px-4 py-3">${data.size}</td>
+                <td class="px-4 py-3 flex items-center justify-end">
+                    <button data-dropdown-toggle="actions-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
+                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
+                    </button>
+                    <div id="actions-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(1077px, 628.5px, 0px);">
+                        <ul class="py-1 text-sm text-gray-700" aria-labelledby="actions-dropdown">
+                            <li>
+                                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Show</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Edit</a>
+                            </li>
+                        </ul>
+                        <div class="py-1">
+                            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete</a>
+                        </div>
+                    </div>
+                </td>
+            `;
+            return row;
+        }
+
+        // Function to fetch data from the server and populate the table
+        function fetchReservationData() {
+            fetch("fetch.php")
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById("reservation-table-body");
+                data.forEach(rowData => {
+                    const newRow = createTableRow(rowData);
+                    tableBody.appendChild(newRow);
+                });
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        // Call the function to populate the table on page load
+        fetchReservationData();
+    </script>
+
+
+
+
                                     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                                         <span class="text-sm font-normal text-gray-500"> Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span>
                                         </span>
