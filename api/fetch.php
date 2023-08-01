@@ -1,32 +1,62 @@
 <?php
-// info_db.php
-$dbhost = "ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com";
-$dbname = "verceldb";
-$dbuser = "default";
-$dbpassword = "xXk9cTjer8uA";
-$dbopt = "endpoint=ep-odd-paper-540852";
+require_once 'models.php';
 
-// Establish a database connection
-$conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt");
-if (!$conn) {
-    die("Database connection failed");
+// Function to get user's email based on their session
+function getUserEmailFromSession() {
+    if (!isset($_COOKIE['session_cookie'])) {
+        return null;
+    }
+
+    $cookieValue = $_COOKIE['session_cookie'];
+    return User::getUserEmailBySession($cookieValue);
 }
 
-// Query to fetch data from the 'data_resevasi' table (replace with your table name)
-$sql = "SELECT * FROM data_reservasi";
-
-// Execute the query
-$result = pg_query($conn, $sql);
-if (!$result) {
-    die("Query failed");
+// Function to get user ID based on their email
+function getUserIdByEmail($email) {
+    $user = User::getUserByEmail($email);
+    return $user ? $user->id : null;
 }
 
-// Fetch all rows as an associative array
-$results = pg_fetch_all($result);
+// Function to fetch reservations based on the user ID
+function fetchReservations() {
+    $userEmail = getUserEmailFromSession();
 
-// Close the database connection
-pg_close($conn);
+    if (!$userEmail) {
+        // Redirect to "masuk.php" with an error message if session not found
+        $errorMessage = "Sesi telah berakhir. Silakan masuk kembali.";
+        $encodedErrorMessage = urlencode($errorMessage);
+        header("Location: masuk.php?error=$encodedErrorMessage");
+        exit();
+    }
 
-// Return the results as JSON data
-echo json_encode($results);
+    $userId = getUserIdByEmail($userEmail);
+
+    if (!$userId) {
+        // Handle the case when user ID not found (e.g., return an error code or show a message)
+        die("User ID not found.");
+    }
+
+    // Fetch reservations where the user ID matches the store_id
+    $db = Database::getConnection();
+    $query = "SELECT * FROM data_reservasi WHERE store_id = $1";
+    $result = pg_query_params($db, $query, [$userId]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    // Fetch all rows from the result set and store them in an array
+    $rows = array();
+    while ($row = pg_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    // Return the data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+}
+
+// Call the function to fetch reservations
+fetchReservations();
 ?>
