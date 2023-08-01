@@ -7,7 +7,7 @@ $dbpassword = "xXk9cTjer8uA";
 $dbopt = "endpoint=ep-odd-paper-540852";
 
 // Establish a database connection
-$conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword $dbopt");
+$conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt");
 if (!$conn) {
     die("Database connection failed");
 }
