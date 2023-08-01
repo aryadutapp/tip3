@@ -25,24 +25,24 @@
         // Function to create table rows with data
         function createTableRow(data) {
             var row = "<tr>";
-            row += "<td>" + data.INDEX + "</td>";
-            row += "<td>" + data.RESERVATION_ID + "</td>";
-            row += "<td>" + data.CUST_EMAIL + "</td>";
-            row += "<td>" + data.CUST_NAME + "</td>";
-            row += "<td>" + data.STORE_ID + "</td>";
-            row += "<td>" + data.BOOK_TIME + "</td>";
-            row += "<td>" + data.START_TIME + "</td>";
-            row += "<td>" + data.END_TIME + "</td>";
-            row += "<td>" + data.PICKUP_NUMBER + "</td>";
-            row += "<td>" + data.RESERVATION_STATUS + "</td>";
-            row += "<td>" + data.SIZE + "</td>";
+            row += "<td>" + data.index + "</td>";
+            row += "<td>" + data.reservation_id + "</td>";
+            row += "<td>" + data.cust_email + "</td>";
+            row += "<td>" + data.cust_name + "</td>";
+            row += "<td>" + data.store_id + "</td>";
+            row += "<td>" + data.book_time + "</td>";
+            row += "<td>" + data.start_time + "</td>";
+            row += "<td>" + data.end_time + "</td>";
+            row += "<td>" + data.pickup_number + "</td>";
+            row += "<td>" + data.reservation_status + "</td>";
+            row += "<td>" + data.size + "</td>";
             row += "</tr>";
             return row;
         }
 
         // Function to fetch data from the server and populate the table
         function fetchReservationData() {
-            fetch("./api/fetch.php")
+            fetch("fetch.php")
             .then(response => response.json())
             .then(data => {
                 var table = document.getElementById("reservation-table");
