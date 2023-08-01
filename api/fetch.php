@@ -3,7 +3,10 @@ require_once 'models.php';
 
 // Function to fetch reservations based on the user's email
 function fetchReservations() {
-    $userEmail = User::getUserEmailBySession($_COOKIE['session_cookie']);
+
+    $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
+
+    $userEmail = User::getUserEmailBySession($cookieValue);
 
     if (!$userEmail) {
         // Redirect to "masuk.php" with an error message if session not found
