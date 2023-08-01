@@ -13,7 +13,7 @@ if (!$conn) {
 }
 
 // Query to fetch data from the 'data_resevasi' table (replace with your table name)
-$sql = "SELECT * FROM data_resevasi";
+$sql = "SELECT * FROM data_reservasi";
 
 // Execute the query
 $result = pg_query($conn, $sql);
