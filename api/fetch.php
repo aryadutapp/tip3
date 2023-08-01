@@ -26,7 +26,7 @@ function fetchReservations() {
 
     $db = Database::getConnection();
     $query = "SELECT * FROM data_reservasi WHERE store_id = $1";
-    $result = pg_query_params($db, $query, [$user->id]);
+    $result = pg_query_params($db, $query, [$user->user_id]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
