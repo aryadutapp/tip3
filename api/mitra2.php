@@ -240,32 +240,41 @@ if (!$user || $user->status !== "mitra") {
     <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
 </form>
 
+
 <script>
-   const fullNameSearchInput = document.getElementById('full-name-search');
-        const searchResultsDropdown = document.getElementById('search-results-dropdown');
+        const searchInput = document.getElementById('full-name-search');
+        const resultsDropdown = document.getElementById('search-results-dropdown');
 
-        fullNameSearchInput.addEventListener('input', () => {
-            const query = fullNameSearchInput.value;
-
-            // Clear previous options
-            searchResultsDropdown.innerHTML = '';
-
-            // Fetch data from cari-nama.php and populate dropdown
-            fetch(`cari-nama.php?query=${query}`)
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim();
+            
+            fetch(`cari-nama.php?query=${encodeURIComponent(query)}`)
                 .then(response => response.json())
                 .then(data => {
-                    data.forEach(name => {
+                    resultsDropdown.innerHTML = '';
+                    const keys = Object.keys(data);
+
+                    if (keys.length > 0) {
+                        keys.forEach(key => {
+                            const option = document.createElement('option');
+                            option.value = data[key];
+                            option.textContent = data[key];
+                            resultsDropdown.appendChild(option);
+                        });
+                    } else {
                         const option = document.createElement('option');
-                        option.value = name;
-                        option.textContent = name;
-                        searchResultsDropdown.appendChild(option);
-                    });
+                        option.value = '';
+                        option.textContent = 'No results found';
+                        resultsDropdown.appendChild(option);
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
+                    resultsDropdown.innerHTML = '<option value="">An error occurred while fetching data.</option>';
                 });
         });
-</script>
+
+    </script>
 
 
 
