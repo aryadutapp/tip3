@@ -17,14 +17,16 @@
         searchInput.addEventListener('input', () => {
             const query = searchInput.value.trim();
             
-            fetch(`./api/cari-nama.php?query=${encodeURIComponent(query)}`)
+            fetch(`cari-nama.php?query=${encodeURIComponent(query)}`)
                 .then(response => response.json())
                 .then(data => {
                     resultsContainer.innerHTML = '';
-                    if (data.length > 0) {
-                        data.forEach(name => {
+                    const keys = Object.keys(data);
+
+                    if (keys.length > 0) {
+                        keys.forEach(key => {
                             const resultItem = document.createElement('div');
-                            resultItem.textContent = name;
+                            resultItem.textContent = data[key];
                             resultsContainer.appendChild(resultItem);
                         });
                     } else {
