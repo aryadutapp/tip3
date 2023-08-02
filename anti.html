@@ -1,61 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Reservation Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Search</title>
 </head>
 <body>
-    <h1>Reservation Data</h1>
-    <table border="1" id="reservation-table">
-        <tr>
-            <th>INDEX</th>
-            <th>RESERVATION_ID</th>
-            <th>CUST_EMAIL</th>
-            <th>CUST_NAME</th>
-            <th>STORE_ID</th>
-            <th>BOOK_TIME</th>
-            <th>START_TIME</th>
-            <th>END_TIME</th>
-            <th>PICKUP_NUMBER</th>
-            <th>RESERVATION_STATUS</th>
-            <th>SIZE</th>
-        </tr>
-    </table>
+    <h1>Name Search</h1>
+    <input type="text" id="searchInput" placeholder="Search for a name...">
+    <div id="results"></div>
 
     <script>
-        // Function to create table rows with data
-        function createTableRow(data) {
-            var row = "<tr>";
-            row += "<td>" + data.index + "</td>";
-            row += "<td>" + data.reservation_id + "</td>";
-            row += "<td>" + data.cust_email + "</td>";
-            row += "<td>" + data.cust_name + "</td>";
-            row += "<td>" + data.store_id + "</td>";
-            row += "<td>" + data.book_time + "</td>";
-            row += "<td>" + data.start_time + "</td>";
-            row += "<td>" + data.end_time + "</td>";
-            row += "<td>" + data.pickup_number + "</td>";
-            row += "<td>" + data.reservation_status + "</td>";
-            row += "<td>" + data.size + "</td>";
-            row += "</tr>";
-            return row;
-        }
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('results');
 
-        // Function to fetch data from the server and populate the table
-        function fetchReservationData() {
-            fetch("./api/fetch.php")
-            .then(response => response.json())
-            .then(data => {
-                var table = document.getElementById("reservation-table");
-                data.forEach(rowData => {
-                    var newRow = createTableRow(rowData);
-                    table.innerHTML += newRow;
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim();
+            
+            fetch(`./api/cari-nama.php?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    resultsContainer.innerHTML = '';
+                    if (data.length > 0) {
+                        data.forEach(name => {
+                            const resultItem = document.createElement('div');
+                            resultItem.textContent = name;
+                            resultsContainer.appendChild(resultItem);
+                        });
+                    } else {
+                        const noResults = document.createElement('div');
+                        noResults.textContent = 'No results found.';
+                        resultsContainer.appendChild(noResults);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    resultsContainer.innerHTML = 'An error occurred while fetching data.';
                 });
-            })
-            .catch(error => console.error("Error:", error));
-        }
-
-        // Call the function to populate the table on page load
-        fetchReservationData();
+        });
     </script>
 </body>
 </html>
