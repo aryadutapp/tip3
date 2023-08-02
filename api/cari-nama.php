@@ -23,10 +23,10 @@ function fetchCustomerNames($query) {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT *
+    $query = "SELECT CUST_NAME
               FROM data_reservasi
               WHERE store_id = $1 AND CUST_NAME ILIKE $2
-              ";
+              LIMIT 10";
     $result = pg_query_params($db, $query, [$user->user_id, "%$query%"]);
 
     if (!$result) {
