@@ -241,31 +241,32 @@ if (!$user || $user->status !== "mitra") {
 </form>
 
 <script>
-const fullNameSearchInput = document.getElementById('full-name-search');
-const searchResultsContainer = document.getElementById('search-results-dropdown');
+   const fullNameSearchInput = document.getElementById('full-name-search');
+        const searchResultsDropdown = document.getElementById('search-results-dropdown');
 
-fullNameSearchInput.addEventListener('input', () => {
-  const searchTerm = fullNameSearchInput.value.trim();
+        fullNameSearchInput.addEventListener('input', () => {
+            const query = fullNameSearchInput.value;
 
-  if (searchTerm === '') {
-    searchResultsContainer.innerHTML = '';
-    searchResultsContainer.remove();
-    return;
-  }
+            // Clear previous options
+            searchResultsDropdown.innerHTML = '';
 
-  fetch(`cari-nama.php?query=${searchTerm}`)
-    .then(response => response.json())
-    .then(data => {
-      const resultsHtml = data.map(result => `<option value="${result}">${result}</option>`).join('');
-
-      searchResultsContainer.innerHTML = resultsHtml;
-    })
-    .catch(error => {
-      console.error('Error fetching search results:', error);
-    });
-});
-
+            // Fetch data from cari-nama.php and populate dropdown
+            fetch(`cari-nama.php?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(name => {
+                        const option = document.createElement('option');
+                        option.value = name;
+                        option.textContent = name;
+                        searchResultsDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
 </script>
+
 
 
 
