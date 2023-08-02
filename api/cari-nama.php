@@ -2,7 +2,7 @@
 require_once 'models.php';
 
 // Function to fetch customer names based on the search query
-function fetchCustomerNames($store_id, $query) {
+function fetchCustomerNames($query) {
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
     $userEmail = User::getUserEmailBySession($cookieValue);
 
@@ -14,7 +14,7 @@ function fetchCustomerNames($store_id, $query) {
         exit();
     }
 
-    // Fetch reservations for the user based on their email
+    // Fetch user information based on the user's email
     $user = User::getUserByEmail($userEmail);
 
     if (!$user) {
@@ -27,7 +27,7 @@ function fetchCustomerNames($store_id, $query) {
               FROM data_reservasi
               WHERE store_id = $1 AND CUST_NAME ILIKE $2
               LIMIT 10";
-    $result = pg_query_params($db, $query, [$store_id, "%$query%"]);
+    $result = pg_query_params($db, $query, [$user->user_id, "%$query%"]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
@@ -45,10 +45,9 @@ function fetchCustomerNames($store_id, $query) {
     echo json_encode($customerNames);
 }
 
-// Get store_id and query from the request
-$store_id = isset($_POST['store_id']) ? $_POST['store_id'] : null;
+// Get query from the request
 $query = isset($_POST['query']) ? $_POST['query'] : '';
 
 // Call the function to fetch customer names
-fetchCustomerNames($store_id, $query);
+fetchCustomerNames($query);
 ?>
