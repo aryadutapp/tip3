@@ -219,8 +219,9 @@ if (!$user || $user->status !== "mitra") {
                                             <div class="px-6 py-6 lg:px-8">
                                                 <h3 class="mb-4 text-xl font-medium text-gray-900">Paket Masuk</h3>
                                                 <!-- Form for entering order details -->
+
+
                                                 <form class="space-y-6" action="#" onsubmit="return validateFullName()">
-                                                    <div>
                                                         <div class="relative w-full">
                                                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                                                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -228,23 +229,50 @@ if (!$user || $user->status !== "mitra") {
                                                                 </svg>
                                                             </div>
                                                             <input type="text" id="full-name-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Cari Nama Pemilik" required="">
+                                                            <div id="search-results" class="mt-1"></div>
                                                         </div>
-                                                        <p id="warning-full-name" class="hidden text-red-500 text-sm mt-1">Nama Lengkap harus terdiri dari minimal dua kata.</p>
-                                                    </div>
-                                                    <div>
-                                                        <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Ukuran</label>
-                                                        <select name="size" id="size" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
-                                                            <option value="" disabled="" selected="">Pilih Ukuran</option>
-                                                            <option value="S">S (Small)</option>
-                                                            <option value="L">L (Large)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div>
-                                                        <label for="id-paket" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
-                                                        <input type="text" name="id-paket" id="id-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
-                                                    </div>
-                                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
-                                                </form>
+                                                        <div>
+                                                            <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Ukuran</label>
+                                                            <select name="size" id="size" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
+                                                                <option value="" disabled="" selected="">Pilih Ukuran</option>
+                                                                <option value="S">S (Small)</option>
+                                                                <option value="L">L (Large)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <label for="id-paket" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
+                                                            <input type="text" name="id-paket" id="id-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                                                        </div>
+                                                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
+                                                    </form>
+
+                                                    <script>
+                                                        const fullNameSearchInput = document.getElementById('full-name-search');
+                                                        const searchResultsContainer = document.getElementById('search-results');
+
+                                                        fullNameSearchInput.addEventListener('input', () => {
+                                                            const searchTerm = fullNameSearchInput.value.trim();
+
+                                                            if (searchTerm === '') {
+                                                                searchResultsContainer.innerHTML = '';
+                                                                return;
+                                                            }
+
+                                                            // Replace with actual AJAX call
+                                                            fetch(`cari-nama.php?query=${encodeURIComponent(searchTerm)}`)
+                                                                .then(response => response.json())
+                                                                .then(data => {
+                                                                    const resultsHtml = data.map(result => `<div class="search-result">${result}</div>`).join('');
+                                                                    searchResultsContainer.innerHTML = resultsHtml;
+                                                                })
+                                                                .catch(error => {
+                                                                    console.error('Error fetching search results:', error);
+                                                                });
+                                                        });
+                                                    </script>
+
+
+                                                
                                             </div>
                                         </div>
                                     </div>
