@@ -222,58 +222,83 @@ if (!$user || $user->status !== "mitra") {
 
 
                                                 <form class="space-y-6 mb-6" action="#" onsubmit="return validateFullName()">
-    <div class="relative w-full">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-            </svg>
+        <div class="relative w-full">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <input type="text" id="full-name-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Cari Nama Pemilik" required="">
+            <div id="search-results" class="mt-1"></div>
         </div>
-        <input type="text" id="full-name-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Cari Nama Pemilik" required="">
-        <div id="search-results" class="mt-1"></div>
-    </div>
-    <div>
-        <label for="search-results" class="block mb-2 text-sm font-medium text-gray-900">Hasil Pencarian</label>
-        <select name="search-results" id="search-results-dropdown" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
-            <!-- Dropdown options will be dynamically populated -->
-        </select>
-    </div>
-    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
-</form>
+        <div>
+            <label for="search-results" class="block mb-2 text-sm font-medium text-gray-900">
+                Hasil Pencarian
+                <span id="search-results-count"></span>
+            </label>
+            <select name="search-results" id="search-results-dropdown" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
+                <!-- Dropdown options will be dynamically populated -->
+            </select>
+        </div>
+        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
+    </form>
 
-
-<script>
+    <script>
         const searchInput = document.getElementById('full-name-search');
         const resultsDropdown = document.getElementById('search-results-dropdown');
+        const resultsCountSpan = document.getElementById('search-results-count');
 
         searchInput.addEventListener('input', () => {
             const query = searchInput.value.trim();
             
-            fetch(`cari-nama.php?query=${encodeURIComponent(query)}`)
-                .then(response => response.json())
-                .then(data => {
-                    resultsDropdown.innerHTML = '';
-                    const keys = Object.keys(data);
+            if (query === '') {
+                resultsDropdown.innerHTML = '';
+                resultsCountSpan.textContent = '';
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Masukkan nama untuk mencari';
+                resultsDropdown.appendChild(option);
+            } else {
+                fetch(`cari-nama.php?query=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        resultsDropdown.innerHTML = '';
+                        const keys = Object.keys(data);
 
-                    if (keys.length > 0) {
-                        keys.forEach(key => {
+                        if (keys.length > 0) {
+                            resultsCountSpan.textContent = ` (${keys.length})`;
+
+                            keys.forEach(key => {
+                                const option = document.createElement('option');
+                                option.value = data[key];
+                                option.textContent = data[key];
+                                resultsDropdown.appendChild(option);
+                            });
+                        } else {
+                            resultsCountSpan.textContent = '';
+
                             const option = document.createElement('option');
-                            option.value = data[key];
-                            option.textContent = data[key];
+                            option.value = '';
+                            option.textContent = 'No results found';
                             resultsDropdown.appendChild(option);
-                        });
-                    } else {
-                        const option = document.createElement('option');
-                        option.value = '';
-                        option.textContent = 'No results found';
-                        resultsDropdown.appendChild(option);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                    resultsDropdown.innerHTML = '<option value="">An error occurred while fetching data.</option>';
-                });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        resultsDropdown.innerHTML = '<option value="">An error occurred while fetching data.</option>';
+                        resultsCountSpan.textContent = '';
+                    });
+            }
         });
 
+        function validateFullName() {
+            const selectedName = resultsDropdown.value;
+            if (!selectedName || selectedName === 'No results found' || selectedName === 'Masukkan nama untuk mencari') {
+                alert('Please select a valid name from the search results.');
+                return false;
+            }
+            return true;
+        }
     </script>
 
 
