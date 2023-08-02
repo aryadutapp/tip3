@@ -241,35 +241,30 @@ if (!$user || $user->status !== "mitra") {
 </form>
 
 <script>
-    // Get references to DOM elements
-    const fullNameSearchInput = document.getElementById('full-name-search');
-    const searchResultsContainer = document.getElementById('search-results-dropdown');
+const fullNameSearchInput = document.getElementById('full-name-search');
+const searchResultsContainer = document.getElementById('search-results-dropdown');
 
-    // Listen for the 'input' event on the search input
-    fullNameSearchInput.addEventListener('input', () => {
-        // Get the trimmed search term from the input field
-        const searchTerm = fullNameSearchInput.value.trim();
+fullNameSearchInput.addEventListener('input', () => {
+  const searchTerm = fullNameSearchInput.value.trim();
 
-        // Clear the search results dropdown if the search term is empty
-        if (searchTerm === '') {
-            searchResultsContainer.innerHTML = '';
-            return;
-        }
+  if (searchTerm === '') {
+    searchResultsContainer.innerHTML = '';
+    searchResultsContainer.remove();
+    return;
+  }
 
-        // Perform an AJAX request to cari-nama.php with the search term
-        fetch(`cari-nama.php?query=${encodeURIComponent(searchTerm)}`)
-            .then(response => response.json())
-            .then(data => {
-                // Map the data to HTML option elements and join them into a string
-                const resultsHtml = data.map(result => `<option value="${result}">${result}</option>`).join('');
-                
-                // Update the search results dropdown with the generated HTML
-                searchResultsContainer.innerHTML = resultsHtml;
-            })
-            .catch(error => {
-                console.error('Error fetching search results:', error);
-            });
+  fetch(`cari-nama.php?query=${searchTerm}`)
+    .then(response => response.json())
+    .then(data => {
+      const resultsHtml = data.map(result => `<option value="${result}">${result}</option>`).join('');
+
+      searchResultsContainer.innerHTML = resultsHtml;
+    })
+    .catch(error => {
+      console.error('Error fetching search results:', error);
     });
+});
+
 </script>
 
 
