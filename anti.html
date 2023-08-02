@@ -17,7 +17,7 @@
         searchInput.addEventListener('input', () => {
             const query = searchInput.value.trim();
             
-            fetch(`cari-nama.php?query=${encodeURIComponent(query)}`)
+            fetch(`./api/cari-nama.php?query=${encodeURIComponent(query)}`)
                 .then(response => response.json())
                 .then(data => {
                     resultsContainer.innerHTML = '';
