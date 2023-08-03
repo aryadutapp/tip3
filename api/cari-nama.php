@@ -23,9 +23,13 @@ function fetchCustomerNames($query) {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT *
+    $query2 = "SELECT *
               FROM data_reservasi
               WHERE store_id = $1 AND CUST_NAME ILIKE $2
+              ";
+    $query = "SELECT *
+              FROM data_reservasi
+              AND cust_name ILIKE '%koko%'
               ";
     $result = pg_query_params($db, $query, [$user->user_id, $query"]);
 
