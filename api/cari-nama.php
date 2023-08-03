@@ -28,7 +28,7 @@ function fetchReservations() {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT *
+    $query = "SELECT cust_name
             FROM data_reservasi
             WHERE store_id = $1 AND cust_name ILIKE $2";
     $result = pg_query_params($db, $query, [$user->user_id, '%' . $given_query . '%']);
