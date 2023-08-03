@@ -32,7 +32,7 @@ function fetchReservations() {
               FROM data_reservasi
               WHERE store_id = $1 AND cust_name ILIKE '%koko%'
               ";
-    $result = pg_query_params($db, $query, [$user->user_id, $query]);
+    $result = pg_query_params($db, $query, [$user->user_id]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
