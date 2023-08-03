@@ -259,7 +259,7 @@ if (!$user || $user->status !== "mitra") {
                 // Populate dropdown with fetched data
                 data.forEach(result => {
                     const option = document.createElement('option');
-                    option.value = result.cust_name; // Assuming the result has a property "cust_name"
+                    option.value = result.reservation_id; // Assuming the result has a property "cust_name"
                     option.textContent = `${result.cust_name} (ID: ${result.reservation_id})`;
                     searchResultsDropdown.appendChild(option);
                 });
