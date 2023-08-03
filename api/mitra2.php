@@ -260,7 +260,7 @@ if (!$user || $user->status !== "mitra") {
                 data.forEach(result => {
                     const option = document.createElement('option');
                     option.value = result.cust_name; // Assuming the result has a property "cust_name"
-                    option.textContent = result.cust_name;
+                    option.textContent = `${result.cust_name} (ID: ${result.reservation_id})`;
                     searchResultsDropdown.appendChild(option);
                 });
 
