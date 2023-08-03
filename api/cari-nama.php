@@ -17,7 +17,7 @@ function fetchReservations() {
     }
 
     // Get the query parameter if provided
-    $query = isset($_GET['query']) ? $_GET['query'] : '';
+    $given_query = isset($_GET['query']) ? $_GET['query'] : '';
     
     // Fetch reservations for the user and query
     $user = User::getUserByEmail($userEmail);
@@ -30,9 +30,9 @@ function fetchReservations() {
     $db = Database::getConnection();
     $query = "SELECT *
               FROM data_reservasi
-              WHERE store_id = $1 AND cust_name ILIKE '%koko%'
+              WHERE store_id = $1 AND cust_name ILIKE '%$2%'
               ";
-    $result = pg_query_params($db, $query, [$user->user_id]);
+    $result = pg_query_params($db, $query, [$user->user_id, $given_query]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
