@@ -360,8 +360,8 @@ if (!$user || $user->status !== "mitra") {
         </select>
     </div>
     <div>
-        <label for="id-paket" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
-        <input type="text" name="id-paket" id="id-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+        <label for="id-paket-keluar" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
+        <input type="text" name="id-paket-keluar" id="id-paket-keluar" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
     </div>
     <div>
         <label for="ukuran-paket" class="block mb-2 text-sm font-medium text-gray-900">Ukuran Barang (Auto Generated)</label>
@@ -401,13 +401,13 @@ if (!$user || $user->status !== "mitra") {
     function fetchDataAndPopulateDropdown() {
         const fullIDSearch = document.getElementById('full-id-search').value;
         const searchResultsDropdown = document.getElementById('id-search-dropdown');
-        const idPaketInput = document.getElementById('id-paket');
+        const idPaketInput = document.getElementById('id-paket-keluar');
         const ukuranPaketInput = document.getElementById('ukuran-paket');
         const waktuAwalInput = document.getElementById('waktu-awal');
         const hargaInput = document.getElementById('harga');
 
         // Make an AJAX request to fetch data from fetch.php
-        fetch(`fetch.php?query=${fullIDSearch}`)
+        fetch(`pesanan-keluar.php?query=${fullIDSearch}`)
             .then(response => response.json())
             .then(data => {
                 searchResultsDropdown.innerHTML = '';
