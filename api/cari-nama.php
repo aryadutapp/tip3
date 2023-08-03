@@ -30,8 +30,8 @@ function fetchReservations() {
     $db = Database::getConnection();
     $query = "SELECT *
               FROM data_reservasi
-              WHERE store_id = $1 AND cust_name = $2
-              LIMIT 10";
+              WHERE store_id = $1 AND cust_name ILIKE '%koko%'
+              ";
     $result = pg_query_params($db, $query, [$user->user_id, $query]);
 
     if (!$result) {
