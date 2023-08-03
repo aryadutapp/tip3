@@ -448,6 +448,10 @@ if (!$user || $user->status !== "mitra") {
 
     const fullIDSearchInput = document.getElementById('full-id-search');
     fullIDSearchInput.addEventListener('input', fetchDataAndPopulateDropdown);
+
+    const searchResultsDropdown = document.getElementById('id-search-dropdown');
+    searchResultsDropdown.addEventListener('change', fetchDataAndPopulateDropdown);
+
 </script>
 
 
