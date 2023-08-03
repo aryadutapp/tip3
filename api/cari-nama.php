@@ -1,9 +1,11 @@
 <?php
 require_once 'models.php';
 
-// Function to fetch customer names based on the search query
-function fetchCustomerNames($query) {
+// Function to fetch reservations based on the user's email and query parameter
+function fetchReservations() {
+
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
+
     $userEmail = User::getUserEmailBySession($cookieValue);
 
     if (!$userEmail) {
@@ -14,7 +16,10 @@ function fetchCustomerNames($query) {
         exit();
     }
 
-    // Fetch user information based on the user's email
+    // Get the query parameter if provided
+    $query = isset($_GET['query']) ? $_GET['query'] : '';
+    
+    // Fetch reservations for the user and query
     $user = User::getUserByEmail($userEmail);
 
     if (!$user) {
@@ -23,15 +28,11 @@ function fetchCustomerNames($query) {
     }
 
     $db = Database::getConnection();
-    $query2 = "SELECT *
-              FROM data_reservasi
-              WHERE store_id = $1 AND CUST_NAME ILIKE $2
-              ";
     $query = "SELECT *
               FROM data_reservasi
-              AND cust_name ILIKE '%koko%'
-              ";
-    $result = pg_query_params($db, $query, [$user->user_id, $query"]);
+              WHERE store_id = $1 AND cust_name = $2
+              LIMIT 10";
+    $result = pg_query_params($db, $query, [$user->user_id, $query]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
@@ -41,17 +42,16 @@ function fetchCustomerNames($query) {
     // Fetch all rows from the result set as an array of associative arrays
     $rows = pg_fetch_all($result);
 
-    // Extract customer names from the result rows
-    $customerNames = array_column($rows, 'cust_name');
+    // Remove the 'pickup_number' key from each row
+    foreach ($rows as &$row) {
+        unset($row['pickup_number']);
+    }
 
     // Return the data as JSON
     header('Content-Type: application/json');
-    echo json_encode($customerNames);
+    echo json_encode($rows);
 }
 
-// Get query from the request
-$query = isset($_POST['query']) ? $_POST['query'] : '';
-
-// Call the function to fetch customer names
-fetchCustomerNames($query);
+// Call the function to fetch reservations
+fetchReservations();
 ?>
