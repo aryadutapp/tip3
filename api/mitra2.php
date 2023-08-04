@@ -385,7 +385,7 @@ if (!$user || $user->status !== "mitra") {
         const additionalPricePerDay = 2500;
 
         // Calculate the number of days
-        const currentTime = new Date().getTime();
+        const currentTime = new Date().getTime() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
         const startTimeMillis = new Date(startTime).getTime();
         const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
 
