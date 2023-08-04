@@ -193,139 +193,232 @@ if (!$user || $user->status !== "mitra") {
                                       }
                                     }
                                 </script>
-                                <!-- Add the Flowbite library script for modal functionality -->
-                                <button data-modal-target="paket_masuk-modal" data-modal-toggle="paket_masuk-modal" class="flex-1 flex items-start p-4 rounded-xl shadow-lg bg-white" type="button">
-                                    <div class="flex items-center justify-center bg-yellow-50 h-12 w-12 rounded-full border border-blue-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h2 class="font-semibold text-left md:text-lg">Paket Masuk</h2>
-                                        <p class="mt-2 text-xs md:text-sm text-gray-500 text-left">Terima Barang dari Kurir Paket</p>
-                                    </div>
-                                </button>
-                                <div id="paket_masuk-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center">
-                                    <div class="relative w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow">
-                                            <!-- Close button -->
-                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="paket_masuk-modal">
-                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
-                                                </svg>
-                                            </button>
-                                            <!-- Modal header -->
-                                            <div class="px-6 py-6 lg:px-8">
-                                                <h3 class="mb-4 text-xl font-medium text-gray-900">Paket Masuk</h3>
-                                                <!-- Form for entering order details -->
-                                                <form class="space-y-6" action="#" onsubmit="return validateFullName()">
-                                                    <div>
-                                                        <div class="relative w-full">
-                                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                                                </svg>
-                                                            </div>
-                                                            <input type="text" id="full-name-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Cari Nama Pemilik" required="">
-                                                        </div>
-                                                        <p id="warning-full-name" class="hidden text-red-500 text-sm mt-1">Nama Lengkap harus terdiri dari minimal dua kata.</p>
-                                                    </div>
-                                                    <div>
-                                                        <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Ukuran</label>
-                                                        <select name="size" id="size" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
-                                                            <option value="" disabled="" selected="">Pilih Ukuran</option>
-                                                            <option value="S">S (Small)</option>
-                                                            <option value="L">L (Large)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div>
-                                                        <label for="id-paket" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
-                                                        <input type="text" name="id-paket" id="id-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
-                                                    </div>
-                                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <script>
-                                    // Function to generate a random 6-digit number
-                                    function generateRandomNumber() {
-                                      return Math.floor(100000 + Math.random() * 900000);
-                                    }
-                                    
-                                    // Set the value of the input field with the generated number on page load
-                                    document.addEventListener("DOMContentLoaded", function () {
-                                      const idBarangInput = document.getElementById("id-paket");
-                                      idBarangInput.value = generateRandomNumber();
-                                    });
-                                    
-                                </script>
-                                <!-- Add the Flowbite library script for modal functionality -->
-                                <button data-modal-target="paket_keluar-modal" data-modal-toggle="paket_keluar-modal" class="flex-1 flex items-start p-4 rounded-xl shadow-lg bg-white" type="button">
-                                    <div class="flex items-center justify-center bg-yellow-50 h-12 w-12 rounded-full border border-blue-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="ml-4">
-                                        <h2 class="font-semibold text-left md:text-lg">Pesanan Keluar</h2>
-                                        <p class="mt-2 text-xs md:text-sm text-gray-500 text-left">Pengambilan Barang oleh Konsumen</p>
-                                    </div>
-                                </button>
-                                <div id="paket_keluar-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center">
-                                    <div class="relative w-full max-w-md max-h-full">
-                                        <!-- Modal content -->
-                                        <div class="relative bg-white rounded-lg shadow">
-                                            <!-- Close button -->
-                                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="paket_keluar-modal">
-                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
-                                                </svg>
-                                            </button>
-                                            <!-- Modal header -->
-                                            <div class="px-6 py-6 lg:px-8">
-                                                <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Keluar</h3>
-                                                <!-- Form for entering order details -->
-                                                <form class="mb-6 space-y-6" action="#" onsubmit="return validateKodePengambilan()">
-                                                    <div>
-                                                        <div class="relative w-full">
-                                                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                                                </svg>
-                                                            </div>
-                                                            <input type="text" id="kode-pengambilan" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Masukkan Kode Pengambilan" required="">
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cari Kode Pengambilan</button>
-                                                </form>
-                                                <form class="space-y-6" action="#" onsubmit="return validateFullName()">
-                                                    <div>
-                                                        <label for="id-paket" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
-                                                        <input type="text" name="id-paket" id="id-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
-                                                    </div>
-                                                    <div>
-                                                        <label for="ukuran-paket" class="block mb-2 text-sm font-medium text-gray-900">Ukuran Barang (Auto Generated)</label>
-                                                        <input type="text" name="ukuran-paket" id="ukuran-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
-                                                    </div>
-                                                    <div>
-                                                        <label for="waktu-awal" class="block mb-2 text-sm font-medium text-gray-900">Waktu Penitipan Awal (Auto Generated)</label>
-                                                        <input type="text" name="waktu-awal" id="waktu-awal" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
-                                                    </div>
-                                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <!-- Add the Flowbite library script for modal functionality -->
+                <button data-modal-target="paket_masuk-modal" data-modal-toggle="paket_masuk-modal" class="flex-1 flex items-start p-4 rounded-xl shadow-lg bg-white" type="button">
+                  <div class="flex items-center justify-center bg-yellow-50 h-12 w-12 rounded-full border border-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h2 class="font-semibold text-left md:text-lg">Paket Masuk</h2>
+                    <p class="mt-2 text-xs md:text-sm text-gray-500 text-left">Terima Barang dari Kurir Paket</p>
+                  </div>
+                </button>
+                <div id="paket_masuk-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center">
+                  <div class="relative w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow">
+                      <!-- Close button -->
+                      <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="paket_masuk-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                      </button>
+                      <!-- Modal header -->
+                      <div class="px-6 py-6 lg:px-8">
+                        <h3 class="mb-4 text-xl font-medium text-gray-900">Paket Masuk</h3>
+                        <!-- Form for entering order details -->
+                        <form class="space-y-6 mb-6" action="#" onsubmit="return validateFullName()">
+                          <div class="relative w-full">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                              <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                            <input type="text" id="full-name-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Cari Nama Pemilik" required="">
+                            <div id="search-results" class="mt-1"></div>
+                          </div>
+                          <div>
+                            <label for="search-results" class="block mb-2 text-sm font-medium text-gray-900"> Hasil Pencarian <span id="search-results-count"></span>
+                            </label>
+                            <select name="search-results" id="search-results-dropdown" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
+                              <!-- Dropdown options will be dynamically populated -->
+                            </select>
+                          </div>
+                          <div>
+                            <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Ukuran</label>
+                            <select name="size" id="size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
+                              <option value="" disabled="" selected="">Pilih Ukuran</option>
+                              <option value="S">S (Small)</option>
+                              <option value="L">L (Large)</option>
+                            </select>
+                          </div>
+                          <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
+                        </form>
+                        <script>
+                          // Function to fetch data and populate the dropdown
+                          function fetchDataAndPopulateDropdown() {
+                            const fullNameSearch = document.getElementById('full-name-search').value;
+                            const searchResultsDropdown = document.getElementById('search-results-dropdown');
+                            // Make an AJAX request to fetch data from fetch.php
+                            fetch(`cari-nama.php?query=${fullNameSearch}`).then(response => response.json()).then(data => {
+                              // Clear previous dropdown options
+                              searchResultsDropdown.innerHTML = '';
+                              // Populate dropdown with fetched data
+                              data.forEach(result => {
+                                const option = document.createElement('option');
+                                option.value = result.reservation_id; // Assuming the result has a property "cust_name"
+                                option.textContent = `${result.cust_name} (ID: ${result.reservation_id})`;
+                                searchResultsDropdown.appendChild(option);
+                              });
+                              // Update search results count
+                              const searchResultsCount = document.getElementById('search-results-count');
+                              searchResultsCount.textContent = ` (${data.length} results)`;
+                            }).catch(error => {
+                              console.error('Error fetching data:', error);
+                            });
+                          }
+                          // Attach an event listener to the input for real-time updates
+                          const fullNameSearchInput = document.getElementById('full-name-search');
+                          fullNameSearchInput.addEventListener('input', fetchDataAndPopulateDropdown);
+                        </script>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Add the Flowbite library script for modal functionality -->
+                <button data-modal-target="paket_keluar-modal" data-modal-toggle="paket_keluar-modal" class="flex-1 flex items-start p-4 rounded-xl shadow-lg bg-white" type="button">
+                  <div class="flex items-center justify-center bg-yellow-50 h-12 w-12 rounded-full border border-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h2 class="font-semibold text-left md:text-lg">Pesanan Keluar</h2>
+                    <p class="mt-2 text-xs md:text-sm text-gray-500 text-left">Pengambilan Barang oleh Konsumen</p>
+                  </div>
+                </button>
+                <div id="paket_keluar-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center">
+                  <div class="relative w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow">
+                      <!-- Close button -->
+                      <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="paket_keluar-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                      </button>
+                      <!-- Modal header -->
+                      <div class="px-6 py-6 lg:px-8">
+                        <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Keluar</h3>
+                        <form class="space-y-6 mb-6" action="#">
+                          <div class="relative w-full">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                              <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                            <input type="text" id="full-id-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Cari Nama Pemilik" required="">
+                            <div id="id-search" class="mt-1"></div>
+                          </div>
+                          <div>
+                            <label for="id-search" class="block mb-2 text-sm font-medium text-gray-900"> Hasil Pencarian <span id="id-search-count"></span>
+                            </label>
+                            <select name="id-search" id="id-search-dropdown" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
+                              <!-- Dropdown options will be dynamically populated -->
+                            </select>
+                          </div>
+                          <div>
+                            <label for="id-paket-keluar" class="block mb-2 text-sm font-medium text-gray-900">ID Barang (Auto Generated)</label>
+                            <input type="text" name="id-paket-keluar" id="id-paket-keluar" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                          </div>
+                          <div>
+                            <label for="ukuran-paket" class="block mb-2 text-sm font-medium text-gray-900">Ukuran Barang (Auto Generated)</label>
+                            <input type="text" name="ukuran-paket" id="ukuran-paket" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                          </div>
+                          <div>
+                            <label for="waktu-awal" class="block mb-2 text-sm font-medium text-gray-900">Waktu Penitipan Awal (Auto Generated)</label>
+                            <input type="text" name="waktu-awal" id="waktu-awal" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                          </div>
+                          <div>
+                            <label for="harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
+                            <input type="text" name="harga" id="harga" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                          </div>
+                          <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
+                        </form>
+                        <script>
+                          // Function to calculate and display the price based on size and start time
+                          function calculateAndDisplayPrice(size, startTime) {
+                            const initialPrice = size === 'S' ? 5000 : 10000;
+                            const additionalPricePerDay = 2500;
+                            // Calculate the number of days
+                            const currentTime = new Date().getTime() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
+                            const startTimeMillis = new Date(startTime).getTime();
+                            const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
+                            // Calculate the price
+                            const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
+                            const totalPrice = initialPrice + additionalPrice;
+                            return totalPrice;
+                          }
+                          // Function to fetch data and populate the dropdown
+                          function fetchDataAndPopulateDropdown() {
+                            const fullIDSearch = document.getElementById('full-id-search').value;
+                            const searchResultsDropdown = document.getElementById('id-search-dropdown');
+                            const idPaketInput = document.getElementById('id-paket-keluar');
+                            const ukuranPaketInput = document.getElementById('ukuran-paket');
+                            const waktuAwalInput = document.getElementById('waktu-awal');
+                            const hargaInput = document.getElementById('harga');
+                            // Make an AJAX request to fetch data from fetch.php
+                            fetch(`pesanan-keluar.php?query=${fullIDSearch}`).then(response => response.json()).then(data => {
+                              searchResultsDropdown.innerHTML = '';
+                              data.forEach(result => {
+                                const option = document.createElement('option');
+                                option.value = result.cust_name;
+                                option.textContent = `${result.cust_name} (ID: ${result.reservation_id})`;
+                                searchResultsDropdown.appendChild(option);
+                                idPaketInput.value = result.reservation_id;
+                                ukuranPaketInput.value = result.size;
+                                waktuAwalInput.value = result.start_time;
+                                // Set the text content of auto-generated fields
+                                idPaketInput.textContent = `$(ID: ${result.reservation_id})`;
+                                ukuranPaketInput.textContent = result.size;
+                                waktuAwalInput.textContent = result.start_time;
+                                // Calculate and display the price
+                                const totalPrice = calculateAndDisplayPrice(result.size, result.start_time);
+                                hargaInput.value = totalPrice;
+                                hargaInput.textContent = totalPrice;
+                              });
+                              const searchResultsCount = document.getElementById('id-search-count');
+                              searchResultsCount.textContent = ` (${data.length} results)`;
+                              searchResultsDropdown.addEventListener('change', () => {
+                                const selectedOption = data.find(result => result.cust_name === searchResultsDropdown.value);
+                                if (selectedOption) {
+                                  idPaketInput.value = selectedOption.reservation_id;
+                                  ukuranPaketInput.value = selectedOption.size;
+                                  waktuAwalInput.value = selectedOption.start_time;
+                                  // Set the text content of auto-generated fields
+                                  idPaketInput.textContent = selectedOption.reservation_id;
+                                  ukuranPaketInput.textContent = selectedOption.size;
+                                  waktuAwalInput.textContent = selectedOption.start_time;
+                                  // Calculate and display the price
+                                  const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
+                                  hargaInput.value = totalPrice;
+                                  hargaInput.textContent = selectedOption.start_time;
+                                }
+                              });
+                            }).catch(error => {
+                              console.error('Error fetching data:', error);
+                            });
+                          }
+                          const fullIDSearchInput = document.getElementById('full-id-search');
+                          fullIDSearchInput.addEventListener('input', fetchDataAndPopulateDropdown);
+                          const searchResultsDropdown = document.getElementById('id-search-dropdown');
+                          searchResultsDropdown.addEventListener('change', fetchDataAndPopulateDropdown);
+                        </script>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                                 <!-- Add more buttons here if needed -->
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+
             <section id="riwayat" class="p-4 sm:ml-64">
                 <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
                     <div class="mx-auto">
