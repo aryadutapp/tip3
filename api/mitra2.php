@@ -422,7 +422,7 @@ if (!$user || $user->status !== "mitra") {
                         waktuAwalInput.value = result.start_time;
                         
                         // Set the text content of auto-generated fields
-                        idPaketInput.textContent = result.reservation_id.;
+                        idPaketInput.textContent = `$(ID: ${result.reservation_id})`;
                         ukuranPaketInput.textContent = result.size;
                         waktuAwalInput.textContent = result.start_time;
 
