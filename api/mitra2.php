@@ -417,12 +417,12 @@ if (!$user || $user->status !== "mitra") {
                     option.textContent = `${result.cust_name} (ID: ${result.reservation_id})`;
                     searchResultsDropdown.appendChild(option);
 
-                         idPaketInput.value = selectedOption.reservation_id;
-                        ukuranPaketInput.value = selectedOption.size;
-                        waktuAwalInput.value = selectedOption.start_time;
+                        idPaketInput.value = result.reservation_id;
+                        ukuranPaketInput.value = result.size;
+                        waktuAwalInput.value = result.start_time;
                         
                         // Set the text content of auto-generated fields
-                        idPaketInput.textContent = selectedOption.reservation_id;
+                        idPaketInput.textContent = `(ID: ${result.reservation_id})`;
                         ukuranPaketInput.textContent = selectedOption.size;
                         waktuAwalInput.textContent = selectedOption.start_time;
 
