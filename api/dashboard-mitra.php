@@ -165,17 +165,6 @@ if (!$user || $user->status !== "mitra") {
                                     </div>
                                 </div>
                                 <script>
-                                    // Function to generate a random 6-digit number
-                                    function generateRandomNumber() {
-                                      return Math.floor(100000 + Math.random() * 900000);
-                                    }
-                                    
-                                    // Set the value of the input field with the generated number on page load
-                                    document.addEventListener("DOMContentLoaded", function () {
-                                      const idBarangInput = document.getElementById("id-barang");
-                                      idBarangInput.value = generateRandomNumber();
-                                    });
-                                    
                                     // Inline script to validate full name before form submission
                                     function validateFullName() {
                                       const fullNameInput = document.getElementById("full-name");
