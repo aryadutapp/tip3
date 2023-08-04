@@ -428,7 +428,7 @@ if (!$user || $user->status !== "mitra") {
                         // Calculate and display the price
                         const totalPrice = calculateAndDisplayPrice(result.size, result.start_time);
                         hargaInput.value = totalPrice;
-                        hargaInput.textContent = result.start_time;
+                        hargaInput.textContent = totalPrice;
                 });
 
                 const searchResultsCount = document.getElementById('id-search-count');
