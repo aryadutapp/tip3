@@ -381,7 +381,7 @@ if (!$user || $user->status !== "mitra") {
 <script>
     // Function to calculate and display the price based on size and start time
     function calculateAndDisplayPrice(size, startTime) {
-        const initialPrice = size === 'small' ? 5000 : 10000;
+        const initialPrice = size === 'S' ? 5000 : 10000;
         const additionalPricePerDay = 2500;
 
         // Calculate the number of days
