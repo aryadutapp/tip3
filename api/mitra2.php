@@ -416,6 +416,20 @@ if (!$user || $user->status !== "mitra") {
                     option.value = result.cust_name;
                     option.textContent = `${result.cust_name} (ID: ${result.reservation_id})`;
                     searchResultsDropdown.appendChild(option);
+
+                         idPaketInput.value = selectedOption.reservation_id;
+                        ukuranPaketInput.value = selectedOption.size;
+                        waktuAwalInput.value = selectedOption.start_time;
+                        
+                        // Set the text content of auto-generated fields
+                        idPaketInput.textContent = selectedOption.reservation_id;
+                        ukuranPaketInput.textContent = selectedOption.size;
+                        waktuAwalInput.textContent = selectedOption.start_time;
+
+                        // Calculate and display the price
+                        const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
+                        hargaInput.value = totalPrice;
+                        hargaInput.textContent = selectedOption.start_time;
                 });
 
                 const searchResultsCount = document.getElementById('id-search-count');
