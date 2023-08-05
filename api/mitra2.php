@@ -294,7 +294,7 @@ if (!$user || $user->status !== "mitra") {
                         <script>
                           // Function to calculate and display the price based on size and start time
                           function calculateAndDisplayPrice(size, startTime) {
-                          const initialPrice = size === 'S' ? 5000 : 10000;
+                          const initialPrice = size === 'S' ? 5550 : 10000;
                           const additionalPricePerDay = 2500;
 
                           // Fetch current timestamp using fetch API
@@ -362,7 +362,7 @@ if (!$user || $user->status !== "mitra") {
                                   // Calculate and display the price
                                   const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
                                   hargaInput.value = totalPrice;
-                                  hargaInput.textContent = selectedOption.start_time;
+                                  hargaInput.textContent = totalPrice;
                                 }
                               });
                             }).catch(error => {
