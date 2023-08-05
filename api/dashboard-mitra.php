@@ -347,7 +347,7 @@ if (!$user || $user->status !== "mitra") {
                                     const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
                                     const totalPrice = initialPrice + additionalPrice;
 
-                                    return totalPrice;
+                                    return initialPrice;
 
                                 })
                                 .catch(error => {
