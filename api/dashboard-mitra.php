@@ -332,15 +332,29 @@ if (!$user || $user->status !== "mitra") {
                           function calculateAndDisplayPrice(size, startTime) {
                             const initialPrice = size === 'S' ? 5000 : 10000;
                             const additionalPricePerDay = 2500;
-                            // Calculate the number of days
-                            const currentTime = new Date().getTime() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
-                            const startTimeMillis = new Date(startTime).getTime();
-                            const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
-                            // Calculate the price
-                            const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
-                            const totalPrice = initialPrice + additionalPrice;
-                            return totalPrice;
-                          }
+
+                            // Fetch current timestamp using fetch API
+                            fetch('get-time.php')
+                                .then(response => response.json())
+                                .then(data => {
+                                    const currentTime = new Date(data.current_timestamp).getTime();
+                                    
+                                    // Calculate the number of days
+                                    const startTimeMillis = new Date(startTime).getTime();
+                                    const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
+                                    
+                                    // Calculate the price
+                                    const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
+                                    const totalPrice = initialPrice + additionalPrice;
+
+                                    // Display the calculated price
+                                    console.log('Total Price:', totalPrice);
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching current timestamp:', error);
+                                });
+                        }
+
                           // Function to fetch data and populate the dropdown
                           function fetchDataAndPopulateDropdown() {
                             const fullIDSearch = document.getElementById('full-id-search').value;
