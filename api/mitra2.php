@@ -343,9 +343,9 @@ if (!$user || $user->status !== "mitra") {
                                 ukuranPaketInput.textContent = result.size;
                                 waktuAwalInput.textContent = result.start_time;
                                 // Calculate and display the price
-                                const totalPrice = calculateAndDisplayPrice(result.size, result.start_time);
-                                hargaInput.value = totalPrice;
-                                hargaInput.textContent = totalPrice;
+                                // const totalPrice = calculateAndDisplayPrice(result.size, result.start_time);
+                               // hargaInput.value = totalPrice;
+                               // hargaInput.textContent = totalPrice;
                               });
                               const searchResultsCount = document.getElementById('id-search-count');
                               searchResultsCount.textContent = ` (${data.length} results)`;
