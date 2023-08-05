@@ -347,8 +347,8 @@ if (!$user || $user->status !== "mitra") {
                                     const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
                                     const totalPrice = initialPrice + additionalPrice;
 
-                                    // Display the calculated price
-                                    console.log('Total Price:', totalPrice);
+                                    return totalPrice;
+
                                 })
                                 .catch(error => {
                                     console.error('Error fetching current timestamp:', error);
