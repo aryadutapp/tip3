@@ -297,12 +297,11 @@ if (!$user || $user->status !== "mitra") {
                           const initialPrice = size === 'S' ? 5000 : 10000;
                           const additionalPricePerDay = 2500;
 
-                          // Fetch current timestamp using AJAX
-                          const xhr = new XMLHttpRequest();
-                          xhr.open('GET', 'get-time.php', true);
-                          xhr.onreadystatechange = function() {
-                              if (xhr.readyState === 4 && xhr.status === 200) {
-                                  const currentTime = new Date(xhr.responseText).getTime();
+                          // Fetch current timestamp using fetch API
+                          fetch('get-time.php')
+                              .then(response => response.json())
+                              .then(data => {
+                                  const currentTime = new Date(data.current_timestamp).getTime();
                                   
                                   // Calculate the number of days
                                   const startTimeMillis = new Date(startTime).getTime();
@@ -314,9 +313,10 @@ if (!$user || $user->status !== "mitra") {
 
                                   // Display the calculated price
                                   console.log('Total Price:', totalPrice);
-                              }
-                          };
-                          xhr.send();
+                              })
+                              .catch(error => {
+                                  console.error('Error fetching current timestamp:', error);
+                              });
                       }
 
                           // Function to fetch data and populate the dropdown
