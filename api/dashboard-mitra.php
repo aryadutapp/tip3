@@ -322,41 +322,49 @@ if (!$user || $user->status !== "mitra") {
                             <input type="text" name="waktu-awal" id="waktu-awal" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
                           </div>
                           <div>
-                            <label for="harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
-                            <input type="text" name="harga" id="harga" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                             <label for="harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
+                             <input type="text" name="harga" id="harga" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                             <p id="harga-message" class="text-sm text-red-500"></p>
                           </div>
+
                           <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
                         </form>
                         <script>
                           // Function to calculate and display the price based on size and start time
                           async function fetchCurrentTimestamp() {
-                            const response = await fetch('get-time.php');
-                            const data = await response.json();
-                            const currentTimestamp = new Date(data.current_timestamp).getTime();
-                            return currentTimestamp;
-                            }
-
-                            async function calculateAndDisplayPrice(size, startTime) {
-                            const initialPrice = size === 'S' ? 5000 : 10000;
-                            const additionalPricePerDay = 2500;
-
                             try {
-                                // Fetch the current timestamp from the server
-                                const currentTime = await fetchCurrentTimestamp();
-
-                                // Calculate the number of days
-                                const startTimeMillis = new Date(startTime).getTime();
-                                const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
-
-                                // Calculate the price
-                                const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
-                                const totalPrice = initialPrice + additionalPrice;
-                                return totalPrice;
+                                const response = await fetch('get-time.php');
+                                if (!response.ok) {
+                                    throw new Error('Failed to fetch current timestamp');
+                                }
+                                const data = await response.json();
+                                return new Date(data.current_timestamp).getTime();
                             } catch (error) {
                                 console.error('Error fetching current timestamp:', error);
-                                // Handle the error appropriately
+                                return null;
                             }
+                        }
+                        
+                        async function calculateAndDisplayPrice(size, startTime) {
+                            const initialPrice = size === 'S' ? 5000 : 10000;
+                            const additionalPricePerDay = 2500;
+                        
+                            // Fetch the current timestamp from PHP endpoint
+                            const currentTimeMillis = await fetchCurrentTimestamp();
+                        
+                            if (currentTimeMillis === null) {
+                                // Handle the case where fetching timestamp failed
+                                return null;
                             }
+                        
+                            const startTimeMillis = new Date(startTime).getTime();
+                            const daysDifference = Math.ceil((startTimeMillis - currentTimeMillis) / (1000 * 3600 * 24));
+                        
+                            // Calculate the price
+                            const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
+                            const totalPrice = initialPrice + additionalPrice;
+                            return totalPrice;
+                        }
 
 
                           // Function to fetch data and populate the dropdown
@@ -383,9 +391,24 @@ if (!$user || $user->status !== "mitra") {
                                 ukuranPaketInput.textContent = result.size;
                                 waktuAwalInput.textContent = result.start_time;
                                 // Calculate and display the price
-                                const totalPrice = calculateAndDisplayPrice(result.size, result.start_time);
-                                hargaInput.value = totalPrice;
-                                hargaInput.textContent = totalPrice;
+                              //  const totalPrice = calculateAndDisplayPrice(result.size, result.start_time);
+                               // hargaInput.value = totalPrice;
+                                ///hargaInput.textContent = totalPrice;
+                                  const hargaInput = document.getElementById('harga');
+                                  const hargaMessage = document.getElementById('harga-message');
+
+                                  calculateAndDisplayPrice(result.size, result.start_time).then(totalPrice => {
+                                    if (totalPrice !== null) {
+                                        hargaInput.value = totalPrice; // Update the input value with the calculated total price
+                                        hargaMessage.textContent = ''; // Clear any previous error messages
+                                    } else {
+                                        hargaInput.value = ''; // Clear the input value
+                                        hargaMessage.textContent = 'Failed to calculate total price'; // Display error message
+                                    }
+                                });
+
+
+                                  
                               });
                               const searchResultsCount = document.getElementById('id-search-count');
                               searchResultsCount.textContent = ` (${data.length} results)`;
@@ -400,9 +423,9 @@ if (!$user || $user->status !== "mitra") {
                                   ukuranPaketInput.textContent = selectedOption.size;
                                   waktuAwalInput.textContent = selectedOption.start_time;
                                   // Calculate and display the price
-                                  const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
-                                  hargaInput.value = totalPrice;
-                                  hargaInput.textContent = selectedOption.start_time;
+                               //   const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
+                                //  hargaInput.value = totalPrice;
+                                  // hargaInput.textContent = selectedOption.start_time;
                                 }
                               });
                             }).catch(error => {
