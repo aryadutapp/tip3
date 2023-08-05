@@ -294,17 +294,31 @@ if (!$user || $user->status !== "mitra") {
                         <script>
                           // Function to calculate and display the price based on size and start time
                           function calculateAndDisplayPrice(size, startTime) {
-                            const initialPrice = size === 'S' ? 5000 : 10000;
-                            const additionalPricePerDay = 2500;
-                            // Calculate the number of days
-                            const currentTime = new Date().getTime() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
-                            const startTimeMillis = new Date(startTime).getTime();
-                            const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
-                            // Calculate the price
-                            const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
-                            const totalPrice = initialPrice + additionalPrice;
-                            return totalPrice;
-                          }
+                          const initialPrice = size === 'S' ? 5000 : 10000;
+                          const additionalPricePerDay = 2500;
+
+                          // Fetch current timestamp using AJAX
+                          const xhr = new XMLHttpRequest();
+                          xhr.open('GET', 'get-time.php', true);
+                          xhr.onreadystatechange = function() {
+                              if (xhr.readyState === 4 && xhr.status === 200) {
+                                  const currentTime = new Date(xhr.responseText).getTime();
+                                  
+                                  // Calculate the number of days
+                                  const startTimeMillis = new Date(startTime).getTime();
+                                  const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
+                                  
+                                  // Calculate the price
+                                  const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
+                                  const totalPrice = initialPrice + additionalPrice;
+
+                                  // Display the calculated price
+                                  console.log('Total Price:', totalPrice);
+                              }
+                          };
+                          xhr.send();
+                      }
+
                           // Function to fetch data and populate the dropdown
                           function fetchDataAndPopulateDropdown() {
                             const fullIDSearch = document.getElementById('full-id-search').value;
