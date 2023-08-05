@@ -322,6 +322,11 @@ if (!$user || $user->status !== "mitra") {
                             <input type="text" name="waktu-awal" id="waktu-awal" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
                           </div>
                           <div>
+                            <label for="waktu-akhir" class="block mb-2 text-sm font-medium text-gray-900">Waktu Penitipan Akhir (Auto Generated)</label>
+                            <input type="text" name="waktu-akhir" id="waktu-akhir" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
+                        </div>
+
+                          <div>
                              <label for="harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
                              <input type="text" name="harga" id="harga" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
                              <p id="harga-message" class="text-sm text-red-500"></p>
@@ -356,6 +361,9 @@ if (!$user || $user->status !== "mitra") {
                                 // Handle the case where fetching timestamp failed
                                 return null;
                             }
+
+                            const waktuAkhir = document.getElementById('waktu-akhir');
+                            waktuAkhir.value = currentTimeMillis;
                         
                             const startTimeMillis = new Date(startTime).getTime();
                             const daysDifference = Math.ceil((currentTimeMillis - startTimeMillis) / (1000 * 3600 * 24));
