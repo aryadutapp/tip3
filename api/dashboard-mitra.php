@@ -362,7 +362,6 @@ if (!$user || $user->status !== "mitra") {
                                 return null;
                             }
                             const waktuAkhir = document.getElementById('waktu-akhir');
-                            const currentTimeMillis = Date.now(); // Assuming currentTimeMillis contains the timestamp in milliseconds
 
                             // Convert the timestamp to a Date object
                             const currentTime = new Date(currentTimeMillis);
