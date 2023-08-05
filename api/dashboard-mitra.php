@@ -362,20 +362,30 @@ if (!$user || $user->status !== "mitra") {
                                 return null;
                             }
 
-
                             const waktuAkhir = document.getElementById('waktu-akhir');
 
                             // Convert the timestamp to a Date object
                             const currentTime = new Date(currentTimeMillis);
 
-                            // Create options for formatting in Jakarta (GMT+7) timezone
-                            const options = { timeZone: 'Asia/Jakarta', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                            // Get individual components of the date and time
+                            const year = currentTime.getFullYear();
+                            const month = (currentTime.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
+                            const day = currentTime.getDate().toString().padStart(2, '0');
+                            const hours = currentTime.getHours();
+                            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+                            const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+                            const ampm = hours >= 12 ? 'PM' : 'AM';
+                            const formattedHours = (hours % 12 || 12).toString().padStart(2, '0'); // Convert to 12-hour format
 
-                            // Format the date and time as a string in Jakarta timezone
-                            const formattedTime = currentTime.toLocaleString('en-US', options);
+                            // Construct the formatted date and time string
+                            const formattedTime = `${year}-${month}-${day} ${formattedHours}:${minutes}:${seconds} ${ampm}`;
 
                             // Set the formatted time as the value of the input field
-                            waktuAkhir.value = formattedTime.replace(', ', ' ');
+                            waktuAkhir.value = formattedTime;
+
+
+
+
 
 
                             const startTimeMillis = new Date(startTime).getTime();
