@@ -329,31 +329,35 @@ if (!$user || $user->status !== "mitra") {
                         </form>
                         <script>
                           // Function to calculate and display the price based on size and start time
-                          function calculateAndDisplayPrice(size, startTime) {
+                          async function fetchCurrentTimestamp() {
+                            const response = await fetch('get-time.php');
+                            const data = await response.json();
+                            const currentTimestamp = new Date(data.current_timestamp).getTime();
+                            return currentTimestamp;
+                            }
+
+                            async function calculateAndDisplayPrice(size, startTime) {
                             const initialPrice = size === 'S' ? 5000 : 10000;
                             const additionalPricePerDay = 2500;
 
-                            // Fetch current timestamp using fetch API
-                            fetch('get-time.php')
-                                .then(response => response.json())
-                                .then(data => {
-                                    const currentTime = new Date(data.current_timestamp).getTime();
-                                    
-                                    // Calculate the number of days
-                                    const startTimeMillis = new Date(startTime).getTime();
-                                    const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
-                                    
-                                    // Calculate the price
-                                    const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
-                                    const totalPrice = initialPrice + additionalPrice;
+                            try {
+                                // Fetch the current timestamp from the server
+                                const currentTime = await fetchCurrentTimestamp();
 
-                                    return initialPrice;
+                                // Calculate the number of days
+                                const startTimeMillis = new Date(startTime).getTime();
+                                const daysDifference = Math.ceil((startTimeMillis - currentTime) / (1000 * 3600 * 24));
 
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching current timestamp:', error);
-                                });
-                        }
+                                // Calculate the price
+                                const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
+                                const totalPrice = initialPrice + additionalPrice;
+                                return totalPrice;
+                            } catch (error) {
+                                console.error('Error fetching current timestamp:', error);
+                                // Handle the error appropriately
+                            }
+                            }
+
 
                           // Function to fetch data and populate the dropdown
                           function fetchDataAndPopulateDropdown() {
