@@ -361,8 +361,8 @@ if (!$user || $user->status !== "mitra") {
                                 // Handle the case where fetching timestamp failed
                                 return null;
                             }
-
                             const waktuAkhir = document.getElementById('waktu-akhir');
+                            const currentTimeMillis = Date.now(); // Assuming currentTimeMillis contains the timestamp in milliseconds
 
                             // Convert the timestamp to a Date object
                             const currentTime = new Date(currentTimeMillis);
@@ -371,17 +371,16 @@ if (!$user || $user->status !== "mitra") {
                             const year = currentTime.getFullYear();
                             const month = (currentTime.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
                             const day = currentTime.getDate().toString().padStart(2, '0');
-                            const hours = currentTime.getHours();
+                            const hours = currentTime.getHours().toString().padStart(2, '0');
                             const minutes = currentTime.getMinutes().toString().padStart(2, '0');
                             const seconds = currentTime.getSeconds().toString().padStart(2, '0');
-                            const ampm = hours >= 12 ? 'PM' : 'AM';
-                            const formattedHours = (hours % 12 || 12).toString().padStart(2, '0'); // Convert to 12-hour format
 
                             // Construct the formatted date and time string
-                            const formattedTime = `${year}-${month}-${day} ${formattedHours}:${minutes}:${seconds} ${ampm}`;
+                            const formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
                             // Set the formatted time as the value of the input field
                             waktuAkhir.value = formattedTime;
+
 
 
 
