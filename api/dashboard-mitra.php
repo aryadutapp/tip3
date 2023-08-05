@@ -362,7 +362,7 @@ if (!$user || $user->status !== "mitra") {
                         
                             // Calculate the price
                             const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
-                            const totalPrice = initialPrice + additionalPrice;
+                            const totalPrice = initialPrice + 9999;
                             return totalPrice;
                         }
 
