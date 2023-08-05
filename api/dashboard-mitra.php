@@ -358,11 +358,11 @@ if (!$user || $user->status !== "mitra") {
                             }
                         
                             const startTimeMillis = new Date(startTime).getTime();
-                            const daysDifference = Math.ceil((startTimeMillis - currentTimeMillis) / (1000 * 3600 * 24));
+                            const daysDifference = Math.ceil((currentTimeMillis - startTimeMillis) / (1000 * 3600 * 24));
                         
                             // Calculate the price
                             const additionalPrice = additionalPricePerDay * Math.max(0, daysDifference - 1);
-                            const totalPrice = initialPrice + daysDifference;
+                            const totalPrice = initialPrice + additionalPrice;
                             return totalPrice;
                         }
 
