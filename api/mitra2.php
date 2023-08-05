@@ -360,9 +360,9 @@ if (!$user || $user->status !== "mitra") {
                                   ukuranPaketInput.textContent = selectedOption.size;
                                   waktuAwalInput.textContent = selectedOption.start_time;
                                   // Calculate and display the price
-                                  const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
-                                  hargaInput.value = totalPrice;
-                                  hargaInput.textContent = totalPrice;
+                                 // const totalPrice = calculateAndDisplayPrice(selectedOption.size, selectedOption.start_time);
+                                 // hargaInput.value = totalPrice;
+                                 // hargaInput.textContent = totalPrice;
                                 }
                               });
                             }).catch(error => {
