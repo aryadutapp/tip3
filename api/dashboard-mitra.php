@@ -363,8 +363,18 @@ if (!$user || $user->status !== "mitra") {
                             }
 
                             const waktuAkhir = document.getElementById('waktu-akhir');
-                            waktuAkhir.value = currentTimeMillis;
-                        
+                            // Convert the timestamp to a Date object
+                            const currentTime = new Date(currentTimeMillis);
+
+                            // Create options for formatting in GMT+7 timezone
+                            const options = { timeZone: 'Asia/Bangkok' };
+
+                            // Format the date and time as a string in GMT+7 timezone
+                            const formattedTime = currentTime.toLocaleString('en-US', options); // You can customize the formatting as needed
+
+                            // Set the formatted time as the value of the input field
+                            waktuAkhir.value = formattedTime;   
+                                                 
                             const startTimeMillis = new Date(startTime).getTime();
                             const daysDifference = Math.ceil((currentTimeMillis - startTimeMillis) / (1000 * 3600 * 24));
                         
