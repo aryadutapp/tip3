@@ -10,6 +10,10 @@
       "destination": "/anti.html"
     },
     {
+      "source": "/daftar.html",
+      "destination": "/daftar.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
