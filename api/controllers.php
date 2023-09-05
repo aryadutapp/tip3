@@ -131,7 +131,7 @@ elseif ($form_action === "pesanan-masuk") {
 
                     if ($newPackage) {
                         // Package insertion was successful
-                        header("Location: dashboard-konsumen.php");
+                        header("Location: dashboard-mitra.php");
                     } else {
                         // Package insertion failed
                         echo "Please try again.";
