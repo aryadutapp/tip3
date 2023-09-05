@@ -28,8 +28,8 @@ function fetchReservations() {
     $query = "SELECT *
               FROM data_reservasi
               WHERE store_id = $1
-              LIMIT 20
               ORDER BY book_time DESC
+              LIMIT 20
               ";
     $result = pg_query_params($db, $query, [$user->user_id]);
 
