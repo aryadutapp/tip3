@@ -145,7 +145,7 @@ if ($form_action === "login") {
 
 
      // Create a new instance of User
-     $newUser2 = new User($user->email, $user->password, $user->status);
+     //$newUser2 = new User($user->email, $user->password, $user->status);
 
 
     //$newUser2 = new User($reg_email, $reg_password, $reg_status);
@@ -153,7 +153,7 @@ if ($form_action === "login") {
 
    
     // Call the non-static method insertmitra() on the User instance
-    $newMitra = $newUser2->insertMitra($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_provinsi, $reg_nama_pic, $reg_nomer_pic);
+    $newMitra = $newUser->insertMitra($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_provinsi, $reg_nama_pic, $reg_nomer_pic);
     
 
     if ($newMitra) {
