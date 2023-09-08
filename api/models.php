@@ -179,6 +179,29 @@ public function insertBarang($full_name, $size, $store_id) {
 
     return true; // Return true to indicate successful insertion
 }
+
+
+// Function to insert mitra information into the "data_mitra" table
+public function insertMitra($email, $nama_toko, $alamat, $kelurahan, $provinsi, $nama_pic, $nomer_pic) {
+    $db = Database::getConnection(); // Get the database connection
+
+    // Define the SQL query to insert mitra data into the "data_mitra" table
+    $query = "INSERT INTO data_mitra (email, nama_toko, alamat, kelurahan, provinsi, nama_pic, nomer_pic) 
+              VALUES ($1, $2, $3, $4, $5, $6, $7)";
+    
+    // Execute the query with parameters
+    $result = pg_query_params($db, $query, [$email, $nama_toko, $alamat, $kelurahan, $provinsi, $nama_pic, $nomer_pic]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    return true; // Return true to indicate successful insertion
+}
+
+
+
 }
 
 

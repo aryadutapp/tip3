@@ -87,7 +87,7 @@
   <label class="block text-gray-700 text-sm font-bold mb-2" for="kontak_wa">Kontak WA Penanggungjawab</label>
   <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="kontak_wa" name="kontak_wa" type="tel" placeholder="Misal: 08123456789" required="">
 </div>
-<input type="hidden" name="form_action" value="register">
+<input type="hidden" name="form_action" value="register-mitra">
     <input type="hidden" name="status" value="mitra"><p id="password-warning" class="text-sm text-red-600 mt-2 text-center hidden"></p>
 
                   
