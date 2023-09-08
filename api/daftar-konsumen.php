@@ -60,7 +60,8 @@
 
 
          
-<input type="hidden" name="form_action" value="register-konsumen">
+<input type="hidden" name="form_action" value="register">
+
     <input type="hidden" name="status" value="konsumen"><p id="password-warning" class="text-sm text-red-600 mt-2 text-center hidden"></p>
 
                   
