@@ -102,11 +102,19 @@ if ($form_action === "login") {
 
 
 
-    elseif ($form_action === "register") {
+    elseif ($form_action === "register-mitra") {
         // Assuming your form has input fields with names "email", "password", and "status"
         $reg_email = $_POST["email"];
         $reg_password = $_POST["password"];
         $reg_status = $_POST["status"];
+
+        $reg_nama_toko = $_POST["nama_toko"];
+        $reg_alamat = $_POST["alamat"];
+        $reg_kelurahan = $_POST["kelurahan"];
+        $reg_provinsi = $_POST["provinsi"];
+        $reg_nama_pic = $_POST["penanggung_jawab"];
+        $reg_nomer_pic = $_POST["kontak_wa"];
+
 
         // Check if the email is already registered
         $existingUser = User::getUserByEmail($reg_email);
@@ -117,9 +125,38 @@ if ($form_action === "login") {
             header("Location: daftar.php?error=$encodedErrorMessage");
             exit();
         } else {
-    // Email is not registered, proceed with user registration
-    $newUser = new User($reg_email, $reg_password, $reg_status);
+    // Email is not registered, proceed with user registration IN DATA_USER
+    $newUser = new User($reg_email, $reg_password, $reg_status); 
     if ($newUser->createUser()) {
+        // Registration successful, redirect to masuk.php with success message
+       // $message = "Registrasi berhasil. Silahkan masuk";
+        //$encodedMessage = urlencode($message);
+        //header("Location: masuk.php?success=$encodedMessage");
+        //exit();
+    } else {
+        // Failed to register user, redirect to daftar.php with error message
+        $message = "Registrasi gagal. Silahkan coba lagi";
+        $encodedMessage = urlencode($message);
+        header("Location: daftar.php?error=$encodedMessage");
+        exit();
+    }
+
+        // Email is not registered, proceed with user registration IN DATA_MITRA
+
+
+     // Create a new instance of User
+     $newUser2 = new User($user->email, $user->password, $user->status);
+
+
+    //$newUser2 = new User($reg_email, $reg_password, $reg_status);
+    //$newMitra = new User($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_provinsi, $reg_nama_pic, $reg_nomer_pic);
+
+   
+    // Call the non-static method insertmitra() on the User instance
+    $newMitra = $newUser2->insertMitra($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_provinsi, $reg_nama_pic, $reg_nomer_pic);
+    
+
+    if ($newMitra) {
         // Registration successful, redirect to masuk.php with success message
         $message = "Registrasi berhasil. Silahkan masuk";
         $encodedMessage = urlencode($message);
@@ -132,6 +169,8 @@ if ($form_action === "login") {
         header("Location: daftar.php?error=$encodedMessage");
         exit();
     }
+
+
 }
 
     } 
@@ -170,7 +209,7 @@ elseif ($form_action === "pesanan-masuk") {
                         header("Location: dashboard-mitra.php");
                     } else {
                         // Package insertion failed
-                        echo "Please try again.";
+                        echo "Please try again. Go to dashboard";
                     }
                 } elseif ($user && $user->status === "konsumen") {
                     header("Location: dashboard-konsumen.php");
