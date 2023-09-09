@@ -188,21 +188,17 @@ if (!$user || $user->status !== "mitra") {
                                                         })
                                                         .then(response => response.json())
                                                         .then(data => {
-                                                            if (data.status_pesanan_masuk === 'success') {
-                                                                // Display success message as a popup
-                                                                alert('Pesanan berhasil masuk!');
-                                                                // You can also redirect to another page if needed
-                                                                window.location.href = 'dashboard-mitra.php';
-                                                            } else {
-                                                                // Display error message as a popup
-                                                                alert('Gagal memasukkan pesanan. Silakan coba lagi.');
-                                                            }
-                                                        })
-                                                        .catch(error => {
-                                                            console.error('Error:', error);
-                                                            // Handle any network or server error here
-                                                            alert('Terjadi kesalahan. Silakan coba lagi nanti.');
-                                                        });
+                                                        if (data.status_pesanan_masuk === 'success') {
+                                                            // Display success message as a popup
+                                                            alert('Pesanan berhasil masuk!');
+                                                            // You can also redirect to another page if needed
+                                                            window.location.href = 'dashboard-mitra.php';
+                                                        } else {
+                                                            // Display error message as a popup with the status value
+                                                            alert('Gagal memasukkan pesanan. Status: ' + data.status_pesanan_masuk);
+                                                        }
+                                                    })
+
                                                     }
                                                 </script>
 
