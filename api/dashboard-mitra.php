@@ -188,7 +188,7 @@ if (!$user || $user->status !== "mitra") {
                                                         })
                                                         .then(response => response.json())
                                                         .then(data => {
-                                                            if (data.status_pesanan_masuk === 'success') {
+                                                            if (data.status_pesanan-masuk === 'success') {
                                                                 // Display success message as a popup
                                                                 alert('Pesanan berhasil masuk!');
                                                                 // You can also redirect to another page if needed
