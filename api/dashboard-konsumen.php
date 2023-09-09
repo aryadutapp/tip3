@@ -663,7 +663,7 @@ if (!$user || $user->status !== "konsumen") {
 
         // Function to fetch data from the server and populate the table
         function fetchReservationData() {
-            fetch("fetch_store.php")
+            fetch("fetch_data_toko.php")
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById("reservation-table-body");
