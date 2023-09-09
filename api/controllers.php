@@ -207,7 +207,7 @@ elseif ($form_action === "pesanan-masuk") {
                     if ($newPackage) {
                         // Package insertion was successful
                         $response = array(
-                            "status_pesanan-masuk" => "success",
+                            "status_pesanan_masuk" => "success",
                             "message" => "Package insertion was successful"
                         );
                         echo json_encode($response);
