@@ -25,9 +25,7 @@ function fetchReservations() {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT *
-              FROM data_mitra
-              ";
+    $query = "SELECT * FROM data_mitra";
     $result = pg_query_params($db, $query);
 
     if (!$result) {
