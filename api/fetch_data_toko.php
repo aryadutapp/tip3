@@ -28,7 +28,7 @@ function fetchReservations() {
     $query = "SELECT *
               FROM data_mitra
               ";
-    $result = pg_query_params($db, $query); // Removed the parameters array
+    $result = pg_query_params($db, $query);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
