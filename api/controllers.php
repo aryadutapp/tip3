@@ -235,12 +235,15 @@ elseif ($form_action === "pesanan-masuk") {
         // If form_action is post but not "login" or "register", handle the specific case here
         $method = $_SERVER["REQUEST_METHOD"];
         $message = "Invalid form_action: $form_action (Method: $method)";
+        echo $message;
+
     }
 } else {
     // If form_action is not "login" or "register", handle the specific case here
     $method = $_SERVER["REQUEST_METHOD"];
     $message = "Invalid form_action: $form_action (Method: $method)";
+    echo $message;
+
 }
 
 // Output the message after all the logic is executed
-echo $message;
