@@ -194,7 +194,7 @@ if (!$user || $user->status !== "mitra") {
                                                                 // You can also redirect to another page if needed
                                                                // window.location.href = 'dashboard-mitra.php';
                                                                    // Open a new tab to print_pesanan-masuk.php
-                                                                const newTab = window.open('print_pesanan-masuk.php', '_blank');
+                                                                const newTab = window.open('print_pesanan_masuk.php', '_blank');
                                                                 
                                                                 // Check if the new tab was successfully opened
                                                                 if (newTab) {
