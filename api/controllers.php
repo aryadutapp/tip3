@@ -206,10 +206,18 @@ elseif ($form_action === "pesanan-masuk") {
 
                     if ($newPackage) {
                         // Package insertion was successful
-                        header("Location: dashboard-mitra.php");
+                        $response = array(
+                            "status_pesanan-masuk" => "success",
+                            "message" => "Package insertion was successful"
+                        );
+                        echo json_encode($response);
                     } else {
                         // Package insertion failed
-                        echo "Please try again. Go to dashboard";
+                        $response = array(
+                            "status_pesanan-masuk" => "error",
+                            "message" => "Package insertion failed"
+                        );
+                        echo json_encode($response);
                     }
                 } elseif ($user && $user->status === "konsumen") {
                     header("Location: dashboard-konsumen.php");

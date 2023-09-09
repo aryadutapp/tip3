@@ -156,7 +156,7 @@ if (!$user || $user->status !== "mitra") {
                                             <div class="px-6 py-6 lg:px-8">
                                                 <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Masuk</h3>
                                                 <!-- Form for entering order details -->
-                                                <form class="space-y-6" action="./controllers.php?action=register" onsubmit="return validateFullName()" method="post">
+                                                <form class="space-y-6" action="./controllers.php?action=register" onsubmit="return handleSubmit(event)" method="post">
                                                     <div>
                                                         <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
                                                         <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Jayarudin Supratno" required="">
@@ -173,6 +173,39 @@ if (!$user || $user->status !== "mitra") {
                                                     <input type="hidden" name="form_action" value="pesanan-masuk">
                                                     <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
                                                 </form>
+
+                                                <script>
+                                                    function handleSubmit(event) {
+                                                        event.preventDefault(); // Prevent the form from submitting normally
+
+                                                        // Serialize the form data
+                                                        const formData = new FormData(event.target);
+
+                                                        // Make a POST request to your PHP script
+                                                        fetch('./controllers.php?action=register', {
+                                                            method: 'POST',
+                                                            body: formData
+                                                        })
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            if (data.status_pesanan_masuk === 'success') {
+                                                                // Display success message as a popup
+                                                                alert('Pesanan berhasil masuk!');
+                                                                // You can also redirect to another page if needed
+                                                                window.location.href = 'dashboard-mitra.php';
+                                                            } else {
+                                                                // Display error message as a popup
+                                                                alert('Gagal memasukkan pesanan. Silakan coba lagi.');
+                                                            }
+                                                        })
+                                                        .catch(error => {
+                                                            console.error('Error:', error);
+                                                            // Handle any network or server error here
+                                                            alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+                                                        });
+                                                    }
+                                                </script>
+
                                             </div>
                                         </div>
                                     </div>
