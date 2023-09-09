@@ -201,7 +201,7 @@ if (!$user || $user->status !== "mitra") {
                                                         .catch(error => {
                                                             console.error('Error:', error);
                                                             // Handle any network or server error here
-                                                            alert('Terjadi kesalahan. Silakan coba lagi nanti.'+ data.status_pesanan_masuk);
+                                                            alert('Terjadi kesalahan. Silakan coba lagi nanti.');
                                                         });
                                                     }
                                                 </script>
