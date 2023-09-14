@@ -110,10 +110,10 @@ if (!$user || $user->status !== "konsumen") {
                         <script>
                         function openNewTabAndReturnHome() {
                             // To open a new tab
-                            window.open('print_ticket.php', '_blank');
+                            window.open('book_store.php', '_blank');
 
                             // To navigate the main tab to the homepage
-                            window.location.href = 'index.php'; // Replace 'index.php' with your homepage URL
+                            window.location.href = 'api/dashboard-konsumen.php'; // Replace 'index.php' with your homepage URL
                         }
                     </script>
 
@@ -653,7 +653,7 @@ if (!$user || $user->status !== "konsumen") {
             <td class="px-4 py-3">${data.provinsi}</td>
             <td class="px-4 py-3 flex items-center justify-end">
                 <a href="#" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
-                    Print
+                    Pesan Tempat
                 </a>
             </td>
 
