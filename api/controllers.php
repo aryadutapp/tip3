@@ -180,9 +180,12 @@ if ($form_action === "login") {
 elseif ($form_action === "pesanan-masuk") {
     // Check if the user's cookie exists
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
+    $id_mitra = $_POST["id_mitra"];
+    $nama_lengkap = $_POST["nama_lengkap"];
+    
 
-    // If the user's cookie exists, check the user's status based on the session
-    if ($cookieValue) {
+    // If the user's cookie exists and check the user's status based on the session (buat pesanan masuk mitra)
+    if ($cookieValue && empty($id_mitra)) {
         // Get the user's email based on their session
         $userEmail = User::getUserEmailBySession($cookieValue);
     
@@ -225,6 +228,52 @@ elseif ($form_action === "pesanan-masuk") {
                 }
 
     }
+
+
+        // If the user's cookie exists and check the user's status based on the session (buat pesanan masuk akun konsumen)
+        if ($id_mitra && $nama_lengkap) {
+            // Get the user's email based on their session
+            $userEmail = User::getUserEmailBySession($cookieValue);
+        
+            // Get the user information based on their email
+            $user = User::getUserByEmail($userEmail);
+        
+            // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
+    // Assuming you have a User object already created, let's call it $user.
+    // Replace $user with the actual User object you have.
+    
+                    if ($user && $user->status === "mitra") {
+                        $nama_cust = $_POST["full-name"];
+                        $size_paket = $_POST["size"];
+                        $id_toko = $user->user_id;
+    
+                        // Create a new instance of User
+                        $newUser = new User($user->email, $user->password, $user->status);
+    
+                        // Call the non-static method insertBarangEmail() on the User instance
+                        $newPackage = $newUser->insertBarangEmail($nama_cust, $size_paket, $id_toko, $userEmail);
+    
+                        if ($newPackage) {
+                            // Package insertion was successful
+                            $response = array(
+                                "status_pesanan_masuk" => "success",
+                                "message" => "Package insertion was successful"
+                            );
+                            echo json_encode($response);
+                        } else {
+                            // Package insertion failed
+                            $response = array(
+                                "status_pesanan-masuk" => "error",
+                                "message" => "Package insertion failed"
+                            );
+                            echo json_encode($response);
+                        }
+                    } elseif ($user && $user->status === "konsumen") {
+                        header("Location: dashboard-konsumen.php");
+                        exit();
+                    }
+    
+        }
 }
 
 

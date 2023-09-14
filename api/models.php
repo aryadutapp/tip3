@@ -180,6 +180,27 @@ public function insertBarang($full_name, $size, $store_id) {
     return true; // Return true to indicate successful insertion
 }
 
+// Create a new entry in the data_reservasi table
+public function insertBarangEmail($full_name, $size, $store_id, $email) {
+    $db = Database::getConnection(); // Get the database connection
+
+    // Get the current timestamp for book_time, start_time, and end_time
+    date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
+    $nowTime = time() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
+
+
+    // Prepare and execute the query to insert the data into the data_reservasi table
+    $query = "INSERT INTO data_reservasi (cust_email, cust_name, store_id, book_time, start_time, reservation_status, size) VALUES ($1, $2, $3, to_timestamp($4), to_timestamp($5),  $6, $7)";
+    $result = pg_query_params($db, $query, [$email, $full_name, $store_id, $nowTime, $nowTime, "PESANAN MASUK", $size]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    return true; // Return true to indicate successful insertion
+}
+
 
 // Function to insert mitra information into the "data_mitra" table
 public function insertMitra($email, $nama_toko, $alamat, $kelurahan, $provinsi, $nama_pic, $nomer_pic) {
