@@ -728,6 +728,49 @@ if (!$user || $user->status !== "konsumen") {
         fetchReservationData();
     </script>
 
+<script>
+                                        function handleSubmit(event) {
+                                            event.preventDefault(); // Prevent the form from submitting normally
+
+                                            // Serialize the form data
+                                            const formData = new FormData(event.target);
+
+                                            // Make a POST request to your PHP script
+                                            fetch('./controllers.php?action=register', {
+                                                method: 'POST',
+                                                body: formData
+                                            })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (data.status_pesanan_masuk === 'success') {
+                                                    // Display success message as a popup
+                                                    alert('Pesanan berhasil masuk!. Tekan OK untuk mencetak kode pengambilan (Pastikan Notifikasi Pop Up Tidak Diblokir)');
+                                                    // You can also redirect to another page if needed
+                                                   // window.location.href = 'dashboard-mitra.php';
+                                                       // Open a new tab to print_pesanan-masuk.php
+                                                    const newTab = window.open('print_pesanan_masuk.php', '_blank');
+                                                    
+                                                    // Check if the new tab was successfully opened
+                                                    if (newTab) {
+                                                        // You can also redirect to another page in the current tab if needed
+                                                        window.location.href = 'dashboard-mitra.php';
+                                                    } else {
+                                                        // Handle if the new tab couldn't be opened
+                                                        alert('Gagal membuka halaman print_pesanan-masuk.php.');
+                                                    }
+                                                } else {
+                                                    // Display error message as a popup
+                                                    alert('Gagal memasukkan pesanan. Silakan coba lagi.');
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
+                                                // Handle any network or server error here
+                                                alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+                                            });
+                                        }
+                                    </script>
+
 
 
 
