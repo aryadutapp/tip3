@@ -791,7 +791,9 @@ if (!$user || $user->status !== "konsumen") {
                                             .catch(error => {
                                                 console.error('Error:', error);
                                                 // Handle any network or server error here
-                                                alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+                                               // alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+                                               alert('Error: ' + error);
+
                                             });
                                         }
 
