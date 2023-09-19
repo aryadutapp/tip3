@@ -652,12 +652,6 @@ if (!$user || $user->status !== "konsumen") {
             <td class="px-4 py-3">${data.kelurahan}</td>
             <td class="px-4 py-3">${data.provinsi}</td>
             <td class="px-4 py-3 flex items-center justify-end">
-                <a href="#" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
-                    Pesan Tempat
-                </a>
-            </td>
-
-            <td class="px-4 py-3 flex items-center justify-end">
     <button data-modal-target="pesanan_masuk_konsumen" data-modal-toggle="pesanan_masuk_konsumen" class="" type="button">
                         
                         <div class="ml-4">
@@ -694,9 +688,7 @@ if (!$user || $user->status !== "konsumen") {
                                                 <option value="L">L (Large)</option>
                                             </select>
                                         </div>
-                                        <input type="hidden" name="user_id_mitra" value="${data.user_id}">
                                         <input type="hidden" name="form_action" value="pesanan-masuk">
-
                                         <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
                                     </form>
 
@@ -800,12 +792,20 @@ if (!$user || $user->status !== "konsumen") {
                                             .then(data => {
                                                 if (data.status_pesanan_masuk === 'success') {
                                                     // Display success message as a popup
-                                                    alert('Pesanan berhasil masuk!. Tekan OK untuk menghilangkan notifikasi');
+                                                    alert('Pesanan berhasil masuk!. Tekan OK untuk mencetak kode pengambilan (Pastikan Notifikasi Pop Up Tidak Diblokir)');
                                                     // You can also redirect to another page if needed
                                                    // window.location.href = 'dashboard-mitra.php';
                                                        // Open a new tab to print_pesanan-masuk.php
-                                                    window.location.href = 'dashboard-konsumen.php';                                                    
-
+                                                    const newTab = window.open('print_pesanan_masuk.php', '_blank');
+                                                    
+                                                    // Check if the new tab was successfully opened
+                                                    if (newTab) {
+                                                        // You can also redirect to another page in the current tab if needed
+                                                        window.location.href = 'dashboard-mitra.php';
+                                                    } else {
+                                                        // Handle if the new tab couldn't be opened
+                                                        alert('Gagal membuka halaman print_pesanan-masuk.php.');
+                                                    }
                                                 } else {
                                                     // Display error message as a popup
                                                     alert('Gagal memasukkan pesanan. Silakan coba lagi.');
@@ -825,10 +825,7 @@ if (!$user || $user->status !== "konsumen") {
                     </div>
 </td>
 
-
-
-
-
+            
 
             `;
             return row;
