@@ -180,7 +180,7 @@ if ($form_action === "login") {
 elseif ($form_action === "pesanan-masuk") {
     // Check if the user's cookie exists
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
-    $id_mitra = $_POST["id_mitra"];
+    $id_mitra = $_POST["user_id"];
     $nama_lengkap = $_POST["nama_lengkap"];
     
 
@@ -242,7 +242,7 @@ elseif ($form_action === "pesanan-masuk") {
     // Assuming you have a User object already created, let's call it $user.
     // Replace $user with the actual User object you have.
     
-                    if ($user && $user->status === "mitra") {
+                    if ($user && $user->status === "konsumen") {
                         $nama_cust = $_POST["full-name"];
                         $size_paket = $_POST["size"];
                         $id_toko = $user->user_id;
