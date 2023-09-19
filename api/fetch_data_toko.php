@@ -25,7 +25,11 @@ function fetchReservations() {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT * FROM data_mitra";
+    
+    $query = "SELECT data_mitra.*, data_user.user_id
+    FROM data_mitra
+    JOIN data_user ON data_mitra.email = data_user.email";
+    
     $result = pg_query($db, $query);
 
     if (!$result) {
