@@ -769,20 +769,8 @@ if (!$user || $user->status !== "konsumen") {
                                             .then(data => {
                                                 if (data.status_pesanan_masuk === 'success') {
                                                     // Display success message as a popup
-                                                    alert('Pesanan berhasil masuk!. Tekan OK untuk mencetak kode pengambilan (Pastikan Notifikasi Pop Up Tidak Diblokir)');
-                                                    // You can also redirect to another page if needed
-                                                   // window.location.href = 'dashboard-mitra.php';
-                                                       // Open a new tab to print_pesanan-masuk.php
-                                                    const newTab = window.open('print_pesanan_masuk.php', '_blank');
-                                                    
-                                                    // Check if the new tab was successfully opened
-                                                    if (newTab) {
-                                                        // You can also redirect to another page in the current tab if needed
-                                                        window.location.href = 'dashboard-mitra.php';
-                                                    } else {
-                                                        // Handle if the new tab couldn't be opened
-                                                        alert('Gagal membuka halaman print_pesanan-masuk.php.');
-                                                    }
+                                                    alert('Pesanan berhasil masuk!. Tekan OK untuk mengabaikan pesanan');
+
                                                 } else {
                                                     // Display error message as a popup
                                                     alert('Gagal memasukkan pesanan. Silakan coba lagi.');
