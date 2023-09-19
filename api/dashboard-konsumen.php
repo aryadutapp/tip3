@@ -652,12 +652,6 @@ if (!$user || $user->status !== "konsumen") {
             <td class="px-4 py-3">${data.kelurahan}</td>
             <td class="px-4 py-3">${data.provinsi}</td>
             <td class="px-4 py-3 flex items-center justify-end">
-                <a href="#" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
-                    Pesan Tempat
-                </a>
-            </td>
-
-            <td class="px-4 py-3 flex items-center justify-end">
     <button data-modal-target="pesanan_masuk_konsumen" data-modal-toggle="pesanan_masuk_konsumen" class="" type="button">
                         
                         <div class="ml-4">
@@ -666,7 +660,7 @@ if (!$user || $user->status !== "konsumen") {
                         </div>
                     </button>
 
-<div id="pesanan_masuk_konsumen" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center flex" aria-modal="true" role="dialog">
+<div id="pesanan_masuk_konsumen" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center hidden" aria-hidden="true">
                         <div class="relative w-full max-w-md max-h-full">
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow">
@@ -698,7 +692,7 @@ if (!$user || $user->status !== "konsumen") {
                                         <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
                                     </form>
 
-                                  
+
 
                                 </div>
                             </div>
@@ -706,7 +700,9 @@ if (!$user || $user->status !== "konsumen") {
                     </div>
 
 
+</td>
 
+            
 
             
 
