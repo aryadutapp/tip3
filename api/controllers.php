@@ -231,7 +231,7 @@ elseif ($form_action === "pesanan-masuk") {
 
 
         // If the user's cookie exists and check the user's status based on the session (buat pesanan masuk akun konsumen)
-        if ($id_mitra && $nama_lengkap) {
+        if ($id_mitra) {
             // Get the user's email based on their session
             $userEmail = User::getUserEmailBySession($cookieValue);
         
@@ -245,13 +245,12 @@ elseif ($form_action === "pesanan-masuk") {
                     if ($user && $user->status === "konsumen") {
                         $nama_cust = $_POST["full-name"];
                         $size_paket = $_POST["size"];
-                        $id_toko = $user->user_id;
     
                         // Create a new instance of User
                         $newUser = new User($user->email, $user->password, $user->status);
     
                         // Call the non-static method insertBarangEmail() on the User instance
-                        $newPackage = $newUser->insertBarangEmail($nama_cust, $size_paket, $id_toko, $userEmail);
+                        $newPackage = $newUser->insertBarangEmail($nama_cust, $size_paket, $id_mitra, $userEmail);
     
                         if ($newPackage) {
                             // Package insertion was successful
