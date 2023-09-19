@@ -180,7 +180,7 @@ if ($form_action === "login") {
 elseif ($form_action === "pesanan-masuk") {
     // Check if the user's cookie exists
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
-    $id_mitra = $_POST["user_id"];
+    $id_mitra = $_POST["user_id_mitra"];
     $nama_lengkap = $_POST["nama_lengkap"];
     
 
