@@ -649,11 +649,19 @@ if (!$user || $user->status !== "konsumen") {
     // Function to create table rows with data
     function createTableRow(data) {
         const row = document.createElement('tr');
+        const namaTokoValue = data.nama_toko;
+        const alamatValue = data.alamat;
+        const kelurahanValue = data.keluarahan;
+        const provinsiValue = data.provinsi;
+        const userIDValue = data.user_id;
+
+
+
         row.innerHTML = `
-        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${data.nama_toko}</td>
-        <td class="px-4 py-3">${data.alamat}</td>
-        <td class="px-4 py-3">${data.kelurahan}</td>
-        <td class="px-4 py-3">${data.provinsi}</td>
+        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
+        <td class="px-4 py-3">${alamatValue}</td>
+        <td class="px-4 py-3">${kelurahanValue}</td>
+        <td class="px-4 py-3">${provinsiValue}</td>
         <td class="px-4 py-3 flex items-center justify-end">
             <button data-modal-target="pesanan_masuk_konsumen" data-modal-toggle="pesanan_masuk_konsumen" class="" type="button">
                 <div class="ml-4">
@@ -689,9 +697,9 @@ if (!$user || $user->status !== "konsumen") {
                                     </select>
                                 </div>
                                 <input type="hidden" name="form_action" value="pesanan-masuk">
-                                <input type="hidden" name="user_id_mitra" value="${data.user_id}">
-                                ${data.user_id}
-                                ${data.nama_toko}
+                                <input type="hidden" name="user_id_mitra" value="${userIDValue}">
+                                ${userIDValue}
+                                ${namaTokoValue}
                                 <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
                             </form>
                         </div>
