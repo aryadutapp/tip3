@@ -648,12 +648,12 @@ if (!$user || $user->status !== "konsumen") {
 <script>
     // Function to create table rows with data
     function createTableRow(data) {
-        row = document.createElement('tr');
-        namaTokoValue = data.nama_toko;
-        alamatValue = data.alamat;
-        kelurahanValue = data.keluarahan;
-        provinsiValue = data.provinsi;
-        userIDValue = data.user_id;
+        const row = document.createElement('tr');
+        const namaTokoValue = data.nama_toko;
+        const alamatValue = data.alamat;
+        const kelurahanValue = data.keluarahan;
+        const provinsiValue = data.provinsi;
+        const userIDValue = data.user_id;
 
 
 
@@ -725,8 +725,6 @@ if (!$user || $user->status !== "konsumen") {
         
         // Assuming you want to open the modal when the button is clicked
         document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
-       // <script src="https://flowbite.com/docs/flowbite.min.js"></script>
-
     }
 </script>
 
