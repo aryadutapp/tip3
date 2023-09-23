@@ -663,12 +663,12 @@ if (!$user || $user->status !== "konsumen") {
         <td class="px-4 py-3">${kelurahanValue}</td>
         <td class="px-4 py-3">${provinsiValue}</td>
         <td class="px-4 py-3 flex items-center justify-end">
-            <button data-modal-target="pesanan_masuk_konsumen" data-modal-toggle="pesanan_masuk_konsumen" class="" type="button">
+            <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="modal-button" type="button">
                 <div class="ml-4">
                     <h2 class="font-semibold text-left md:text-lg">Pesanan Masuk</h2>
                 </div>
             </button>
-            <div id="pesanan_masuk_konsumen" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center hidden" aria-hidden="true">
+            <div id="pesanan_masuk_konsumen_${userIDValue}" tabindex="-1" class="modal fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center hidden" aria-hidden="true">
                 <div class="relative w-full max-w-md max-h-full">
                     <!-- Modal content -->
                     <div class="relative bg-white rounded-lg shadow">
@@ -711,20 +711,31 @@ if (!$user || $user->status !== "konsumen") {
         
         const buttons = row.querySelectorAll('[data-modal-toggle="pesanan_masuk_konsumen"]');
         buttons.forEach(button => {
-            button.addEventListener('click', () => openPesananMasukModal(data));
+            button.addEventListener('click', () => openPesananMasukModal(data, userIDValue)); // Pass userIDValue as an argument
         });
+
 
         return row;
     }
 
     // Function to open the Pesanan Masuk modal
-    function openPesananMasukModal(data) {
+
+
+    function openPesananMasukModal(data, userID) {
         // Handle the modal opening logic here
         // ...
-        
+
         // Assuming you want to open the modal when the button is clicked
-        document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
+        const modalId = `pesanan_masuk_konsumen_${userID}`;
+        const modal = document.getElementById(modalId);
+        
+        if (modal) {
+            modal.classList.remove('hidden');
+        }
     }
+
+
+
 </script>
 
 <!-- JavaScript section for fetching and populating data -->
