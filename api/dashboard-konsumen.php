@@ -712,7 +712,9 @@ if (!$user || $user->status !== "konsumen") {
         // Add an event listener to the button in the row
         const button = row.querySelector('[data-modal-toggle="pesanan_masuk_konsumen"]');
         if (button) {
-            button.addEventListener('click', () => openPesananMasukModal(data));
+            //button.addEventListener('click', () => openPesananMasukModal(data));
+            <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+
         }
 
         return row;
