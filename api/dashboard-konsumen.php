@@ -724,8 +724,8 @@ if (!$user || $user->status !== "konsumen") {
         // ...
         
         // Assuming you want to open the modal when the button is clicked
-        //document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
-        <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+        document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
+       // <script src="https://flowbite.com/docs/flowbite.min.js"></script>
 
     }
 </script>
