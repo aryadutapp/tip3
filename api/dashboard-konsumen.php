@@ -837,7 +837,6 @@ if (!$user || $user->status !== "konsumen") {
                 </div>
             </section>
         </main>
-       // <script src="https://flowbite.com/docs/flowbite.min.js"></script>
         <script>
             // Function to check and toggle visibility of the element
             function toggleElementVisibility() {
