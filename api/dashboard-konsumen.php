@@ -749,13 +749,7 @@ if (!$user || $user->status !== "konsumen") {
 
     // Wait for the DOM to be fully loaded before fetching and populating the data
     document.addEventListener("DOMContentLoaded", function () {
-        //fetchReservationData();
-        document.addEventListener("DOMContentLoaded", function () {
-    var script = document.createElement("script");
-    script.src = "https://flowbite.com/docs/flowbite.min.js";
-    document.head.appendChild(script);
-});
-
+        fetchReservationData();
     });
 
     // Your handleSubmit function here
