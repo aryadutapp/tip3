@@ -642,77 +642,63 @@ if (!$user || $user->status !== "konsumen") {
 </div>
 
 
+<!-- HTML content -->
+
+<!-- JavaScript section for creating table rows -->
 <script>
     // Function to create table rows with data
     function createTableRow(data) {
         const row = document.createElement('tr');
         row.innerHTML = `
         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${data.nama_toko}</td>
-<td class="px-4 py-3">${data.alamat}</td>
-<td class="px-4 py-3">${data.kelurahan}</td>
-<td class="px-4 py-3">${data.provinsi}</td>
-<td class="px-4 py-3 flex items-center justify-end">
-<button data-modal-target="pesanan_masuk_konsumen" data-modal-toggle="pesanan_masuk_konsumen" class="" type="button">
-        
-        <div class="ml-4">
-            <h2 class="font-semibold text-left md:text-lg">Pesanan Masuk</h2>
-            
-        </div>
-    </button>
-
-<div id="pesanan_masuk_konsumen" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center hidden" aria-hidden="true">
-        <div class="relative w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow">
-                <!-- Close button -->
-                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
-                    </svg>
-                </button>
-                <!-- Modal header -->
-                <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Masuk</h3>
-                    <!-- Form for entering order details -->
-                    <form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event)" method="post">
-                        <div>
-                            <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                            <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Jayarudin Supratno" required="">
-                            <p id="warning-full-name" class="hidden text-red-500 text-sm mt-1">Nama Lengkap harus terdiri dari minimal dua kata.</p>
+        <td class="px-4 py-3">${data.alamat}</td>
+        <td class="px-4 py-3">${data.kelurahan}</td>
+        <td class="px-4 py-3">${data.provinsi}</td>
+        <td class="px-4 py-3 flex items-center justify-end">
+            <button data-modal-target="pesanan_masuk_konsumen" data-modal-toggle="pesanan_masuk_konsumen" class="" type="button">
+                <div class="ml-4">
+                    <h2 class="font-semibold text-left md:text-lg">Pesanan Masuk</h2>
+                </div>
+            </button>
+            <div id="pesanan_masuk_konsumen" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center hidden" aria-hidden="true">
+                <div class="relative w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow">
+                        <!-- Close button -->
+                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                            </svg>
+                        </button>
+                        <!-- Modal header -->
+                        <div class="px-6 py-6 lg:px-8">
+                            <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Masuk</h3>
+                            <!-- Form for entering order details -->
+                            <form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event)" method="post">
+                                <div>
+                                    <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
+                                    <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Jayarudin Supratno" required="">
+                                    <p id="warning-full-name" class="hidden text-red-500 text-sm mt-1">Nama Lengkap harus terdiri dari minimal dua kata.</p>
+                                </div>
+                                <div>
+                                    <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Ukuran</label>
+                                    <select name="size" id="size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
+                                        <option value="" disabled="" selected="">Pilih Ukuran</option>
+                                        <option value="S">S (Small)</option>
+                                        <option value="L">L (Large)</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" name="form_action" value="pesanan-masuk">
+                                <input type="hidden" name="user_id_mitra" value="${data.user_id}">
+                                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
+                            </form>
                         </div>
-                        <div>
-                            <label for="size" class="block mb-2 text-sm font-medium text-gray-900">Ukuran</label>
-                            <select name="size" id="size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="">
-                                <option value="" disabled="" selected="">Pilih Ukuran</option>
-                                <option value="S">S (Small)</option>
-                                <option value="L">L (Large)</option>
-                            </select>
-                        </div>
-                        <input type="hidden" name="form_action" value="pesanan-masuk">
-
-                        <input type="hidden" name="user_id_mitra" value="${data.user_id}">
-
-                        
-                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
-                    </form>
-
-
-
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-</td>
-
-
-
-
-
-`;
-
-
+        </td>
+        `;
+        
         // Add an event listener to the button in the row
         const button = row.querySelector('[data-modal-toggle="pesanan_masuk_konsumen"]');
         if (button) {
@@ -726,12 +712,14 @@ if (!$user || $user->status !== "konsumen") {
     function openPesananMasukModal(data) {
         // Handle the modal opening logic here
         // ...
-
+        
         // Assuming you want to open the modal when the button is clicked
         document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
     }
-    
+</script>
 
+<!-- JavaScript section for fetching and populating data -->
+<script>
     // Function to fetch data from the server and populate the table
     function fetchReservationData() {
         fetch("fetch_data_toko.php")
@@ -753,42 +741,40 @@ if (!$user || $user->status !== "konsumen") {
     document.addEventListener("DOMContentLoaded", function () {
         fetchReservationData();
     });
-
-    // Your handleSubmit function here
-
-    function handleSubmit(event) {
-                                            event.preventDefault(); // Prevent the form from submitting normally
-
-                                            // Serialize the form data
-                                            const formData = new FormData(event.target);
-
-                                            // Make a POST request to your PHP script
-                                            fetch('./controllers.php?action=register', {
-                                                method: 'POST',
-                                                body: formData
-                                            })
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                if (data.status_pesanan_masuk === 'success') {
-                                                    // Display success message as a popup
-                                                    alert('Pesanan berhasil masuk!. Tekan OK untuk mengabaikan pesanan');
-
-                                                } else {
-                                                    // Display error message as a popup
-                                                    alert('Gagal memasukkan pesanan. Silakan coba lagi.');
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error('Error:', error);
-                                                // Handle any network or server error here
-                                               // alert('Terjadi kesalahan. Silakan coba lagi nanti.');
-                                               alert('Error: ' + error);
-
-                                            });
-                                        }
-
-                                        
 </script>
+
+<!-- JavaScript section for handling form submission -->
+<script>
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        
+        // Serialize the form data
+        const formData = new FormData(event.target);
+        
+        // Make a POST request to your PHP script
+        fetch('./controllers.php?action=register', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status_pesanan_masuk === 'success') {
+                // Display success message as a popup
+                alert('Pesanan berhasil masuk!. Tekan OK untuk mengabaikan pesanan');
+            } else {
+                // Display error message as a popup
+                alert('Gagal memasukkan pesanan. Silakan coba lagi.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle any network or server error here
+            // alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+            alert('Error: ' + error);
+        });
+    }
+</script>
+
 
 
 
