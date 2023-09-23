@@ -745,34 +745,41 @@ if (!$user || $user->status !== "konsumen") {
 
 <!-- JavaScript section for handling form submission -->
 <script>
-    function handleSubmit(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
-        
-        // Serialize the form data
-        const formData = new FormData(event.target);
-        
-        // Make a POST request to your PHP script
+function handleSubmit(event, form) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Get the user_id from the form data
+    const user_id = form.querySelector('input[name="user_id_mitra"]').value;
+    console.log('user_id:', user_id); // Add this line for debugging
+
+    // Serialize the form data
+    const formData = new FormData(form);
+
+    // Update the user_id in the formData object
+    formData.set('user_id_mitra', user_id);
+
+    // Make a POST request to your PHP script
         fetch('./controllers.php?action=register', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status_pesanan_masuk === 'success') {
-                // Display success message as a popup
-                alert('Pesanan berhasil masuk!. Tekan OK untuk mengabaikan pesanan');
-            } else {
-                // Display error message as a popup
-                alert('Gagal memasukkan pesanan. Silakan coba lagi.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle any network or server error here
-            // alert('Terjadi kesalahan. Silakan coba lagi nanti.');
-            alert('Error: ' + error);
-        });
-    }
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status_pesanan_masuk === 'success') {
+            // Display success message as a popup
+            alert('Pesanan berhasil masuk!. Tekan OK untuk mengabaikan pesanan');
+        } else {
+            // Display error message as a popup
+            alert('Gagal memasukkan pesanan. Silakan coba lagi.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle any network or server error here
+        alert('Error: ' + error);
+    });
+}
+
 </script>
 
 
