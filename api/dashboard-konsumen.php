@@ -711,6 +711,7 @@ if (!$user || $user->status !== "konsumen") {
 
 
 `;
+/*
 
         // Add an event listener to the button in the row
         const button = row.querySelector('[data-modal-toggle="pesanan_masuk_konsumen"]');
@@ -729,6 +730,7 @@ if (!$user || $user->status !== "konsumen") {
         // Assuming you want to open the modal when the button is clicked
         document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
     }
+    */
 
     // Function to fetch data from the server and populate the table
     function fetchReservationData() {
@@ -835,7 +837,7 @@ if (!$user || $user->status !== "konsumen") {
                 </div>
             </section>
         </main>
-        <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+       // <script src="https://flowbite.com/docs/flowbite.min.js"></script>
         <script>
             // Function to check and toggle visibility of the element
             function toggleElementVisibility() {
@@ -853,5 +855,7 @@ if (!$user || $user->status !== "konsumen") {
             window.addEventListener('load', toggleElementVisibility);
             window.addEventListener('resize', toggleElementVisibility);
         </script>
+        <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+
     </body>
 </html>
