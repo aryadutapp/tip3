@@ -648,12 +648,12 @@ if (!$user || $user->status !== "konsumen") {
 <script>
     // Function to create table rows with data
     function createTableRow(data) {
-        const row = document.createElement('tr');
-        const namaTokoValue = data.nama_toko;
-        const alamatValue = data.alamat;
-        const kelurahanValue = data.keluarahan;
-        const provinsiValue = data.provinsi;
-        const userIDValue = data.user_id;
+        row = document.createElement('tr');
+        namaTokoValue = data.nama_toko;
+        alamatValue = data.alamat;
+        kelurahanValue = data.keluarahan;
+        provinsiValue = data.provinsi;
+        userIDValue = data.user_id;
 
 
 
