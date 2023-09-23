@@ -711,7 +711,7 @@ if (!$user || $user->status !== "konsumen") {
 
 
 `;
-/*
+
 
         // Add an event listener to the button in the row
         const button = row.querySelector('[data-modal-toggle="pesanan_masuk_konsumen"]');
@@ -730,7 +730,7 @@ if (!$user || $user->status !== "konsumen") {
         // Assuming you want to open the modal when the button is clicked
         document.getElementById('pesanan_masuk_konsumen').classList.remove('hidden');
     }
-    */
+    
 
     // Function to fetch data from the server and populate the table
     function fetchReservationData() {
