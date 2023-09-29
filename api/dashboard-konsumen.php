@@ -865,6 +865,7 @@ function handleSubmit(event, form) {
             window.addEventListener('resize', toggleElementVisibility);
         </script>
         <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+        
 
     </body>
 </html>
