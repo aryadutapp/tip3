@@ -751,13 +751,23 @@ if (!$user || $user->status !== "konsumen") {
 
             // Now that the table has been populated, you can attach event listeners
             // or perform other actions as needed.
+
+            // Call the callback function to load the Flowbite script after data is loaded
+            if (typeof callback === "function") {
+                callback();
+            }
         })
         .catch(error => console.error("Error:", error));
     }
 
     // Wait for the DOM to be fully loaded before fetching and populating the data
     document.addEventListener("DOMContentLoaded", function () {
-        fetchReservationData();
+        fetchReservationData(function () {
+            // Function to load the Flowbite script
+            var script = document.createElement('script');
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js";
+            document.body.appendChild(script);
+        });
     });
 </script>
 
@@ -862,10 +872,10 @@ function handleSubmit(event, form) {
             }
             
             // Call the function on page load and whenever the window is resized
+            
             window.addEventListener('load', toggleElementVisibility);
             window.addEventListener('resize', toggleElementVisibility);
         </script>
-        <script src="https://flowbite.com/docs/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js" defer></script>
 
 
