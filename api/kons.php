@@ -30,6 +30,16 @@ if (!$user || $user->status !== "konsumen") {
         <title>titip.in : Layanan Penitipan Barang dengan Sistem Loker berbasis Daring</title>
         <link rel="shortcut icon" type="image/x-icon" href="./assets/images/logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            setTimeout(function(){
+            var script = document.createElement('script');
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js";
+
+            var body = document.getElementsByTagName('body')[0];
+            body.appendChild(script);
+
+            }, 5000);  
+        </script>
     </head>
 
     <body>
