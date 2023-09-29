@@ -885,6 +885,8 @@ function handleSubmit(event, form) {
             window.addEventListener('load', toggleElementVisibility);
             window.addEventListener('resize', toggleElementVisibility);
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
 
 
     </body>
