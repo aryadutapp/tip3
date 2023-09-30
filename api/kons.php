@@ -802,6 +802,56 @@ if (!$user || $user->status !== "konsumen") {
     });
 </script>
 
+
+
+<script>
+  // Function to toggle the modal's class
+  function toggleModalClass(modalId) {
+    const modal = document.getElementById(modalId);
+
+    if (modal.classList.contains('modal-opened')) {
+      modal.classList.remove('modal-opened');
+    } else {
+      modal.classList.add('modal-opened');
+    }
+  }
+
+  // Function to handle the modal toggle button click event
+  function handleModalToggleClick(event) {
+    const modalTarget = event.target.getAttribute('data-modal-target');
+    toggleModalClass(modalTarget);
+  }
+
+  // Function to handle the modal close button click event
+  function handleModalCloseClick(event, modalId) {
+    event.preventDefault();
+    toggleModalClass(modalId);
+  }
+
+  // Add event listener to a parent element that exists when the page loads
+  document.body.addEventListener('click', (event) => {
+    const target = event.target;
+
+    // Check if the clicked element is a modal toggle button
+    if (target.matches('[data-modal-toggle]')) {
+      handleModalToggleClick(event);
+    }
+
+    // Check if the clicked element is a modal close button
+    if (target.matches('[data-modal-hide]')) {
+      const modalId = target.getAttribute('data-modal-hide');
+      handleModalCloseClick(event, modalId);
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
 <!-- JavaScript section for handling form submission -->
 <script>
 function handleSubmit(event, form) {
