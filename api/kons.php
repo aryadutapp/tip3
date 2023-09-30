@@ -739,8 +739,14 @@ if (!$user || $user->status !== "konsumen") {
         const modal = document.getElementById(modalId);
         
         if (modal) {
-            modal.classList.remove('hidden');
+            modal.classList.remove(); // Remove all existing classes
+            modal.classList.add('fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center flex'); // Add your new class
         }
+        
+        const backdrop = document.createElement('div');
+        backdrop.setAttribute('modal-backdrop', '');
+        backdrop.classList.add('bg-gray-900', 'bg-opacity-50', 'dark:bg-opacity-80', 'fixed', 'inset-0', 'z-40');
+        document.body.appendChild(backdrop);
     }
 
     function closePesananMasukModal(data, userID) {
@@ -753,6 +759,11 @@ if (!$user || $user->status !== "konsumen") {
         
         if (modal) {
             modal.classList.add('hidden');
+        }
+
+        const backdrop = document.querySelector('[modal-backdrop]');
+        if (backdrop) {
+            backdrop.remove();
         }
     }
 
