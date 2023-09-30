@@ -671,9 +671,10 @@ if (!$user || $user->status !== "konsumen") {
         <td class="px-4 py-3">${kelurahanValue}</td>
         <td class="px-4 py-3">${provinsiValue}</td>
         <td class="px-4 py-3 flex items-center justify-end">
+        
         <!-- Modal toggle -->
       <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen_${userIDValue}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-        Pesan Disini ${userIDValue} ${namaTokoValue}
+        Pesan Disini ${userIDValue}
       </button>
       
       <!-- Main modal -->
@@ -690,7 +691,7 @@ if (!$user || $user->status !== "konsumen") {
                   </button>
                   <div class="px-6 py-6 lg:px-8">
                       <h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
-                      <form class="space-y-6" action="#">
+                      <form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
                           <div>
                               <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
                               <input type="full-name" name="full-name" id="full-name_${userIDValue}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Contoh: Joni Sunandar" required>
@@ -706,7 +707,9 @@ if (!$user || $user->status !== "konsumen") {
                         </div>
                       </div>
                           <!-- Error Pesanan Masuk Konsumen Modal -->
-                          <div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden"></div>
+                          <div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
+                          <input type="hidden" name="form_action" value="pesanan-masuk">
+                          <input type="hidden" name="user_id_mitra" value="${userIDValue}">
                           <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
                       </form>
                   </div>
@@ -714,6 +717,7 @@ if (!$user || $user->status !== "konsumen") {
           </div>
       </div> 
     </div>
+
 
         </td>
         `;
@@ -896,6 +900,47 @@ function handleSubmit(event, form) {
             window.addEventListener('resize', toggleElementVisibility);
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+        <script>
+// Function to check full name in all input fields with type "full-name"
+function nameCheck() {
+  // Get all input elements with the type "full-name"
+  var fullNameInputs = document.querySelectorAll('input[type="full-name"]');
+
+  // Regular expression pattern for alphabetical letters
+  var alphabetPattern = /^[A-Za-z\s]+$/;
+
+  // Loop through all the matching input elements
+  fullNameInputs.forEach(function (fullNameInput) {
+    // Get the error div element next to the input
+    var errorDiv = document.getElementById("error_pesanan_masuk_konsumen_" + fullNameInput.id);
+
+    // Add an event listener to the full name input for input events
+    fullNameInput.addEventListener("input", function () {
+      // Get the input value
+      var inputValue = fullNameInput.value;
+
+      // Test if the input matches the alphabetical letters pattern
+      if (!alphabetPattern.test(inputValue)) {
+        // Display an error message if the input contains non-alphabetical characters
+        errorDiv.textContent = "Nama Lengkap hanya boleh mengandung huruf alphabet (Contoh: Joni Sunandar)";
+        errorDiv.classList.remove("hidden");
+      } else if (inputValue.trim().split(/\s+/).length < 2) {
+        // Check if there are at least two words
+        // Display an error message if there are less than two words
+        errorDiv.textContent = "Nama Lengkap minimal dua kata (Contoh: Joni Sunandar)";
+        errorDiv.classList.remove("hidden");
+      } else {
+        // Clear the error message if the input is valid
+        errorDiv.textContent = "";
+        errorDiv.classList.add("hidden");
+      }
+    });
+  });
+}
+
+// Call the nameCheck function to initialize it
+nameCheck();
+</script>
 
 
 
