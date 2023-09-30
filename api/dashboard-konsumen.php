@@ -1012,7 +1012,7 @@ function handleSubmit(event, form) {
 <script>
     // Function to fetch data from the server and populate the table
     function fetchRiwayatData() {
-        fetch("fetch_riwayat_konsumen.php")
+        fetch("fetch_data_toko.php")
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById("riwayat-table-body");
