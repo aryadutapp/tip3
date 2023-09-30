@@ -1011,7 +1011,7 @@ function handleSubmit(event, form) {
 <!-- JavaScript section for fetching and populating data -->
 <script>
     // Function to fetch data from the server and populate the table
-    function fetchReservationData() {
+    function fetchRiwayatData() {
         fetch("fetch_riwayat_konsumen.php")
         .then(response => response.json())
         .then(data => {
