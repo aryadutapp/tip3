@@ -662,7 +662,7 @@ if (!$user || $user->status !== "konsumen") {
         <td class="px-4 py-3">${provinsiValue}</td>
         <td class="px-4 py-3 flex items-center justify-end">
         <!-- Modal toggle -->
-      <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen_${userIDValue}" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+      <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
         Pesan Disini ${userIDValue}
       </button>
       
@@ -708,7 +708,7 @@ if (!$user || $user->status !== "konsumen") {
     </div>
         </td>
         `;
-        
+
         const buttons = row.querySelectorAll('[data-modal-toggle="pesanan_masuk_konsumen"]');
         buttons.forEach(button => {
             button.addEventListener('click', () => openPesananMasukModal(data, userIDValue)); // Pass userIDValue as an argument
