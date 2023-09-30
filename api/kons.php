@@ -750,11 +750,51 @@ if (!$user || $user->status !== "konsumen") {
                 tableBody.appendChild(newRow);
             });
 
+            //to check name on the full name list
+            nameCheck();
+
+
             // Now that the table has been populated, you can attach event listeners
             // or perform other actions as needed.
         })
         .catch(error => console.error("Error:", error));
     }
+
+    function nameCheck() {
+  // Get all input elements with the type "full-name"
+  var fullNameInputs = document.querySelectorAll('input[type="full-name"]');
+
+  // Regular expression pattern for alphabetical letters
+  var alphabetPattern = /^[A-Za-z\s]+$/;
+
+  // Loop through all the matching input elements
+  fullNameInputs.forEach(function (fullNameInput) {
+    // Get the error div element next to the input
+            var errorDiv = document.getElementById("error_pesanan_masuk_konsumen_" + fullNameInput.id);
+
+            // Add an event listener to the full name input for input events
+            fullNameInput.addEventListener("input", function () {
+            // Get the input value
+            var inputValue = fullNameInput.value;
+
+            // Test if the input matches the alphabetical letters pattern
+            if (!alphabetPattern.test(inputValue)) {
+                // Display an error message if the input contains non-alphabetical characters
+                errorDiv.textContent = "Nama Lengkap hanya boleh mengandung huruf alphabet (Contoh: Joni Sunandar)";
+                errorDiv.classList.remove("hidden");
+            } else if (inputValue.trim().split(/\s+/).length < 2) {
+                // Check if there are at least two words
+                // Display an error message if there are less than two words
+                errorDiv.textContent = "Nama Lengkap minimal dua kata (Contoh: Joni Sunandar)";
+                errorDiv.classList.remove("hidden");
+            } else {
+                // Clear the error message if the input is valid
+                errorDiv.textContent = "";
+                errorDiv.classList.add("hidden");
+            }
+            });
+        });
+        }
 
     // Wait for the DOM to be fully loaded before fetching and populating the data
     document.addEventListener("DOMContentLoaded", function () {
