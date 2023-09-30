@@ -1015,7 +1015,7 @@ function handleSubmit(event, form) {
         fetch("fetch_riwayat_konsumen.php")
         .then(response => response.json())
         .then(data => {
-            const tableBody = document.getElementById("reservation-table-body");
+            const tableBody = document.getElementById("riwayat-table-body");
             data.forEach(rowData => {
                 const newRow = createTableRow(rowData);
                 tableBody.appendChild(newRow);
