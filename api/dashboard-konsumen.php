@@ -465,7 +465,7 @@ if (!$user || $user->status !== "konsumen") {
                     fetch("fetch_riwayat_konsumen.php").then(response => response.json()).then(data => {
                       const tableBody = document.getElementById("riwayat-table-body");
                       data.forEach(rowData => {
-                        const newRow = createTableRow(rowData);
+                        const newRow = createTableRiwayat(rowData);
                         tableBody.appendChild(newRow);
                       });
                       //to check name on the full name list
