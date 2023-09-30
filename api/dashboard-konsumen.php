@@ -513,7 +513,7 @@ if (!$user || $user->status !== "konsumen") {
                 <script>
                   // Function to fetch data from the server and populate the table
                   function fetchRiwayatData() {
-                    fetch("fetch_data_tokoZZ.php").then(response => response.json()).then(data => {
+                    fetch("fetch_riwayat_konsumen.php").then(response => response.json()).then(data => {
                       const tableBody = document.getElementById("riwayat-table-body");
                       data.forEach(rowData => {
                         const newRow = createTableRow(rowData);
