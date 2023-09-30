@@ -627,9 +627,9 @@ if (!$user || $user->status !== "konsumen") {
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-4 py-3">NAMA TOKO</th>
-               <!-- <th scope="col" class="px-4 py-3">ALAMAT</th> -->
+                <th scope="col" class="px-4 py-3">ALAMAT</th>
                <!-- <th scope="col" class="px-4 py-3">KELURAHAN</th> -->
-                <th scope="col" class="px-4 py-3">KOTA</th>
+               <!-- <th scope="col" class="px-4 py-3">KOTA</th> -->
                 <th scope="col" class="px-4 py-3">
                     <span class="sr-only">CETAK STRUK</span>
                 </th>
