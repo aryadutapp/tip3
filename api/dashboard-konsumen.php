@@ -240,7 +240,7 @@ if (!$user || $user->status !== "konsumen") {
 																</div>
 															</div>
 														</td>
-        `;
+                                                        `;
                       const buttons = row.querySelectorAll('[data-modal-toggle="pesanan_masuk_konsumen"]');
                       buttons.forEach(button => {
                         button.addEventListener('click', () => openPesananMasukModal(data, userIDValue)); // Pass userIDValue as an argument
@@ -409,359 +409,133 @@ if (!$user || $user->status !== "konsumen") {
         </div>
       </section>
 
-      <!-- HTML content -->
-      <!-- JavaScript section for creating table rows -->
-      <script>
-        // Function to create table rows with data
-        function createTableRow(data) {
-          const row = document.createElement('tr');
-          const namaTokoValue = data.nama_toko;
-          const alamatValue = data.alamat;
-          const kelurahanValue = data.keluarahan;
-          const provinsiValue = data.provinsi;
-          const userIDValue = data.user_id;
-          row.innerHTML = `
-        
-								<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
-								<td class="px-4 py-3">${alamatValue}</td>
-								<!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
-								<!-- <td class="px-4 py-3">${provinsiValue}</td> -->
-								<td class="px-4 py-3 flex items-center justify-end">
-									<!-- Modal toggle -->
-									<button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                                        Pesan Disini
-                                    </button>
-									<!-- Main modal -->
-									<div>
-										<div id="pesanan_masuk_konsumen_${userIDValue}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-											<div class="relative w-full max-w-md max-h-full">
-												<!-- Modal content -->
-												<div class="relative bg-white rounded-lg shadow ">
-													<button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
-														<svg class="w-3 h-3" aria-hidden="true"
-															xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-															<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-														</svg>
-														<span class="sr-only">Close modal</span>
-													</button>
-													<div class="px-6 py-6 lg:px-8">
-														<h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
-														<form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
-															<div>
-																<label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
-																<input type="full-name" name="full-name" id="full-name_${userIDValue}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Contoh: Joni Sunandar" required>
-																</div>
-																<div>
-																	<div class="flex justify-between">
-																		<div class="flex items-start">
-																			<div class="flex items-center h-5">
-																				<input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
-																				</div>
-																				<label for="remember" class="ml-2 text-sm font-medium text-gray-900 mb-5">Saya menyetujui 
-																					<a class="text-blue-500 ">Syarat dan Ketentuan
-																					</label>
-																				</div>
-																			</div>
-																		</div>
-																		<!-- Error Pesanan Masuk Konsumen Modal -->
-																		<div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
-																		<input type="hidden" name="form_action" value="pesanan-masuk">
-																			<input type="hidden" name="user_id_mitra" value="${userIDValue}">
-																				<input type="hidden" name="size" value="S">
-																					<button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
-																				</form>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</td>
-        `;
-          const buttons = row.querySelectorAll('[data-modal-toggle="pesanan_masuk_konsumen"]');
-          buttons.forEach(button => {
-            button.addEventListener('click', () => openPesananMasukModal(data, userIDValue)); // Pass userIDValue as an argument
-          });
-          const buttonscl = row.querySelectorAll('[data-modal-hide="pesanan_masuk_konsumen"]');
-          buttonscl.forEach(button => {
-            button.addEventListener('click', () => closePesananMasukModal(data, userIDValue)); // Pass userIDValue as an argument
-          });
-          return row;
-        }
-        // Function to open the Pesanan Masuk modal
-        function openPesananMasukModal(data, userID) {
-          // Handle the modal opening logic here
-          // ...
-          // Assuming you want to open the modal when the button is clicked
-          const modalId = `pesanan_masuk_konsumen_${userID}`;
-          const modal = document.getElementById(modalId);
-          if (modal) {
-            // Remove all existing classes
-            modal.removeAttribute('class');
-            // Add your new classes
-            modal.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-50', 'w-full', 'p-4', 'overflow-x-hidden', 'overflow-y-auto', 'md:inset-0', 'h-[calc(100%-1rem)]', 'max-h-full', 'justify-center', 'items-center', 'flex');
-          }
-        }
+      
+      
+      
 
-        function closePesananMasukModal(data, userID) {
-          // Handle the modal opening logic here
-          // ...
-          // Assuming you want to open the modal when the button is clicked
-          const modalId = `pesanan_masuk_konsumen_${userID}`;
-          const modal = document.getElementById(modalId);
-          if (modal) {
-            modal.classList.add('hidden');
-          }
-        }
-      </script>
-      
-      <!-- JavaScript section for fetching and populating data 222 WHYYYYY--> 
-      <script>
-        // Function to fetch data from the server and populate the table
-        function fetchReservationData() {
-          fetch("fetch_data_toko.php").then(response => response.json()).then(data => {
-            const tableBody = document.getElementById("reservation-table-body");
-            data.forEach(rowData => {
-              const newRow = createTableRow(rowData);
-              tableBody.appendChild(newRow);
-            });
-            //to check name on the full name list
-            nameCheck();
-            // Now that the table has been populated, you can attach event listeners
-            // or perform other actions as needed.
-          }).catch(error => console.error("Error:", error));
-        }
-
-        function nameCheck() {
-          // Get all input elements with the type "full-name"
-          var fullNameInputs = document.querySelectorAll('input[type="full-name"]');
-          // Regular expression pattern for alphabetical letters
-          var alphabetPattern = /^[A-Za-z\s]+$/;
-          // Loop through all the matching input elements
-          fullNameInputs.forEach(function(fullNameInput) {
-            // Get the error div element next to the input
-            var errorDiv = document.getElementById("error_pesanan_masuk_konsumen_" + fullNameInput.id);
-            // Add an event listener to the full name input for input events
-            fullNameInput.addEventListener("input", function() {
-              // Get the input value
-              var inputValue = fullNameInput.value;
-              // Test if the input matches the alphabetical letters pattern
-              if (!alphabetPattern.test(inputValue)) {
-                // Display an error message if the input contains non-alphabetical characters
-                errorDiv.textContent = "Nama Lengkap hanya boleh mengandung huruf alphabet (Contoh: Joni Sunandar)";
-                errorDiv.classList.remove("hidden");
-              } else if (inputValue.trim().split(/\s+/).length < 2) {
-                // Check if there are at least two words
-                // Display an error message if there are less than two words
-                errorDiv.textContent = "Nama Lengkap minimal dua kata (Contoh: Joni Sunandar)";
-                errorDiv.classList.remove("hidden");
-              } else {
-                // Clear the error message if the input is valid
-                errorDiv.textContent = "";
-                errorDiv.classList.add("hidden");
-              }
-            });
-          });
-        }
-        // Wait for the DOM to be fully loaded before fetching and populating the data
-        document.addEventListener("DOMContentLoaded", function() {
-          fetchReservationData();
-        });
-      </script>
-      
-      <script>
-        // Function to toggle the modal's class
-        function toggleModalClass(modalId) {
-          const modal = document.getElementById(modalId);
-          if (modal.classList.contains('modal-opened')) {
-            modal.classList.remove('modal-opened');
-          } else {
-            modal.classList.add('modal-opened');
-          }
-        }
-        // Function to handle the modal toggle button click event
-        function handleModalToggleClick(event) {
-          const modalTarget = event.target.getAttribute('data-modal-target');
-          toggleModalClass(modalTarget);
-        }
-        // Function to handle the modal close button click event
-        function handleModalCloseClick(event, modalId) {
-          event.preventDefault();
-          toggleModalClass(modalId);
-        }
-        // Add event listener to a parent element that exists when the page loads
-        document.body.addEventListener('click', (event) => {
-          const target = event.target;
-          // Check if the clicked element is a modal toggle button
-          if (target.matches('[data-modal-toggle]')) {
-            handleModalToggleClick(event);
-          }
-          // Check if the clicked element is a modal close button
-          if (target.matches('[data-modal-hide]')) {
-            const modalId = target.getAttribute('data-modal-hide');
-            handleModalCloseClick(event, modalId);
-          }
-        });
-      </script>
-      <!-- JavaScript section for handling form submission -->
-     
-     <script>
-        function handleSubmit(event, form) {
-          event.preventDefault(); // Prevent the form from submitting normally
-          // Get the user_id from the form data
-          const user_id = form.querySelector('input[name="user_id_mitra"]').value;
-          console.log('user_id:', user_id); // Add this line for debugging
-          // Serialize the form data
-          const formData = new FormData(form);
-          // Update the user_id in the formData object
-          formData.set('user_id_mitra', user_id);
-          // Make a POST request to your PHP script
-          fetch('./controllers.php?action=register', {
-            method: 'POST',
-            body: formData
-          }).then(response => response.json()).then(data => {
-            if (data.status_pesanan_masuk === 'success') {
-              // Display success message as a popup
-              alert('Pesanan berhasil masuk!. Tekan OK untuk mengabaikan pesanan');
-            } else {
-              // Display error message as a popup
-              alert('Gagal memasukkan pesanan. Silakan coba lagi.');
-            }
-          }).catch(error => {
-            console.error('Error:', error);
-            // Handle any network or server error here
-            alert('Error: ' + error);
-          });
-        }
-      </script>
-
-     
-      </section>
-      
-      
-      
-      
-    <section id="riwayat-konsumen" class="p-4 sm:ml-64">
-    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+    
+      <section id="riwayat-konsumen" class="p-4 sm:ml-64">
+      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
         <div class="mx-auto">
-        <div class="rounded-t-lg bg-gray-100 p-6">
+          <div class="rounded-t-lg bg-gray-100 p-6">
             <h2 class="text-2xl font-bold mb-4 text-black">Riwayat Pemesanan</h2>
             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-            <!-- Start coding here -->
-            <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
+              <!-- Start coding here -->
+              <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500">
+                  <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <tr>
+                      <tr>
                         <th scope="col" class="px-4 py-3">Nama Toko</th>
                         <th scope="col" class="px-4 py-3">Jam Pemesanan</th>
                         <th scope="col" class="px-4 py-3">Kode Pengambilan</th>
                         <th scope="col" class="px-4 py-3">Status Barang</th>
-                    </tr>
+                      </tr>
                     </thead>
                     <tbody id="riwayat-table-body">
-                    <!-- Table rows will be dynamically added here -->
+                      <!-- Table rows will be dynamically added here -->
                     </tbody>
-                </table>
+                  </table>
                 </div>
                 <!-- HTML content -->
                 <!-- JavaScript section for creating table rows -->
                 <script>
-                // Function to create table rows with data
-                function createTableRiwayat(data) {
+                  // Function to create table rows with data
+                  function createTableRiwayat(data) {
                     const row = document.createElement('tr');
                     const NamaToko = data.nama_toko;
                     const jampesan = data.book_time;
                     const koderahasia = data.pickup_number;
                     row.innerHTML = `
     
-                                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
-                                                    <td class="px-4 py-3">${alamatValue}</td>
-                                                    <!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
-                                                    <!-- <td class="px-4 py-3">${provinsiValue}</td> -->
-                                                    <td class="px-4 py-3 flex items-center justify-end">
-                                                        <!-- Modal toggle -->
-                                                        <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                                                    
+							<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
+							<td class="px-4 py-3">${alamatValue}</td>
+							<!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
+							<!-- <td class="px-4 py-3">${provinsiValue}</td> -->
+							<td class="px-4 py-3 flex items-center justify-end">
+								<!-- Modal toggle -->
+								<button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
                                                                 Pesan Disini
                                                         </button>
-                                                        <!-- Main modal -->
-                                                        <div>
-                                                            <div id="pesanan_masuk_konsumen_${userIDValue}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                                <div class="relative w-full max-w-md max-h-full">
-                                                                    <!-- Modal content -->
-                                                                    <div class="relative bg-white rounded-lg shadow ">
-                                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
-                                                                            <svg class="w-3 h-3" aria-hidden="true"
-                                                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                                            </svg>
-                                                                            <span class="sr-only">Close modal</span>
-                                                                        </button>
-                                                                        <div class="px-6 py-6 lg:px-8">
-                                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
-                                                                            <form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
-                                                                                <div>
-                                                                                    <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
-                                                                                    <input type="full-name" name="full-name" id="full-name_${userIDValue}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Contoh: Joni Sunandar" required>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="flex justify-between">
-                                                                                            <div class="flex items-start">
-                                                                                                <div class="flex items-center h-5">
-                                                                                                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
-                                                                                                    </div>
-                                                                                                    <label for="remember" class="ml-2 text-sm font-medium text-gray-900 mb-5">Saya menyetujui 
-                                                                                                        <a class="text-blue-500 ">Syarat dan Ketentuan
-                                                                                                        </label>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <!-- Error Pesanan Masuk Konsumen Modal -->
-                                                                                            <div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
-                                                                                            <input type="hidden" name="form_action" value="pesanan-masuk">
-                                                                                                <input type="hidden" name="user_id_mitra" value="${userIDValue}">
-                                                                                                    <input type="hidden" name="size" value="S">
-                                                                                                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
-                                                                                                    </form>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-    `;
+								<!-- Main modal -->
+								<div>
+									<div id="pesanan_masuk_konsumen_${userIDValue}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+										<div class="relative w-full max-w-md max-h-full">
+											<!-- Modal content -->
+											<div class="relative bg-white rounded-lg shadow ">
+												<button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
+													<svg class="w-3 h-3" aria-hidden="true"
+														xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+														<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+													</svg>
+													<span class="sr-only">Close modal</span>
+												</button>
+												<div class="px-6 py-6 lg:px-8">
+													<h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
+													<form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
+														<div>
+															<label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
+															<input type="full-name" name="full-name" id="full-name_${userIDValue}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Contoh: Joni Sunandar" required>
+															</div>
+															<div>
+																<div class="flex justify-between">
+																	<div class="flex items-start">
+																		<div class="flex items-center h-5">
+																			<input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
+																			</div>
+																			<label for="remember" class="ml-2 text-sm font-medium text-gray-900 mb-5">Saya menyetujui 
+                                                                                                        
+																				<a class="text-blue-500 ">Syarat dan Ketentuan
+                                                                                                        
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- Error Pesanan Masuk Konsumen Modal -->
+																	<div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
+																	<input type="hidden" name="form_action" value="pesanan-masuk">
+																		<input type="hidden" name="user_id_mitra" value="${userIDValue}">
+																			<input type="hidden" name="size" value="S">
+																				<button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
+																			</form>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</td>
+        `;
                     return row;
-                }
+                  }
                 </script>
-                
-                
-                
-                <!-- JavaScript section for fetching and populating data 111 WHYYY -->
+                <!-- JavaScript section for fetching and populating data 222 WHYYY -->
                 <script>
-                // Function to fetch data from the server and populate the table
-                function fetchRiwayatData() {
-                    fetch("fetch_data_toko.php").then(response => response.json()).then(data => {
-                    const tableBody = document.getElementById("riwayat-table-body");
-                    data.forEach(rowData => {
+                  // Function to fetch data from the server and populate the table
+                  function fetchRiwayatData() {
+                    fetch("fetch_data_tokoZZ.php").then(response => response.json()).then(data => {
+                      const tableBody = document.getElementById("riwayat-table-body");
+                      data.forEach(rowData => {
                         const newRow = createTableRow(rowData);
                         tableBody.appendChild(newRow);
-                    });
-                    //to check name on the full name list
-                    nameCheck();
-                    // Now that the table has been populated, you can attach event listeners
-                    // or perform other actions as needed.
+                      });
+                      //to check name on the full name list
+                      nameCheck();
+                      // Now that the table has been populated, you can attach event listeners
+                      // or perform other actions as needed.
                     }).catch(error => console.error("Error:", error));
-                }
-                // Wait for the DOM to be fully loaded before fetching and populating the data
-                document.addEventListener("DOMContentLoaded", function() {
+                  }
+                  // Wait for the DOM to be fully loaded before fetching and populating the data
+                  document.addEventListener("DOMContentLoaded", function() {
                     fetchReservationData();
-                });
+                  });
                 </script>
                 <!-- JavaScript section for handling form submission -->
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </section>
 
 
