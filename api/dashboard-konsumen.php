@@ -527,7 +527,7 @@ if (!$user || $user->status !== "konsumen") {
                   }
                   // Wait for the DOM to be fully loaded before fetching and populating the data
                   document.addEventListener("DOMContentLoaded", function() {
-                    fetchReservationData();
+                    fetchRiwayatData();
                   });
                 </script>
                 <!-- JavaScript section for handling form submission -->
