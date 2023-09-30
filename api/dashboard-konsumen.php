@@ -451,8 +451,8 @@ if (!$user || $user->status !== "konsumen") {
                                                     
 							<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${NamaToko}</td>
 							<td class="px-4 py-3">${jampesan}</td>
-							<!-- <td class="px-4 py-3">${koderahasia}</td> -->
-							<!-- <td class="px-4 py-3">${data.reservation_status}</td> -->
+							 <td class="px-4 py-3">${koderahasia}</td> 
+							 <td class="px-4 py-3">${data.reservation_status}</td> 
 							
         `;
                     return row;
