@@ -627,8 +627,8 @@ if (!$user || $user->status !== "konsumen") {
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-4 py-3">NAMA TOKO</th>
-                <th scope="col" class="px-4 py-3">ALAMAT</th>
-                <th scope="col" class="px-4 py-3">KELURAHAN</th>
+               <!-- <th scope="col" class="px-4 py-3">ALAMAT</th> -->
+               <!-- <th scope="col" class="px-4 py-3">KELURAHAN</th> -->
                 <th scope="col" class="px-4 py-3">KOTA</th>
                 <th scope="col" class="px-4 py-3">
                     <span class="sr-only">CETAK STRUK</span>
@@ -640,6 +640,7 @@ if (!$user || $user->status !== "konsumen") {
         </tbody>
     </table>
 </div>
+
 
 
 <!-- HTML content -->
@@ -658,12 +659,12 @@ if (!$user || $user->status !== "konsumen") {
         row.innerHTML = `
         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
         <td class="px-4 py-3">${alamatValue}</td>
-        <td class="px-4 py-3">${kelurahanValue}</td>
-        <td class="px-4 py-3">${provinsiValue}</td>
+        <!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
+        <!-- <td class="px-4 py-3">${provinsiValue}</td> -->
         <td class="px-4 py-3 flex items-center justify-end">
         <!-- Modal toggle -->
       <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-        Pesan Disini ${userIDValue}
+        Pesan Disini
       </button>
       
       <!-- Main modal -->
@@ -701,6 +702,8 @@ if (!$user || $user->status !== "konsumen") {
                           <div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
                           <input type="hidden" name="form_action" value="pesanan-masuk">
                           <input type="hidden" name="user_id_mitra" value="${userIDValue}">
+                          <input type="size" name="size" value="S">
+
                           <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
                       </form>
                   </div>
