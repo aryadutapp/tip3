@@ -702,7 +702,7 @@ if (!$user || $user->status !== "konsumen") {
                           <div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
                           <input type="hidden" name="form_action" value="pesanan-masuk">
                           <input type="hidden" name="user_id_mitra" value="${userIDValue}">
-                          <input type="size" name="size" value="S">
+                          <input type="hidden" name="size" value="S">
 
                           <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
                       </form>
