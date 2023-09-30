@@ -75,6 +75,9 @@ if (!$user || $user->status !== "konsumen") {
           </ul>
         </div>
       </aside>
+      
+      
+      
       <section id="daftar-mitra" class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
           <div class="mx-auto">
@@ -274,6 +277,9 @@ if (!$user || $user->status !== "konsumen") {
                       }
                     }
                   </script>
+
+
+
                   <!-- JavaScript section for fetching and populating data -->
                   <script>
                     // Function to fetch data from the server and populate the table
@@ -327,6 +333,9 @@ if (!$user || $user->status !== "konsumen") {
                       fetchReservationData();
                     });
                   </script>
+                  
+                  
+                  
                   <script>
                     // Function to toggle the modal's class
                     function toggleModalClass(modalId) {
@@ -361,6 +370,8 @@ if (!$user || $user->status !== "konsumen") {
                       }
                     });
                   </script>
+                  
+                  
                   <!-- JavaScript section for handling form submission -->
                   <script>
                     function handleSubmit(event, form) {
@@ -397,6 +408,7 @@ if (!$user || $user->status !== "konsumen") {
           </div>
         </div>
       </section>
+
       <!-- HTML content -->
       <!-- JavaScript section for creating table rows -->
       <script>
@@ -501,7 +513,8 @@ if (!$user || $user->status !== "konsumen") {
           }
         }
       </script>
-      <!-- JavaScript section for fetching and populating data -->
+      
+      <!-- JavaScript section for fetching and populating data 222 WHYYYYY--> 
       <script>
         // Function to fetch data from the server and populate the table
         function fetchReservationData() {
@@ -554,6 +567,7 @@ if (!$user || $user->status !== "konsumen") {
           fetchReservationData();
         });
       </script>
+      
       <script>
         // Function to toggle the modal's class
         function toggleModalClass(modalId) {
@@ -589,7 +603,8 @@ if (!$user || $user->status !== "konsumen") {
         });
       </script>
       <!-- JavaScript section for handling form submission -->
-      <script>
+     
+     <script>
         function handleSubmit(event, form) {
           event.preventDefault(); // Prevent the form from submitting normally
           // Get the user_id from the form data
@@ -618,171 +633,142 @@ if (!$user || $user->status !== "konsumen") {
           });
         }
       </script>
-      <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-        <span class="text-sm font-normal text-gray-500"> Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span>
-        </span>
-        <ul class="inline-flex items-stretch -space-x-px">
-          <li>
-            <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-              <span class="sr-only">Previous</span>
-              <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-          </li>
-          <li>
-            <a href="#" aria-current="page" class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700">3</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">...</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">100</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-              <span class="sr-only">Next</span>
-              <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
+
+     
       </section>
-      <section id="riwayat-konsumen" class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
-          <div class="mx-auto">
-            <div class="rounded-t-lg bg-gray-100 p-6">
-              <h2 class="text-2xl font-bold mb-4 text-black">Riwayat Pemesanan</h2>
-              <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-                <!-- Start coding here -->
-                <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
-                  <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500">
-                      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr>
-                          <th scope="col" class="px-4 py-3">Nama Toko</th>
-                          <th scope="col" class="px-4 py-3">Jam Pemesanan</th>
-                          <th scope="col" class="px-4 py-3">Kode Pengambilan</th>
-                          <th scope="col" class="px-4 py-3">Status Barang</th>
-                        </tr>
-                      </thead>
-                      <tbody id="riwayat-table-body">
-                        <!-- Table rows will be dynamically added here -->
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- HTML content -->
-                  <!-- JavaScript section for creating table rows -->
-                  <script>
-                    // Function to create table rows with data
-                    function createTableRiwayat(data) {
-                      const row = document.createElement('tr');
-                      const NamaToko = data.nama_toko;
-                      const jampesan = data.book_time;
-                      const koderahasia = data.pickup_number;
-                      row.innerHTML = `
-        
-														<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
-														<td class="px-4 py-3">${alamatValue}</td>
-														<!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
-														<!-- <td class="px-4 py-3">${provinsiValue}</td> -->
-														<td class="px-4 py-3 flex items-center justify-end">
-															<!-- Modal toggle -->
-															<button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                                                                 Pesan Disini
-                                                            </button>
-															<!-- Main modal -->
-															<div>
-																<div id="pesanan_masuk_konsumen_${userIDValue}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-																	<div class="relative w-full max-w-md max-h-full">
-																		<!-- Modal content -->
-																		<div class="relative bg-white rounded-lg shadow ">
-																			<button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
-																				<svg class="w-3 h-3" aria-hidden="true"
-																					xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-																					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-																				</svg>
-																				<span class="sr-only">Close modal</span>
-																			</button>
-																			<div class="px-6 py-6 lg:px-8">
-																				<h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
-																				<form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
-																					<div>
-																						<label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
-																						<input type="full-name" name="full-name" id="full-name_${userIDValue}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Contoh: Joni Sunandar" required>
-																						</div>
-																						<div>
-																							<div class="flex justify-between">
-																								<div class="flex items-start">
-																									<div class="flex items-center h-5">
-																										<input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
-																										</div>
-																										<label for="remember" class="ml-2 text-sm font-medium text-gray-900 mb-5">Saya menyetujui 
-																											<a class="text-blue-500 ">Syarat dan Ketentuan
-																											</label>
-																										</div>
-																									</div>
-																								</div>
-																								<!-- Error Pesanan Masuk Konsumen Modal -->
-																								<div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
-																								<input type="hidden" name="form_action" value="pesanan-masuk">
-																									<input type="hidden" name="user_id_mitra" value="${userIDValue}">
-																										<input type="hidden" name="size" value="S">
-																											<button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
-																										</form>
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</td>
-        `;
-                      return row;
-                    }
-                  </script>
-                  <!-- JavaScript section for fetching and populating data -->
-                  <script>
-                    // Function to fetch data from the server and populate the table
-                    function fetchRiwayatData() {
-                      fetch("fetch_data_toko.php").then(response => response.json()).then(data => {
-                        const tableBody = document.getElementById("riwayat-table-body");
-                        data.forEach(rowData => {
-                          const newRow = createTableRow(rowData);
-                          tableBody.appendChild(newRow);
-                        });
-                        //to check name on the full name list
-                        nameCheck();
-                        // Now that the table has been populated, you can attach event listeners
-                        // or perform other actions as needed.
-                      }).catch(error => console.error("Error:", error));
-                    }
-                    // Wait for the DOM to be fully loaded before fetching and populating the data
-                    document.addEventListener("DOMContentLoaded", function() {
-                      fetchReservationData();
-                    });
-                  </script>
-                  <!-- JavaScript section for handling form submission -->
+      
+      
+      
+      
+    <section id="riwayat-konsumen" class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+        <div class="mx-auto">
+        <div class="rounded-t-lg bg-gray-100 p-6">
+            <h2 class="text-2xl font-bold mb-4 text-black">Riwayat Pemesanan</h2>
+            <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+            <!-- Start coding here -->
+            <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-4 py-3">Nama Toko</th>
+                        <th scope="col" class="px-4 py-3">Jam Pemesanan</th>
+                        <th scope="col" class="px-4 py-3">Kode Pengambilan</th>
+                        <th scope="col" class="px-4 py-3">Status Barang</th>
+                    </tr>
+                    </thead>
+                    <tbody id="riwayat-table-body">
+                    <!-- Table rows will be dynamically added here -->
+                    </tbody>
+                </table>
                 </div>
-              </div>
+                <!-- HTML content -->
+                <!-- JavaScript section for creating table rows -->
+                <script>
+                // Function to create table rows with data
+                function createTableRiwayat(data) {
+                    const row = document.createElement('tr');
+                    const NamaToko = data.nama_toko;
+                    const jampesan = data.book_time;
+                    const koderahasia = data.pickup_number;
+                    row.innerHTML = `
+    
+                                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
+                                                    <td class="px-4 py-3">${alamatValue}</td>
+                                                    <!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
+                                                    <!-- <td class="px-4 py-3">${provinsiValue}</td> -->
+                                                    <td class="px-4 py-3 flex items-center justify-end">
+                                                        <!-- Modal toggle -->
+                                                        <button data-modal-target="pesanan_masuk_konsumen_${userIDValue}" data-modal-toggle="pesanan_masuk_konsumen" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                                                                Pesan Disini
+                                                        </button>
+                                                        <!-- Main modal -->
+                                                        <div>
+                                                            <div id="pesanan_masuk_konsumen_${userIDValue}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                                <div class="relative w-full max-w-md max-h-full">
+                                                                    <!-- Modal content -->
+                                                                    <div class="relative bg-white rounded-lg shadow ">
+                                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="pesanan_masuk_konsumen">
+                                                                            <svg class="w-3 h-3" aria-hidden="true"
+                                                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                                            </svg>
+                                                                            <span class="sr-only">Close modal</span>
+                                                                        </button>
+                                                                        <div class="px-6 py-6 lg:px-8">
+                                                                            <h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
+                                                                            <form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
+                                                                                <div>
+                                                                                    <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
+                                                                                    <input type="full-name" name="full-name" id="full-name_${userIDValue}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Contoh: Joni Sunandar" required>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <div class="flex justify-between">
+                                                                                            <div class="flex items-start">
+                                                                                                <div class="flex items-center h-5">
+                                                                                                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
+                                                                                                    </div>
+                                                                                                    <label for="remember" class="ml-2 text-sm font-medium text-gray-900 mb-5">Saya menyetujui 
+                                                                                                        <a class="text-blue-500 ">Syarat dan Ketentuan
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!-- Error Pesanan Masuk Konsumen Modal -->
+                                                                                            <div id="error_pesanan_masuk_konsumen_full-name_${userIDValue}" class="w-full text-center text-red-500 hidden mb-3"></div>
+                                                                                            <input type="hidden" name="form_action" value="pesanan-masuk">
+                                                                                                <input type="hidden" name="user_id_mitra" value="${userIDValue}">
+                                                                                                    <input type="hidden" name="size" value="S">
+                                                                                                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat Pesanan</button>
+                                                                                                    </form>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+    `;
+                    return row;
+                }
+                </script>
+                
+                
+                
+                <!-- JavaScript section for fetching and populating data 111 WHYYY -->
+                <script>
+                // Function to fetch data from the server and populate the table
+                function fetchRiwayatData() {
+                    fetch("fetch_data_toko.php").then(response => response.json()).then(data => {
+                    const tableBody = document.getElementById("riwayat-table-body");
+                    data.forEach(rowData => {
+                        const newRow = createTableRow(rowData);
+                        tableBody.appendChild(newRow);
+                    });
+                    //to check name on the full name list
+                    nameCheck();
+                    // Now that the table has been populated, you can attach event listeners
+                    // or perform other actions as needed.
+                    }).catch(error => console.error("Error:", error));
+                }
+                // Wait for the DOM to be fully loaded before fetching and populating the data
+                document.addEventListener("DOMContentLoaded", function() {
+                    fetchReservationData();
+                });
+                </script>
+                <!-- JavaScript section for handling form submission -->
             </div>
-          </div>
+            </div>
         </div>
-      </section>
+        </div>
+    </div>
+    </section>
+
+
+
     </main>
-    <script>
+   
+   <script>
       // Function to check and toggle visibility of the element
       function toggleElementVisibility() {
         const drawerBackdrop = document.querySelector('.drawer-backdrop');
