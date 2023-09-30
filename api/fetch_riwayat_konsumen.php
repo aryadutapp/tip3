@@ -28,8 +28,8 @@ function fetchReservations() {
 
     $query = "SELECT dr.*, dm.nama_toko
     FROM data_reservasi dr
-    INNER JOIN data_user du ON dr.Cust_email = du.email
-    LEFT JOIN data_mitra dm ON du.user_id = dm.store_id
+    INNER JOIN data_user du ON dr.store_id = du.user_id
+    LEFT JOIN data_mitra dm ON du.email = dm.email
     WHERE dr.Cust_email = $1
     ";
 
