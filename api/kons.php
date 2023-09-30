@@ -627,9 +627,9 @@ if (!$user || $user->status !== "konsumen") {
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-4 py-3">NAMA TOKO</th>
-                <th scope="col" class="px-4 py-3">ALAMAT</th>
+               <!-- <th scope="col" class="px-4 py-3">ALAMAT</th> -->
                <!-- <th scope="col" class="px-4 py-3">KELURAHAN</th> -->
-               <!-- <th scope="col" class="px-4 py-3">KOTA</th> -->
+                <th scope="col" class="px-4 py-3">KOTA</th>
                 <th scope="col" class="px-4 py-3">
                     <span class="sr-only">CETAK STRUK</span>
                 </th>
@@ -739,24 +739,7 @@ if (!$user || $user->status !== "konsumen") {
         const modal = document.getElementById(modalId);
         
         if (modal) {
-            modal.classList.remove(); // Remove all existing classes
-            modal.classList.add(
-            'fixed',
-            'top-0',
-            'left-0',
-            'right-0',
-            'z-50',
-            'w-full',
-            'p-4',
-            'overflow-x-hidden',
-            'overflow-y-auto',
-            'md:inset-0',
-            'h-[calc(100%-1rem)]',
-            'max-h-full',
-            'justify-center',
-            'items-center',
-            'flex'
-        );
+            modal.classList.remove('hidden');
         }
     }
 
