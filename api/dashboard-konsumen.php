@@ -181,8 +181,8 @@ if (!$user || $user->status !== "konsumen") {
                       const row = document.createElement('tr');
                       const namaTokoValue = data.nama_toko;
                       const alamatValue = data.alamat;
-                      const kelurahanValue = data.kota;
-                      const kelurahanValue = data.keluarahan;
+                      const kotaValue = data.kota;
+                      const kelurahanValue = data.kelurahan;
                       const provinsiValue = data.provinsi;
                       const KodePos = data.kode_pos;
                       const userIDValue = data.user_id;
