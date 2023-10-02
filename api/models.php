@@ -209,7 +209,7 @@ public function insertMitra($email, $nama_toko, $alamat, $kelurahan, $kecamatan,
 
     // Define the SQL query to insert mitra data into the "data_mitra" table
     $query = "INSERT INTO data_mitra (email, nama_toko, alamat, kelurahan, kecamatan, kota, provinsi, kode_pos, nama_pic, nomer_pic) 
-              VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10";
+              VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
     
     // Execute the query with parameters
     $result = pg_query_params($db, $query, [$email, $nama_toko, $alamat, $kelurahan, $kecamatan, $kota, $provinsi, $kode_pos, $nama_pic, $nomer_pic]);
