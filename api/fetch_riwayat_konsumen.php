@@ -31,6 +31,7 @@ function fetchReservations() {
     INNER JOIN data_user du ON dr.store_id = du.user_id
     LEFT JOIN data_mitra dm ON du.email = dm.email
     WHERE dr.Cust_email = $1
+    ORDER BY dr.book_time DESC
     ";
 
 

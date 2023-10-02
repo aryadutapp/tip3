@@ -263,6 +263,14 @@ if (!$user || $user->status !== "konsumen") {
                         modal.removeAttribute('class');
                         // Add your new classes
                         modal.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-50', 'w-full', 'p-4', 'overflow-x-hidden', 'overflow-y-auto', 'md:inset-0', 'h-[calc(100%-1rem)]', 'max-h-full', 'justify-center', 'items-center', 'flex');
+
+                        const modalBackdrop = document.getElementById('modal-backdrop');
+
+                        if (modalBackdrop) {
+                            // Remove the "hidden" class
+                            modalBackdrop.classList.remove('hidden');
+                        }
+
                       }
                     }
 
@@ -274,6 +282,13 @@ if (!$user || $user->status !== "konsumen") {
                       const modal = document.getElementById(modalId);
                       if (modal) {
                         modal.classList.add('hidden');
+
+                        const modalBackdrop = document.getElementById('modal-backdrop');
+                        if (modalBackdrop) {
+                            // Remove the "hidden" class
+                            modalBackdrop.classList.add('hidden');
+                        }
+
                       }
                     }
                   </script>
@@ -507,5 +522,10 @@ if (!$user || $user->status !== "konsumen") {
       window.addEventListener('resize', toggleElementVisibility);
     </script>
     <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+
+    <div id="modal-backdrop" class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40 hidden"></div>
+
+
+
   </body>
 </html>
