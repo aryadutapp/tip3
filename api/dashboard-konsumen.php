@@ -160,7 +160,7 @@ if (!$user || $user->status !== "konsumen") {
                       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                           <th scope="col" class="px-4 py-3">NAMA TOKO</th>
-                          <!-- <th scope="col" class="px-4 py-3">ALAMAT</th> -->
+                          <th scope="col" class="px-4 py-3">ALAMAT</th>
                           <!-- <th scope="col" class="px-4 py-3">KELURAHAN</th> -->
                           <th scope="col" class="px-4 py-3">KOTA</th>
                           <th scope="col" class="px-4 py-3">
@@ -181,8 +181,10 @@ if (!$user || $user->status !== "konsumen") {
                       const row = document.createElement('tr');
                       const namaTokoValue = data.nama_toko;
                       const alamatValue = data.alamat;
+                      const kelurahanValue = data.kota;
                       const kelurahanValue = data.keluarahan;
                       const provinsiValue = data.provinsi;
+                      const KodePos = data.kode_pos;
                       const userIDValue = data.user_id;
                       row.innerHTML = `
         

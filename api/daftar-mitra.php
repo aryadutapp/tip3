@@ -76,7 +76,15 @@
   <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="kecamatan" name="kecamatan" type="text" placeholder="Misal: Sukolilo" required="">
 </div>
 <div class="mb-4">
+  <label class="block text-gray-700 text-sm font-bold mb-2" for="kota">Kota</label>
+  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="kecamatan" name="kecamatan" type="text" placeholder="Misal: Sukolilo" required="">
+</div>
+<div class="mb-4">
   <label class="block text-gray-700 text-sm font-bold mb-2" for="provinsi">Provinsi</label>
+  <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="provinsi" name="provinsi" type="text" placeholder="Misal: Jawa Timur" required="">
+</div>
+<div class="mb-4">
+  <label class="block text-gray-700 text-sm font-bold mb-2" for="kode_pos">Kode Pos</label>
   <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="provinsi" name="provinsi" type="text" placeholder="Misal: Jawa Timur" required="">
 </div>
 <div class="mb-4">
