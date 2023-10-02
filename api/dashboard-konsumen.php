@@ -82,7 +82,7 @@ if (!$user || $user->status !== "konsumen") {
         <div class="border-2 border-gray-200 border-dashed rounded-lg">
           <div class="mx-auto">
             <div class="rounded-t-lg bg-gray-100 p-3">
-              <h2 class="px-4 text-2xl font-bold mb-4 text-black pt-4 lg:px-12">Daftar Mitra</h2>
+              <h2 class="text-2xl font-bold mb-4 text-black pt-4 lg:px-12">Daftar Mitra</h2>
               <div class="mx-auto max-w-screen-xl px- lg:px-12 pb-4">
                 <!-- Start coding here -->
                 <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
@@ -137,7 +137,7 @@ if (!$user || $user->status !== "konsumen") {
 														<span class="sr-only">Close modal</span>
 													</button>
 													<div class="px-6 py-6 lg:px-8">
-														<h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di {namaTokoValue}</h3>
+														<h3 class="mb-4 text-xl font-medium text-gray-900 ">Pesan di ${namaTokoValue}</h3>
 														<form class="space-y-6" action="https://www.titipin.com/api/controllers.php?action=register" onsubmit="return handleSubmit(event, this)" method="post">
 															<div>
 																<label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
