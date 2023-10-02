@@ -82,7 +82,7 @@ if (!$user || $user->status !== "konsumen") {
         <div class="border-2 border-gray-200 border-dashed rounded-lg">
           <div class="mx-auto">
             <div class="rounded-t-lg bg-gray-100 p-1">
-              <h2 class="px-4 text-2xl font-bold mb-4 text-black pt-4">Daftar Mitra</h2>
+              <h2 class="px-4 text-2xl font-bold mb-4 text-black pt-4 lg:px-12">Daftar Mitra</h2>
               <div class="mx-auto max-w-screen-xl px- lg:px-12 pb-4">
                 <!-- Start coding here -->
                 <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
@@ -368,12 +368,12 @@ if (!$user || $user->status !== "konsumen") {
       
 
     
-      <section id="riwayat-konsumen" class="p-4 sm:ml-64">
-      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+      <section id="riwayat-konsumen" class="py-4 sm:ml-64">
+      <div class="border-2 border-gray-200 border-dashed rounded-lg">
         <div class="mx-auto">
           <div class="rounded-t-lg bg-gray-100 p-6">
-            <h2 class="text-2xl font-bold mb-4 text-black">Riwayat Pemesanan</h2>
-            <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+            <h2 class="text-2xl font-bold mb-4 text-black lg:px-12">Riwayat Pemesanan</h2>
+            <div class="mx-auto max-w-screen-xl lg:px-12 pb-4">
               <!-- Start coding here -->
               <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="overflow-x-auto">
