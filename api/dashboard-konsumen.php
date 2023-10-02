@@ -190,7 +190,7 @@ if (!$user || $user->status !== "konsumen") {
         
 								<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${namaTokoValue}</td>
 								<td class="px-4 py-3">${alamatValue}</td>
-								<!-- <td class="px-4 py-3">${kelurahanValue}</td> -->
+								<td class="px-4 py-3">${kotaValue}</td>
 								<!-- <td class="px-4 py-3">${provinsiValue}</td> -->
 								<td class="px-4 py-3 flex items-center justify-end">
 									<!-- Modal toggle -->
