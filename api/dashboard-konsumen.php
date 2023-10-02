@@ -78,7 +78,7 @@ if (!$user || $user->status !== "konsumen") {
 
 
 
-      <section id="selamat-datang-user" class="sm:ml-64 py-4">
+      <section id="selamat-datang-user" class="sm:ml-64 pb-4">
         <div class="border-2 border-gray-200 border-dashed rounded-lg">
           <div class="mx-auto">
             <div class="rounded-t-lg bg-gray-100 p-3">
