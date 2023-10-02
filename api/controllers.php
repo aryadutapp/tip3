@@ -111,7 +111,10 @@ if ($form_action === "login") {
         $reg_nama_toko = $_POST["nama_toko"];
         $reg_alamat = $_POST["alamat"];
         $reg_kelurahan = $_POST["kelurahan"];
+        $reg_kecamatan = $_POST["kecamatan"];
+        $reg_kota = $_POST["kota"];
         $reg_provinsi = $_POST["provinsi"];
+        $reg_kode_pos = $_POST["kode_pos"];
         $reg_nama_pic = $_POST["penanggung_jawab"];
         $reg_nomer_pic = $_POST["kontak_wa"];
 
@@ -153,7 +156,7 @@ if ($form_action === "login") {
 
    
     // Call the non-static method insertmitra() on the User instance
-    $newMitra = $newUser->insertMitra($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_provinsi, $reg_nama_pic, $reg_nomer_pic);
+    $newMitra = $newUser->insertMitra($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_kecamatan, $reg_kota, $reg_provinsi, $reg_kode_pos, $reg_nama_pic, $reg_nomer_pic);
     
 
     if ($newMitra) {

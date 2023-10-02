@@ -203,15 +203,16 @@ public function insertBarangEmail($full_name, $size, $store_id, $email) {
 
 
 // Function to insert mitra information into the "data_mitra" table
-public function insertMitra($email, $nama_toko, $alamat, $kelurahan, $provinsi, $nama_pic, $nomer_pic) {
+//($reg_email, $reg_nama_toko, $reg_alamat, $reg_kelurahan, $reg_kecamatan, $reg_kota, $reg_provinsi, $reg_kode_pos, $reg_nama_pic, $reg_nomer_pic);
+public function insertMitra($email, $nama_toko, $alamat, $kelurahan, $kecamatan, $kota, $provinsi, $kode_pos, $nama_pic, $nomer_pic) {
     $db = Database::getConnection(); // Get the database connection
 
     // Define the SQL query to insert mitra data into the "data_mitra" table
-    $query = "INSERT INTO data_mitra (email, nama_toko, alamat, kelurahan, provinsi, nama_pic, nomer_pic) 
-              VALUES ($1, $2, $3, $4, $5, $6, $7)";
+    $query = "INSERT INTO data_mitra (email, nama_toko, alamat, kelurahan, kecamatan, kota, provinsi, kode_pos, nama_pic, nomer_pic) 
+              VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10";
     
     // Execute the query with parameters
-    $result = pg_query_params($db, $query, [$email, $nama_toko, $alamat, $kelurahan, $provinsi, $nama_pic, $nomer_pic]);
+    $result = pg_query_params($db, $query, [$email, $nama_toko, $alamat, $kelurahan, $kecamatan, $kota, $provinsi, $kode_pos, $nama_pic, $nomer_pic]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)
