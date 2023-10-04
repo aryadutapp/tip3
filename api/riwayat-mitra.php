@@ -243,7 +243,7 @@ if (!$user || $user->status !== "mitra") {
                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${data.index}</td>
                 <td class="px-4 py-3">${data.reservation_id}</td>
                 <td class="px-4 py-3">${data.cust_email}</td>
-                <td class="px-4 py-3">${data.cust_name}</td>'
+                <td class="px-4 py-3">${data.cust_name}</td>
                 <td class="px-4 py-3">${data.pickup_number}</td>
                 <td class="px-4 py-3">${data.book_time}</td>
                 <td class="px-4 py-3">${data.start_time}</td>
