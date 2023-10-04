@@ -123,8 +123,8 @@ if (!$user || $user->status !== "mitra") {
                 </div>
             </aside>
 
-            <section id="selamat-datang-user" class="sm:ml-64 pb-4">
-                <div class="border-2 border-gray-200 border-dashed rounded-lg">
+            <section id="selamat-datang-user" class="sm:ml-64 p-4">
+                <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
                 <div class="mx-auto">
                     <div class="rounded-t-lg bg-gray-100 p-3">
                     <h2 class="text-2xl font-bold text-black pt-4 lg:px-12">Selamat Datang Mitra</h2>
@@ -554,7 +554,8 @@ if (!$user || $user->status !== "mitra") {
                             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                                 <!-- Start coding here -->
                                 <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
-                                    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                                       <!-- // buat search bar-->
+                                    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4 hidden">
                                         <div class="w-full md:w-1/2">
                                             <form class="flex items-center">
                                                 <label for="simple-search" class="sr-only">Search</label>
