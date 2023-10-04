@@ -195,7 +195,7 @@ public function ambilBarang($kode_pickup, $harga) {
     $resultUpdate = pg_query_params($db, $queryUpdate, [$nowTime, "PESANAN KELUAR", $kode_pickup]);
 
     // Prepare and execute the query to insert into the data_pembayaran table
-    $queryInsert = "INSERT INTO data_pembayaran (reservation_id, price) VALUES ($1, $2)";
+    $queryInsert = "INSERT INTO data_pembayaran (kode_ambil, price) VALUES ($1, $2)";
     $resultInsert = pg_query_params($db, $queryInsert, [$kode_pickup, $harga]);
 
     if ($resultUpdate && $resultInsert) {
