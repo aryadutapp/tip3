@@ -71,12 +71,12 @@ function fetchReservationsAndMitra() {
     </head>
     <body>
         <h1>Struk Penitipan Barang Titip.in</h1>
-        <p><strong>Customer Name:</strong> <?= $rowReservations['cust_name'] ?></p>
-        <p><strong>Store ID:</strong> <?= $rowReservations['store_id'] ?></p>
-        <p><strong>Mitra Name:</strong> <?= $rowMitra['nama_toko'] ?></p>
-        <p><strong>Mitra Alamat:</strong> <?= $rowMitra['alamat'] ?></p>
-        <p><strong>Booked Time:</strong> <?= $rowReservations['book_time'] ?></p>
-        <p><strong>Pickup Number:</strong> <?= $rowReservations['pickup_number'] ?></p>
+        <p><strong>Nama Customer:</strong> <?= $rowReservations['cust_name'] ?></p>
+        <p><strong>ID Mitra:</strong> <?= $rowReservations['store_id'] ?></p>
+        <p><strong>Name Mitra:</strong> <?= $rowMitra['nama_toko'] ?></p>
+        <p><strong>Alamat Mitra:</strong> <?= $rowMitra['alamat'] ?></p>
+        <p><strong>Waktu Booking:</strong> <?= $rowReservations['book_time'] ?></p>
+        <p><strong>Kode Pengambilan:</strong> <?= $rowReservations['pickup_number'] ?></p>
         
         <!-- Print button -->
         <button onclick='window.print()'>Print</button>
@@ -87,12 +87,15 @@ function fetchReservationsAndMitra() {
         <!-- JavaScript to copy text to clipboard -->
         <script>
             function copyTextToClipboard() {
-                var textToCopy = "Customer Name: <?= $rowReservations['cust_name'] ?>\n" +
-                                "Store ID: <?= $rowReservations['store_id'] ?>\n" +
-                                "Mitra Name: <?= $rowMitra['nama_toko'] ?>\n" +
-                                "Mitra Alamat: <?= $rowMitra['alamat'] ?>\n" +
-                                "Booked Time: <?= $rowReservations['book_time'] ?>\n" +
-                                "Pickup Number: <?= $rowReservations['pickup_number'] ?>";
+                var textToCopy = "Kode Pengambilan Barang titip.in\n" +
+                                "Nama Customer: <?= $rowReservations['cust_name'] ?>\n" +
+                                "ID Mitra: <?= $rowReservations['store_id'] ?>\n" +
+                                "Nama Mitra: <?= $rowMitra['nama_toko'] ?>\n" +
+                                "Alamat Mitra: <?= $rowMitra['alamat'] ?>\n" +
+                                "Waktu Booking: <?= $rowReservations['book_time'] ?>\n" +
+                                "Kode Pengambilan: <?= $rowReservations['pickup_number'] ?>"
+                                "\nJAGA KERAHASIAAN KODE PENGAMBILAN\n"
+                                "Info resmi kunjungi titipin.com atau kunjungi IG : @titip.in_23";
                 
                 var textarea = document.createElement('textarea');
                 textarea.value = textToCopy;
