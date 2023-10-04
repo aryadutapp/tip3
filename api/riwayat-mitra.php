@@ -383,6 +383,7 @@ if (!$user || $user->status !== "mitra") {
                         <th scope="col" class="px-4 py-3">END_TIME</th>
                         <th scope="col" class="px-4 py-3">SIZE</th>
                         <th scope="col" class="px-4 py-3">RESERVATION_STATUS</th>
+                        <th scope="col" class="px-4 py-3">HARGA</th>
                     </tr>
                 </thead>
                 <tbody id="pesanan-keluar-table-body">
@@ -405,6 +406,7 @@ if (!$user || $user->status !== "mitra") {
                 <td class="px-4 py-3">${data.end_time || 'N/A'}</td>
                 <td class="px-4 py-3">${data.size}</td>
                 <td class="px-4 py-3">${data.reservation_status}</td>
+                <td class="px-4 py-3">${data.price}</td>
                 <td class="px-4 py-3 flex items-center justify-end">
                     <button data-dropdown-toggle="actions-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
