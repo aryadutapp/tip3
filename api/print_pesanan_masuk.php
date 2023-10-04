@@ -65,7 +65,7 @@ function fetchReservationsAndMitra() {
     $rowMitra = pg_fetch_assoc($resultMitra);
 
     // HTML receipt format for reservations
-    echo "<html>
+    echo '<html>
             <head>
                 <title>Receipt</title>
             </head>
@@ -108,7 +108,7 @@ function fetchReservationsAndMitra() {
                 </script>
 
             </body>
-          </html>";
+          </html>';
 }
 
 // Call the function to fetch reservations and mitra data and generate the HTML content
