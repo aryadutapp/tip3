@@ -82,12 +82,12 @@ function fetchReservationsAndMitra() {
         <button onclick='window.print()'>Print</button>
         
         <!-- Copy button -->
-        <button onclick='copyTextToClipboard()'>Copy Info</button>
+        <button onclick='copyTextToClipboard()'>Salin sebagai Pesan</button>
         
         <!-- JavaScript to copy text to clipboard -->
         <script>
             function copyTextToClipboard() {
-                var textToCopy = "Kode Pengambilan Barang titip.in\n" +
+                var textToCopy = "Kode Pengambilan Barang titip.in\n\n" +
                                 "Nama Customer: <?= $rowReservations['cust_name'] ?>\n" +
                                 "ID Mitra: <?= $rowReservations['store_id'] ?>\n" +
                                 "Nama Mitra: <?= $rowMitra['nama_toko'] ?>\n" +
@@ -95,7 +95,7 @@ function fetchReservationsAndMitra() {
                                 "Waktu Booking: <?= $rowReservations['book_time'] ?>\n" +
                                 "Kode Pengambilan: <?= $rowReservations['pickup_number'] ?>" +
                                 "\nJAGA KERAHASIAAN KODE PENGAMBILAN\n" +
-                                "Info resmi kunjungi titipin.com atau kunjungi IG : @titip.in_23";
+                                "\nInfo resmi kunjungi titipin.com atau kunjungi IG : @titip.in_23";
                 
                 var textarea = document.createElement('textarea');
                 textarea.value = textToCopy;
@@ -104,7 +104,7 @@ function fetchReservationsAndMitra() {
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
                 
-                alert('Info copied to clipboard:\n\n' + textToCopy);
+                alert('Info disalin ke Papan Klip:\n\n' + textToCopy);
             }
         </script>
     </body>
