@@ -183,7 +183,9 @@ if ($form_action === "login") {
 elseif ($form_action === "pesanan-masuk") {
     // Check if the user's cookie exists
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
-    $id_mitra = $_POST["user_id_mitra"];
+    // $id_mitra = $_POST["user_id_mitra"];
+    $id_mitra = isset($_POST["user_id_mitra"]) ? $_POST["user_id_mitra"] : null;
+
     
 
     // If the user's cookie exists and check the user's status based on the session (buat pesanan masuk mitra)
