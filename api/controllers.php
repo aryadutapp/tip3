@@ -311,14 +311,14 @@ elseif ($form_action === "pesanan-keluar") {
 
                     if ($newPackage) {
                         $response = array(
-                            "status_pesanan_masuk" => "success",
+                            "status_pesanan_keluar" => "success",
                             "message" => "Pesanan Telah Selesai"
                         );
                         echo json_encode($response);
                     } else {
                         // Package insertion failed
                         $response = array(
-                            "status_pesanan-masuk" => "error",
+                            "status_pesanan-keluar" => "error",
                             "message" => "Gagal menyelesaikan pesanan. Silahkan coba lagi"
                         );
                         echo json_encode($response);

@@ -357,7 +357,7 @@ if (!$user || $user->status !== "mitra") {
                       <!-- Modal header -->
                       <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Keluar</h3>
-                        <form class="space-y-6 mb-6" action="#">
+                        <form class="space-y-6 mb-6" action="./controllers.php?action=register" onsubmit="return handleKeluar(event);" method="post"> 
                           <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                               <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -396,6 +396,8 @@ if (!$user || $user->status !== "mitra") {
                              <input type="text" name="harga" id="harga" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly="" required="">
                              <p id="harga-message" class="text-sm text-red-500"></p>
                           </div>
+
+                          <input type="hidden" name="form_action" value="pesanan-keluar">
 
                           <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masukkan Pesanan</button>
                         </form>
@@ -531,6 +533,40 @@ if (!$user || $user->status !== "mitra") {
                           const searchResultsDropdown = document.getElementById('id-search-dropdown');
                           searchResultsDropdown.addEventListener('change', fetchDataAndPopulateDropdown);
                         </script>
+
+                        <script>
+                            function handleKeluar(event) {
+                                event.preventDefault(); // Prevent the form from submitting normally
+
+                                // Serialize the form data
+                                const formData = new FormData(event.target);
+
+                                // Make a POST request to your PHP script
+                                fetch('./controllers.php?action=register', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.status_pesanan_keluar === 'success') {
+                                        // Display success message as a popup
+                                        alert('Pesanan berhasil keluar. Tekan OK untuk menutup notifikasi.');
+
+                                    } else {
+                                        // Display error message as a popup
+                                        alert('Gagal mencatat pesanan. Silakan coba lagi.');
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    // Handle any network or server error here
+                                    alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+                                });
+                            }
+                        </script>
+
+
+
                       </div>
                     </div>
                   </div>
