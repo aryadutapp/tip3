@@ -123,7 +123,16 @@ if (!$user || $user->status !== "mitra") {
                 </div>
             </aside>
 
-
+            <section id="selamat-datang-user" class="sm:ml-64 pb-4">
+                <div class="border-2 border-gray-200 border-dashed rounded-lg">
+                <div class="mx-auto">
+                    <div class="rounded-t-lg bg-gray-100 p-3">
+                    <h2 class="text-2xl font-bold text-black pt-4 lg:px-12">Selamat Datang Mitra</h2>
+                    <h1 id="teks-user" class="text-xl font-med mb-4 text-black pt-4 lg:px-12"><?php echo $userEmail; ?></h1>
+                    </div>
+                </div>
+                </div>
+            </section>
 
             <section id="menu-cepat" class="p-4 sm:ml-64">
                 <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
