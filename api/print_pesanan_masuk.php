@@ -86,7 +86,7 @@ function fetchReservationsAndMitra() {
             document.execCommand('copy');
             document.body.removeChild(textarea);
             
-            alert('Text copied to clipboard:\n\n' + textToCopy);
+            alert('Pesan telah disalin ke Clipboard:\n\n' + textToCopy);
         }
     </script>
 </head>
