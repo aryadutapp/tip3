@@ -191,7 +191,7 @@ if (!$user || $user->status !== "mitra") {
                                                         .then(data => {
                                                             if (data.status_pesanan_masuk === 'success') {
                                                                 // Display success message as a popup
-                                                                alert('Pesanan berhasil masuk!. Tekan OK untuk mencetak kode pengambilan (Pastikan Notifikasi Pop Up Tidak Diblokir)');
+                                                                alert('Pesanan berhasil masuk!. Tekan OK untuk menampilkan kode pengambilan konsumen');
                                                                 // You can also redirect to another page if needed
                                                                // window.location.href = 'dashboard-mitra.php';
                                                                    // Open a new tab to print_pesanan-masuk.php

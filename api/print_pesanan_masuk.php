@@ -1,8 +1,8 @@
 <?php
 require_once 'models.php';
 
-// Function to fetch reservations based on the user's email
-function fetchReservations() {
+// Function to fetch reservations and mitra data based on the user's email
+function fetchReservationsAndMitra() {
 
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
 
@@ -16,7 +16,7 @@ function fetchReservations() {
         exit();
     }
 
-    // Fetch reservations for the user based on their email
+    // Fetch user data for the user based on their email
     $user = User::getUserByEmail($userEmail);
 
     if (!$user) {
@@ -25,43 +25,92 @@ function fetchReservations() {
     }
 
     $db = Database::getConnection();
-    $query = "SELECT cust_name, store_id, book_time, Pickup_number
-              FROM data_reservasi
-              WHERE store_id = $1
-              AND start_time IS NOT NULL
-              ORDER BY book_time DESC
-              LIMIT 1";
 
-    $result = pg_query_params($db, $query, [$user->user_id]);
+    // Fetch reservations for the user based on their email
+    $queryReservations = "SELECT cust_name, store_id, book_time, Pickup_number
+                          FROM data_reservasi
+                          WHERE store_id = $1
+                          AND start_time IS NOT NULL
+                          ORDER BY book_time DESC
+                          LIMIT 1";
 
-    if (!$result) {
+    // Execute the query to fetch reservations
+    $resultReservations = pg_query_params($db, $queryReservations, [$user->user_id]);
+
+    if (!$resultReservations) {
         // Handle the error (e.g., log or show an error message)
-        die("Error executing query: " . pg_last_error($db));
+        die("Error executing reservations query: " . pg_last_error($db));
     }
 
-    // Fetch the first row from the result set as an associative array
-    $row = pg_fetch_assoc($result);
+    // Fetch the first row from the reservations result set as an associative array
+    $rowReservations = pg_fetch_assoc($resultReservations);
 
-    if (!$row) {
-        // Handle the case when no rows are found (e.g., return an empty response or show a message)
+    if (!$rowReservations) {
+        // Handle the case when no reservations are found (e.g., return an empty response or show a message)
         die("No reservations found.");
     }
 
-    // HTML receipt format
+    // Fetch mitra data for the user based on their email
+    $queryMitra = "SELECT * FROM data_mitra WHERE email = $1";
+
+    // Execute the query to fetch mitra data
+    $resultMitra = pg_query_params($db, $queryMitra, [$userEmail]);
+
+    if (!$resultMitra) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing mitra query: " . pg_last_error($db));
+    }
+
+    // Fetch the first row from the mitra result set as an associative array
+    $rowMitra = pg_fetch_assoc($resultMitra);
+
+    // HTML receipt format for reservations
     echo "<html>
             <head>
                 <title>Receipt</title>
             </head>
             <body>
                 <h1>Struk Penitipan Barang Titip.in</h1>
-                <p><strong>Customer Name:</strong> " . $row['cust_name'] . "</p>
-                <p><strong>Store ID:</strong> " . $row['store_id'] . "</p>
-                <p><strong>Booked Time:</strong> " . $row['book_time'] . "</p>
-                <p><strong>Pickup Number:</strong> " . $row['pickup_number'] . "</p>
+                <p><strong>Customer Name:</strong> " . $rowReservations['cust_name'] . "</p>
+                <p><strong>Store ID:</strong> " . $rowReservations['store_id'] . "</p>
+                <p><strong>Mitra Name:</strong> " . $rowMitra['name'] . "</p>
+                <p><strong>Mitra Email:</strong> " . $rowMitra['email'] . "</p>
+                <p><strong>Booked Time:</strong> " . $rowReservations['book_time'] . "</p>
+                <p><strong>Pickup Number:</strong> " . $rowReservations['Pickup_number'] . "</p>
+                
+                <!-- Print button -->
+                <button onclick='window.print()'>Print</button>
+                
+                <!-- Copy button -->
+                <button onclick='copyToClipboard()'>Salin sebagai Pesan</button>
+
+                <!-- JavaScript to copy text to clipboard -->
+                <script>
+                    function copyToClipboard() {
+                        var textToCopy = "Kode pengambilan barang TITIP.IN\n\n" +
+                            "Mitra: " . $rowMitra['name'] . "\n" +
+                            "ID Mitra: " . $rowMitra['id_mitra'] . "\n" +
+                            "Nomer Pengambilan: " . $rowReservations['Pickup_number'] . "\n" +
+                            "Alamat Mitra: " . $rowMitra['alamat'] . "\n" +
+                            "Jam: " . $rowReservations['book_time'] . "\n\n" +
+                            "JAGA KERAHASIAAN KODE PENGAMBILAN\n\n" +
+                            "Info lebih lanjut kunjungi: www.titipin.com";
+                        
+                        var textarea = document.createElement('textarea');
+                        textarea.value = textToCopy;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textarea);
+                        
+                        alert('Text copied to clipboard:\n\n' + textToCopy);
+                    }
+                </script>
+
             </body>
           </html>";
 }
 
-// Call the function to fetch reservations and generate the HTML receipt
-fetchReservations();
+// Call the function to fetch reservations and mitra data and generate the HTML content
+fetchReservationsAndMitra();
 ?>
