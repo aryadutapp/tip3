@@ -157,7 +157,7 @@ if (!$user || $user->status !== "mitra") {
                                             <div class="px-6 py-6 lg:px-8">
                                                 <h3 class="mb-4 text-xl font-medium text-gray-900">Pesanan Masuk</h3>
                                                 <!-- Form for entering order details -->
-                                                <form class="space-y-6" action="./controllers.php?action=register" onsubmit="return validateAndSubmitForm();" method="post">
+                                                <form class="space-y-6" action="./controllers.php?action=register" onsubmit="return validateFullName();" method="post">
                                                     <div>
                                                         <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
                                                         <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Jayarudin Supratno" required="">
@@ -176,70 +176,69 @@ if (!$user || $user->status !== "mitra") {
                                                 </form>
 
                                                 <script>
-        function validateAndSubmitForm(event) {
-            event.preventDefault(); // Prevent the form from submitting normally
+                                                // Inline script to validate full name before form submission
+                                                
+                                                const fullNameInput = document.getElementById("full-name");
+                                                const fullName = fullNameInput.value.trim();
+                                                const words = fullName.split(" ").filter(word => word !== ""); // Remove empty words
+                                                
+                                                const warningFullName = document.getElementById("warning-full-name");
+                                                
+                                                if (words.length < 2) {
+                                                    warningFullName.classList.remove("hidden");
+                                                    return false;
+                                                } else {
+                                                    warningFullName.classList.add("hidden");
+                                                    return true;
+                                                }
+                                                
+                                            </script>
 
-            // Validate full name
-            if (validateFullName()) {
-                // Serialize the form data
-                const formData = new FormData(document.querySelector('form'));
+                                                <script>
+                                                    function handleSubmit(event) {
+                                                        event.preventDefault(); // Prevent the form from submitting normally
 
-                // Make a POST request to your PHP script
-                fetch('./controllers.php?action=register', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status_pesanan_masuk === 'success') {
-                        // Display success message as a popup
-                        alert('Pesanan berhasil masuk!. Tekan OK untuk menampilkan kode pengambilan konsumen');
-                        // You can also redirect to another page if needed
-                        // window.location.href = 'dashboard-mitra.php';
-                        // Open a new tab to print_pesanan-masuk.php
-                        const newTab = window.open('print_pesanan_masuk.php', '_blank');
-                        
-                        // Check if the new tab was successfully opened
-                        if (newTab) {
-                            // You can also redirect to another page in the current tab if needed
-                            window.location.href = 'dashboard-mitra.php';
-                        } else {
-                            // Handle if the new tab couldn't be opened
-                            alert('Gagal membuka halaman print_pesanan-masuk.php.');
-                        }
-                    } else {
-                        // Display error message as a popup
-                        alert('Gagal memasukkan pesanan. Silakan coba lagi.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Handle any network or server error here
-                    alert('Terjadi kesalahan. Silakan coba lagi nanti.');
-                });
-            }
-        }
+                                                        // Serialize the form data
+                                                        const formData = new FormData(event.target);
 
-        // Inline script to validate full name
-        function validateFullName() {
-            const fullNameInput = document.getElementById("full-name");
-            const fullName = fullNameInput.value.trim();
-            const words = fullName.split(" ").filter(word => word !== ""); // Remove empty words
-
-            const warningFullName = document.getElementById("warning-full-name");
-
-            if (words.length < 2) {
-                warningFullName.classList.remove("hidden");
-                return false;
-            } else {
-                warningFullName.classList.add("hidden");
-                return true;
-            }
-        }
-    </script>
+                                                        // Make a POST request to your PHP script
+                                                        fetch('./controllers.php?action=register', {
+                                                            method: 'POST',
+                                                            body: formData
+                                                        })
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            if (data.status_pesanan_masuk === 'success') {
+                                                                // Display success message as a popup
+                                                                alert('Pesanan berhasil masuk!. Tekan OK untuk menampilkan kode pengambilan konsumen');
+                                                                // You can also redirect to another page if needed
+                                                               // window.location.href = 'dashboard-mitra.php';
+                                                                   // Open a new tab to print_pesanan-masuk.php
+                                                                const newTab = window.open('print_pesanan_masuk.php', '_blank');
+                                                                
+                                                                // Check if the new tab was successfully opened
+                                                                if (newTab) {
+                                                                    // You can also redirect to another page in the current tab if needed
+                                                                    window.location.href = 'dashboard-mitra.php';
+                                                                } else {
+                                                                    // Handle if the new tab couldn't be opened
+                                                                    alert('Gagal membuka halaman print_pesanan-masuk.php.');
+                                                                }
+                                                            } else {
+                                                                // Display error message as a popup
+                                                                alert('Gagal memasukkan pesanan. Silakan coba lagi.');
+                                                            }
+                                                        })
+                                                        .catch(error => {
+                                                            console.error('Error:', error);
+                                                            // Handle any network or server error here
+                                                            alert('Terjadi kesalahan. Silakan coba lagi nanti.');
+                                                        });
+                                                    }
+                                                </script>
 
                                             </div>
-                                           
+                                            
                                         </div>
                                     </div>
                                 </div>
