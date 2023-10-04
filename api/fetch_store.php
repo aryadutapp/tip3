@@ -41,10 +41,12 @@ function fetchReservations() {
     // Fetch all rows from the result set as an array of associative arrays
     $rows = pg_fetch_all($result);
 
+    /*
     // Remove the 'pickup_number' key from each row
     foreach ($rows as &$row) {
         unset($row['pickup_number']);
     }
+    */
 
     // Return the data as JSON
     header('Content-Type: application/json');
