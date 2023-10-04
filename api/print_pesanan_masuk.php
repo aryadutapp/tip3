@@ -3,7 +3,6 @@ require_once 'models.php';
 
 // Function to fetch reservations and mitra data based on the user's email
 function fetchReservationsAndMitra() {
-
     $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
 
     $userEmail = User::getUserEmailBySession($cookieValue);
@@ -63,57 +62,53 @@ function fetchReservationsAndMitra() {
 
     // Fetch the first row from the mitra result set as an associative array
     $rowMitra = pg_fetch_assoc($resultMitra);
+    ?>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Receipt</title>
+    </head>
+    <body>
+        <h1>Struk Penitipan Barang Titip.in</h1>
+        <p><strong>Customer Name:</strong> <?= $rowReservations['cust_name'] ?></p>
+        <p><strong>Store ID:</strong> <?= $rowReservations['store_id'] ?></p>
+        <p><strong>Mitra Name:</strong> <?= $rowMitra['nama_toko'] ?></p>
+        <p><strong>Mitra Alamat:</strong> <?= $rowMitra['alamat'] ?></p>
+        <p><strong>Booked Time:</strong> <?= $rowReservations['book_time'] ?></p>
+        <p><strong>Pickup Number:</strong> <?= $rowReservations['pickup_number'] ?></p>
+        
+        <!-- Print button -->
+        <button onclick='window.print()'>Print</button>
+        
+        <!-- Copy button -->
+        <button onclick='copyTextToClipboard()'>Copy Info</button>
+        
+        <!-- JavaScript to copy text to clipboard -->
+        <script>
+            function copyTextToClipboard() {
+                var textToCopy = "Customer Name: <?= $rowReservations['cust_name'] ?>\n" +
+                                "Store ID: <?= $rowReservations['store_id'] ?>\n" +
+                                "Mitra Name: <?= $rowMitra['nama_toko'] ?>\n" +
+                                "Mitra Alamat: <?= $rowMitra['alamat'] ?>\n" +
+                                "Booked Time: <?= $rowReservations['book_time'] ?>\n" +
+                                "Pickup Number: <?= $rowReservations['pickup_number'] ?>";
+                
+                var textarea = document.createElement('textarea');
+                textarea.value = textToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                alert('Info copied to clipboard:\n\n' + textToCopy);
+            }
+        </script>
+    </body>
+    </html>
+    <?php
 }
+
+// Call the function to fetch reservations and mitra data
 fetchReservationsAndMitra();
 ?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Receipt</title>
-</head>
-<body>
-    <h1>Struk Penitipan Barang Titip.in</h1>
-    <p><strong>Customer Name:</strong> <?= $rowReservations['cust_name'] ?></p>
-    <p><strong>Store ID:</strong> <?= $rowReservations['store_id'] ?></p>
-    <p><strong>Mitra Name:</strong> <?= $rowMitra['nama_toko'] ?></p>
-    <p><strong>Mitra Alamat:</strong> <?= $rowMitra['alamat'] ?></p>
-    <p><strong>Booked Time:</strong> <?= $rowReservations['book_time'] ?></p>
-    <p><strong>Pickup Number:</strong> <?= $rowReservations['pickup_number'] ?></p>
-    
-    <!-- Print button -->
-    <button onclick='window.print()'>Print</button>
-    
-    <!-- Copy button -->
-    <button onclick='copyToClipboard()'>Salin sebagai Pesan</button>
-
-    <!-- JavaScript to copy text to clipboard -->
-    <script>
-        function copyToClipboard() {
-            var textToCopy = "Kode pengambilan barang TITIP.IN\n\n" +
-                "Mitra: <?= $rowMitra['name'] ?>\n" +
-                "ID Mitra: <?= $rowMitra['id_mitra'] ?>\n" +
-                "Nomer Pengambilan: <?= $rowReservations['Pickup_number'] ?>\n" +
-                "Alamat Mitra: <?= $rowMitra['alamat'] ?>\n" +
-                "Jam: <?= $rowReservations['book_time'] ?>\n\n" +
-                "JAGA KERAHASIAAN KODE PENGAMBILAN\n\n" +
-                "Info lebih lanjut kunjungi: www.titipin.com";
-            
-            var textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            alert('Pesan telah disalin ke Clipboard:\n\n' + textToCopy);
-        }
-    </script>
- 
-</body>
-</html>
-<?php
-}
-
-
