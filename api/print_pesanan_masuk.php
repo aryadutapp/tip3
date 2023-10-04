@@ -73,10 +73,10 @@ function fetchReservationsAndMitra() {
     <h1>Struk Penitipan Barang Titip.in</h1>
     <p><strong>Customer Name:</strong> <?= $rowReservations['cust_name'] ?></p>
     <p><strong>Store ID:</strong> <?= $rowReservations['store_id'] ?></p>
-    <p><strong>Mitra Name:</strong> <?= $rowMitra['name'] ?></p>
-    <p><strong>Mitra Email:</strong> <?= $rowMitra['email'] ?></p>
+    <p><strong>Mitra Name:</strong> <?= $rowMitra['nama_toko'] ?></p>
+    <p><strong>Mitra Alamat:</strong> <?= $rowMitra['alamat'] ?></p>
     <p><strong>Booked Time:</strong> <?= $rowReservations['book_time'] ?></p>
-    <p><strong>Pickup Number:</strong> <?= $rowReservations['Pickup_number'] ?></p>
+    <p><strong>Pickup Number:</strong> <?= $rowReservations['pickup_number'] ?></p>
     
     <!-- Print button -->
     <button onclick='window.print()'>Print</button>
