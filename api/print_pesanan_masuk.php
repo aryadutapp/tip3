@@ -68,23 +68,6 @@ function fetchReservationsAndMitra() {
 <html>
 <head>
     <title>Receipt</title>
-</head>
-<body>
-    <h1>Struk Penitipan Barang Titip.in</h1>
-    <p><strong>Customer Name:</strong> <?= $rowReservations['cust_name'] ?></p>
-    <p><strong>Store ID:</strong> <?= $rowReservations['store_id'] ?></p>
-    <p><strong>Mitra Name:</strong> <?= $rowMitra['nama_toko'] ?></p>
-    <p><strong>Mitra Alamat:</strong> <?= $rowMitra['alamat'] ?></p>
-    <p><strong>Booked Time:</strong> <?= $rowReservations['book_time'] ?></p>
-    <p><strong>Pickup Number:</strong> <?= $rowReservations['pickup_number'] ?></p>
-    
-    <!-- Print button -->
-    <button onclick='window.print()'>Print</button>
-    
-    <!-- Copy button -->
-    <button onclick='copyToClipboard()'>Salin sebagai Pesan</button>
-
-    <!-- JavaScript to copy text to clipboard -->
     <script>
         function copyToClipboard() {
             var textToCopy = "Kode pengambilan barang TITIP.IN\n\n" +
@@ -106,6 +89,24 @@ function fetchReservationsAndMitra() {
             alert('Text copied to clipboard:\n\n' + textToCopy);
         }
     </script>
+</head>
+<body>
+    <h1>Struk Penitipan Barang Titip.in</h1>
+    <p><strong>Customer Name:</strong> <?= $rowReservations['cust_name'] ?></p>
+    <p><strong>Store ID:</strong> <?= $rowReservations['store_id'] ?></p>
+    <p><strong>Mitra Name:</strong> <?= $rowMitra['nama_toko'] ?></p>
+    <p><strong>Mitra Alamat:</strong> <?= $rowMitra['alamat'] ?></p>
+    <p><strong>Booked Time:</strong> <?= $rowReservations['book_time'] ?></p>
+    <p><strong>Pickup Number:</strong> <?= $rowReservations['pickup_number'] ?></p>
+    
+    <!-- Print button -->
+    <button onclick='window.print()'>Print</button>
+    
+    <!-- Copy button -->
+    <button onclick='copyToClipboard()'>Salin sebagai Pesan</button>
+
+    <!-- JavaScript to copy text to clipboard -->
+ 
 </body>
 </html>
 <?php
