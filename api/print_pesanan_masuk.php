@@ -93,8 +93,8 @@ function fetchReservationsAndMitra() {
                                 "Nama Mitra: <?= $rowMitra['nama_toko'] ?>\n" +
                                 "Alamat Mitra: <?= $rowMitra['alamat'] ?>\n" +
                                 "Waktu Booking: <?= $rowReservations['book_time'] ?>\n" +
-                                "Kode Pengambilan: <?= $rowReservations['pickup_number'] ?>"
-                                "\nJAGA KERAHASIAAN KODE PENGAMBILAN\n"
+                                "Kode Pengambilan: <?= $rowReservations['pickup_number'] ?>" +
+                                "\nJAGA KERAHASIAAN KODE PENGAMBILAN\n" +
                                 "Info resmi kunjungi titipin.com atau kunjungi IG : @titip.in_23";
                 
                 var textarea = document.createElement('textarea');
