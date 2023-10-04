@@ -431,7 +431,7 @@ if (!$user || $user->status !== "mitra") {
             
             // Function to fetch data from the server and populate the table
             function AmbilDataPesananKeluar() {
-            fetch("fetch_store_lengkap.php")
+            fetch("fetch_pesanan_keluar.php")
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById("pesanan-keluar-table-body");

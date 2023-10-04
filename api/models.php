@@ -180,25 +180,35 @@ public function insertBarang($full_name, $size, $store_id) {
     return true; // Return true to indicate successful insertion
 }
 
-// PESANAN KELUAR
-public function ambilBarang($kode_pickup) {
+public function ambilBarang($kode_pickup, $harga) {
     $db = Database::getConnection(); // Get the database connection
 
     // Get the current timestamp for end_time
     date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
     $nowTime = time() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
 
-    // Prepare and execute the query to update the data_reservasi table
-    $query = "UPDATE data_reservasi SET end_time = to_timestamp($1), reservation_status = $2 WHERE pickup_number = $3";
-    $result = pg_query_params($db, $query, [$nowTime, "PESANAN KELUAR", $kode_pickup]);
+    // Start a database transaction
+    pg_query($db, "BEGIN");
 
-    if (!$result) {
-        // Handle the error (e.g., log or show an error message)
+    // Prepare and execute the query to update the data_reservasi table
+    $queryUpdate = "UPDATE data_reservasi SET end_time = to_timestamp($1), reservation_status = $2 WHERE pickup_number = $3";
+    $resultUpdate = pg_query_params($db, $queryUpdate, [$nowTime, "PESANAN KELUAR", $kode_pickup]);
+
+    // Prepare and execute the query to insert into the data_pembayaran table
+    $queryInsert = "INSERT INTO data_pembayaran (reservation_id, price) VALUES ($1, $2)";
+    $resultInsert = pg_query_params($db, $queryInsert, [$kode_pickup, $harga]);
+
+    if ($resultUpdate && $resultInsert) {
+        // Both update and insert were successful, commit the transaction
+        pg_query($db, "COMMIT");
+        return true; // Return true to indicate successful update and insert
+    } else {
+        // Handle the error, rollback the transaction, and show an error message
+        pg_query($db, "ROLLBACK");
         die("Error executing query: " . pg_last_error($db));
     }
-
-    return true; // Return true to indicate successful update
 }
+
 
 
 // Create a new entry in the data_reservasi table

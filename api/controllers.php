@@ -302,12 +302,13 @@ elseif ($form_action === "pesanan-keluar") {
 
                 if ($user && $user->status === "mitra") {
                     $kode_ambil = $_POST["pickup_number"];
+                    $harga_pickup = $_POST["harga"];
 
                     // Create a new instance of User
                     $newUser = new User($user->email, $user->password, $user->status);
 
                     // Call the non-static method insertBarang() on the User instance
-                    $newPackage = $newUser->ambilBarang($kode_ambil);
+                    $newPackage = $newUser->ambilBarang($kode_ambil, $harga);
 
                     if ($newPackage) {
                         $response = array(
