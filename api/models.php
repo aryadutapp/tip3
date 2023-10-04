@@ -190,7 +190,7 @@ public function ambilBarang($kode_pickup) {
 
     // Prepare and execute the query to update the data_reservasi table
     $query = "UPDATE data_reservasi SET end_time = to_timestamp($1), reservation_status = $2 WHERE pickup_number = $3";
-    $result = pg_query_params($db, $query, [$nowTime, "PESANAN_KELUAR", $kode_pickup]);
+    $result = pg_query_params($db, $query, [$nowTime, "PESANAN KELUAR", $kode_pickup]);
 
     if (!$result) {
         // Handle the error (e.g., log or show an error message)

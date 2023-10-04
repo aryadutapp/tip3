@@ -128,7 +128,7 @@ if (!$user || $user->status !== "mitra") {
                 <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
                     <div class="mx-auto">
                         <div class="rounded-t-lg bg-gray-100 p-6">
-                            <h2 class="text-2xl font-bold mb-4 text-black">Riwayat</h2>
+                            <h2 class="text-2xl font-bold mb-4 text-black">Riwayat Pesanan Masuk</h2>
                             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                                 <!-- Start coding here -->
                                 <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
@@ -281,12 +281,15 @@ if (!$user || $user->status !== "mitra") {
             .then(data => {
                 const tableBody = document.getElementById("reservation-table-body");
                 data.forEach(rowData => {
-                    const newRow = createTableRow(rowData);
-                    tableBody.appendChild(newRow);
+                    if (rowData.reservation_status !== "PESANAN KELUAR") {
+                        const newRow = createTableRow(rowData);
+                        tableBody.appendChild(newRow);
+                    }
                 });
             })
             .catch(error => console.error("Error:", error));
         }
+
 
         // Call the function to populate the table on page load
         fetchReservationData();
@@ -338,6 +341,11 @@ if (!$user || $user->status !== "mitra") {
                     </div>
                 </div>
             </section>
+
+
+
+
+
         </main>
         <script src="https://flowbite.com/docs/flowbite.min.js"></script>
         <script>
