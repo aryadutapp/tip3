@@ -176,23 +176,27 @@ if (!$user || $user->status !== "mitra") {
                                                 </form>
 
                                                 <script>
-                                                // Inline script to validate full name before form submission
-                                                
-                                                const fullNameInput = document.getElementById("full-name");
-                                                const fullName = fullNameInput.value.trim();
-                                                const words = fullName.split(" ").filter(word => word !== ""); // Remove empty words
-                                                
-                                                const warningFullName = document.getElementById("warning-full-name");
-                                                
-                                                if (words.length < 2) {
-                                                    warningFullName.classList.remove("hidden");
-                                                    //return false;
-                                                } else {
-                                                    warningFullName.classList.add("hidden");
-                                                   // return true;
-                                                }
-                                                
-                                            </script>
+                                                    const fullNameInput = document.getElementById("full-name");
+                                                    const warningFullName = document.getElementById("warning-full-name");
+
+                                                    // Function to validate full name
+                                                    function validateFullName() {
+                                                        const fullName = fullNameInput.value.trim();
+                                                        const words = fullName.split(" ").filter(word => word !== ""); // Remove empty words
+
+                                                        if (words.length < 2) {
+                                                            warningFullName.classList.remove("hidden");
+                                                        } else {
+                                                            warningFullName.classList.add("hidden");
+                                                        }
+                                                    }
+
+                                                    // Attach the validateFullName function to the "input" event of the full name input
+                                                    fullNameInput.addEventListener("input", validateFullName);
+
+                                                    // You can also use "change" event if you want validation to occur after the user leaves the input field.
+                                                    // fullNameInput.addEventListener("change", validateFullName);
+                                                </script>
 
                                                 <script>
                                                     function handleSubmit(event) {
