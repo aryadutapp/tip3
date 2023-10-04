@@ -180,6 +180,27 @@ public function insertBarang($full_name, $size, $store_id) {
     return true; // Return true to indicate successful insertion
 }
 
+// PESANAN KELUAR
+public function ambilBarang($kode_pickup) {
+    $db = Database::getConnection(); // Get the database connection
+
+    // Get the current timestamp for end_time
+    date_default_timezone_set('Asia/Jakarta'); // Set the default time zone to Jakarta (GMT+7)
+    $nowTime = time() + 25200; // Add 7 hours (7 hours * 60 minutes * 60 seconds = 25200 seconds)
+
+    // Prepare and execute the query to update the data_reservasi table
+    $query = "UPDATE data_reservasi SET end_time = to_timestamp($1), reservation_status = $2 WHERE pickup_number = $3";
+    $result = pg_query_params($db, $query, [$nowTime, "PESANAN_KELUAR", $kode_pickup]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    return true; // Return true to indicate successful update
+}
+
+
 // Create a new entry in the data_reservasi table
 public function insertBarangEmail($full_name, $size, $store_id, $email) {
     $db = Database::getConnection(); // Get the database connection

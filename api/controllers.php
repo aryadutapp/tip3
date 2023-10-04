@@ -282,6 +282,64 @@ elseif ($form_action === "pesanan-masuk") {
 
 
 
+
+elseif ($form_action === "pesanan-keluar") {
+    // Check if the user's cookie exists
+    $cookieValue = isset($_COOKIE['titip_user']) ? $_COOKIE['titip_user'] : null;
+    
+
+    // If the user's cookie exists and check the user's status based on the session (buat pesanan masuk mitra)
+    if ($cookieValue) {
+        // Get the user's email based on their session
+        $userEmail = User::getUserEmailBySession($cookieValue);
+    
+        // Get the user information based on their email
+        $user = User::getUserByEmail($userEmail);
+    
+        // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
+// Assuming you have a User object already created, let's call it $user.
+// Replace $user with the actual User object you have.
+
+                if ($user && $user->status === "mitra") {
+                    $kode_ambil = $_POST["pickup_number"];
+
+                    // Create a new instance of User
+                    $newUser = new User($user->email, $user->password, $user->status);
+
+                    // Call the non-static method insertBarang() on the User instance
+                    $newPackage = $newUser->ambilBarang($kode_ambil);
+
+                    if ($newPackage) {
+                        $response = array(
+                            "status_pesanan_masuk" => "success",
+                            "message" => "Pesanan Telah Selesai"
+                        );
+                        echo json_encode($response);
+                    } else {
+                        // Package insertion failed
+                        $response = array(
+                            "status_pesanan-masuk" => "error",
+                            "message" => "Gagal menyelesaikan pesanan. Silahkan coba lagi"
+                        );
+                        echo json_encode($response);
+                    }
+                } elseif ($user && $user->status === "konsumen") {
+                    header("Location: dashboard-konsumen.php");
+                    exit();
+                }
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
     
     else {
         // If form_action is post but not "login" or "register", handle the specific case here
