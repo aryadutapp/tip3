@@ -186,10 +186,10 @@ if (!$user || $user->status !== "mitra") {
                                                 
                                                 if (words.length < 2) {
                                                     warningFullName.classList.remove("hidden");
-                                                    return false;
+                                                    //return false;
                                                 } else {
                                                     warningFullName.classList.add("hidden");
-                                                    return true;
+                                                   // return true;
                                                 }
                                                 
                                             </script>
