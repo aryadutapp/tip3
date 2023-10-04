@@ -220,16 +220,13 @@ if (!$user || $user->status !== "mitra") {
                     <th scope="col" class="px-4 py-3">RESERVATION_ID</th>
                     <th scope="col" class="px-4 py-3">CUST_EMAIL</th>
                     <th scope="col" class="px-4 py-3">CUST_NAME</th>
-                    <th scope="col" class="px-4 py-3">STORE_ID</th>
+                    <th scope="col" class="px-4 py-3">PICKUP NUMBER</th>
                     <th scope="col" class="px-4 py-3">BOOK_TIME</th>
                     <th scope="col" class="px-4 py-3">START_TIME</th>
                     <th scope="col" class="px-4 py-3">END_TIME</th>
-                    <th scope="col" class="px-4 py-3">RESERVATION_STATUS</th>
                     <th scope="col" class="px-4 py-3">SIZE</th>
-                    <th scope="col" class="px-4 py-3">PICKUP NUMBER</th>
-                    <th scope="col" class="px-4 py-3">
-                        <span class="sr-only">Actions</span>
-                    </th>
+                    <th scope="col" class="px-4 py-3">RESERVATION_STATUS</th>
+                    
                 </tr>
             </thead>
             <tbody id="reservation-table-body">
@@ -248,12 +245,11 @@ if (!$user || $user->status !== "mitra") {
                 <td class="px-4 py-3">${data.cust_email}</td>
                 <td class="px-4 py-3">${data.cust_name}</td>'
                 <td class="px-4 py-3">${data.pickup_number}</td>
-                <td class="px-4 py-3">${data.store_id}</td>
                 <td class="px-4 py-3">${data.book_time}</td>
                 <td class="px-4 py-3">${data.start_time}</td>
                 <td class="px-4 py-3">${data.end_time || 'N/A'}</td>
+                td class="px-4 py-3">${data.size}</td>
                 <td class="px-4 py-3">${data.reservation_status}</td>
-                <td class="px-4 py-3">${data.size}</td>
                 <td class="px-4 py-3 flex items-center justify-end">
                     <button data-dropdown-toggle="actions-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none" type="button">
                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
