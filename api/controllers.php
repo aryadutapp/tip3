@@ -308,7 +308,7 @@ elseif ($form_action === "pesanan-keluar") {
                     $newUser = new User($user->email, $user->password, $user->status);
 
                     // Call the non-static method insertBarang() on the User instance
-                    $newPackage = $newUser->ambilBarang($kode_ambil, $harga);
+                    $newPackage = $newUser->ambilBarang($kode_ambil, $harga_pickup);
 
                     if ($newPackage) {
                         $response = array(
