@@ -56,6 +56,27 @@ public static function getUserByEmail($email) {
     return pg_fetch_object($result);
 }
 
+// Read mitra data from the data_mitra by email
+public static function getMitraByEmail($email) {
+    $db = Database::getConnection(); // Get the database connection
+    $query = "SELECT * FROM data_mitra WHERE email = $1";
+    $result = pg_query_params($db, $query, [$email]);
+
+    if (!$result) {
+        // Handle the error (e.g., log or show an error message)
+        die("Error executing query: " . pg_last_error($db));
+    }
+
+    // Check if any rows are returned
+    $rowCount = pg_num_rows($result);
+    if ($rowCount === 0) {
+        // Email doesn't exist, return an error code or a specific value to indicate this
+        return -1; // You can use any value that makes sense for your application
+    }
+
+    return pg_fetch_object($result);
+}
+
 
     // Update user data in the database
     public function updateUser() {

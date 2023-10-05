@@ -14,6 +14,9 @@ $userEmail = User::getUserEmailBySession($cookieValue);
 // Get the user information based on their email
 $user = User::getUserByEmail($userEmail);
 
+$data_mitra = User::getMitraByEmail($userEmail);
+
+
 // If the user doesn't exist or is not a "mitra," redirect to dashboard-konsumen.php
 if (!$user || $user->status === "konsumen") {
     header("Location: dashboard-konsumen.php");
@@ -118,7 +121,7 @@ if (!$user || $user->status === "konsumen") {
                 <div class="mx-auto">
                     <div class="rounded-t-lg bg-gray-100 p-3">
                     <h2 class="text-2xl font-bold text-black pt-4 lg:px-12">Selamat Datang Mitra</h2>
-                    <h1 id="teks-user" class="text-xl font-med mb-4 text-black pt-4 lg:px-12"><?php echo $userEmail; ?></h1>
+                    <h1 id="teks-user" class="text-xl font-med mb-4 text-black pt-4 lg:px-12"><?php echo $data_mitra['nama_toko']; ?></h1>
                     </div>
                 </div>
                 </div>
