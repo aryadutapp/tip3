@@ -15,7 +15,7 @@ $userEmail = User::getUserEmailBySession($cookieValue);
 $user = User::getUserByEmail($userEmail);
 
 // If the user doesn't exist or is not a "konsumen," redirect to dashboard-mitra.php
-if (!$user || $user->status !== "konsumen") {
+if (!$user || $user->status === "mitra") {
     header("Location: dashboard-mitra.php");
     exit();
 }
