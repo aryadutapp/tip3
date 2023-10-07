@@ -30,7 +30,7 @@ function fetchReservations() {
     $db = Database::getConnection();
     $query = "SELECT *
             FROM data_reservasi
-            WHERE store_id = $1 AND pickup_number = $2";
+            WHERE store_id = $1 AND pickup_number = $2 AND reservation_status <> 'paket keluar'";
     $result = pg_query_params($db, $query, [$user->user_id, $given_query]);
 
 
