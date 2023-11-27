@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/images/logo.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logo.png">
   <title>titip.in : Layanan Penitipan Barang dengan Sistem Loker berbasis Daring</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,7 +15,7 @@
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8">
             <div class="relative z-10 flex items-center gap-16">
               <a href="/" aria-label="Home">
-                <img class="h-14 w-auto" aria-hidden="true" viewbox="0 0 160 24" fill="none" src="./assets/images/logo-text-right.png">
+                <img class="h-14 w-auto" aria-hidden="true" viewbox="0 0 160 24" fill="none" src="../assets/images/logo-text-right.png">
               </a>
       
               <div class="lg:flex lg:gap-10 sm:hidden md:hidden hidden" id="menu-desktop">
@@ -97,7 +97,7 @@
               <div class="flex flex-col items-start justify-between gap-y-12 pb-6 pt-16 lg:flex-row lg:items-center lg:py-16">
                 <div>
                   <div class="flex items-center text-gray-900">
-                    <img class="h-14 w-auto" aria-hidden="true" viewbox="0 0 160 24" fill="none" src="./assets/images/logo-text-right.png">
+                    <img class="h-14 w-auto" aria-hidden="true" viewbox="0 0 160 24" fill="none" src="../assets/images/logo-text-right.png">
                   </div>
                   <nav class="mt-11 flex gap-8"><a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]" href="/"><span class="relative z-10">Beranda</span></a><a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]" href="./blog"><span class="relative z-10">Blog</span></a><a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]" href="./produk"><span class="relative z-10">Produk</span></a><a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]" href="./bantuan"><span class="relative z-10">Bantuan</span></a><a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-[0ms]" href="./tentang-kami"><span class="relative z-10">Tentang Kami</span></a></nav>
                 </div>
